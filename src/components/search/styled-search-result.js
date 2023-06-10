@@ -10,8 +10,9 @@ const Popover = css`
   right: 0;
   top: 100%;
   margin-top: 0.5em;
+  margin-right: 72px;
   width: 80vw;
-  max-width: 30em;
+  max-width: 500px;
   box-shadow: 0 0 5px 0;
   padding: 1em;
   border-radius: 2px;
@@ -32,25 +33,37 @@ export default styled(SearchResult)`
       list-style: none;
       margin-left: 0;
     }
-
     li.ais-Hits-item {
       margin-bottom: 1em;
-
       a {
+        display: block;
+        width: 100%;
+        border: none;
+        padding: 0;
+        background-color: unset;
         color: ${({ theme }) => theme.foreground};
-
         h4 {
-          margin-bottom: 0.2em;
+            margin-top: 0;
+            margin-bottom: 0.2em;
         }
       }
     }
   }
-
+  .ais-Snippet {
+    text-transform: lowercase !important;
+  }
+  .ais-PoweredBy-link {
+    background-color: unset;
+    border: none;
+    padding: 0;
+    padding-left: 10px;
+  }
   .ais-PoweredBy {
     display: flex;
+    align-items: center;
     justify-content: flex-end;
     font-size: 80%;
-
+    
     svg {
       width: 70px;
     }

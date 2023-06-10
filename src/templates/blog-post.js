@@ -87,6 +87,7 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        partnumber
         date(formatString: "MMMM DD, YYYY")
         description
       }
@@ -105,6 +106,7 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+
       }
     }
   }

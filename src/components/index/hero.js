@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Video from "../../components/video"
 // import LogoCover from "../images/cover.png"
@@ -11,16 +12,18 @@ flex-direction: column;
 background-color: black;
 .center-text {
     font-size: 18px;
-    width: 1300px;
+    width: 1000px;
     margin: auto;
     color: white;
     background-color: unset;
     font-family: "Helvetica";
     h1 {
-        
+        /* color: black; */
         color: white;
-        font-size: 48px;
-        margin-right: 100px;
+        /* font-size: 48px; */
+        font-size: 100px;
+        /* margin-right: 100px; */
+        margin-top: 100px;
         margin-bottom: 40px;
         font-weight: 500;
         padding: 0;
@@ -29,15 +32,23 @@ background-color: black;
         background-color: rgba(0,0,0,0);
         margin-bottom: 60px;
         a {
-            font-size: 24px;
+            font-size: 26px;
+            /* color: #333; */
             color: white;
             margin-right: 20px;
             background-color: rgba(0,0,0,0);
             transition: .3s;
+            text-decoration: none;
             /* border-bottom: 3px solid rgba(255,255,255,0); */
             :hover {
                 /* border-bottom: 3px solid white; */
+                color: #fde027;
                 cursor: pointer;
+                .arrow {
+                    border-color: #fde027;
+                    margin-left: 24px;
+                    margin-right: 76px;
+                }
             }
         }
          
@@ -47,6 +58,7 @@ div {
     /* max-height: 100vh; */
     width: 100%;
     background-color: rgba(0,0,0,0.6);
+    /* background-color: rgba(255,255,255,.9); */
     /* background: radial-gradient(circle, rgba(0,0,0,0.6) 0%, rgba(0,0,0,.9) 100%); */
     opacity: 1;
     img {
@@ -58,6 +70,7 @@ div {
     }
 }
 .arrow {
+  transition: .3s;
   border: solid white;
   border-width: 0 4px 4px 0;
   display: inline-block;
@@ -84,10 +97,10 @@ export default function Hero(){
                     maxHeight: "100%"
                     }}>
             <div className="center-text">
-                <h1>From minor maintenance to major refurbishment, as well as electrical component exchange and overhaul. We're a one stop shop for aircraft owners and maintenance facilities who want quality parts and service.</h1>
+                <h1>We make sure your Aircrafts are Flying <br/> Fast, Efficiently,<br/> and Safely. </h1>
                 <div className="links">
-                <a>ENGINEERING SERVICES <i class="arrow right"/></a>
-                <a>ELECTRICAL PARTS/SERVICES <i class="arrow right"/></a>
+                <Link to="/engineering">ENGINEERING SERVICES <i class="arrow right"/></Link>
+                <Link to="/electrical">ELECTRICAL PARTS/SERVICES <i class="arrow right"/></Link>
                 </div>
             </div>
         </div>

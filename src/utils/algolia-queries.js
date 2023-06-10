@@ -14,6 +14,7 @@ const pageQuery = `{
         id
         frontmatter {
           title
+          partnumber
         }
         fields {
           slug

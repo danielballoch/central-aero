@@ -5,10 +5,10 @@ import Navbar from "../components/navbar"
 import Footer from "../components/footer"
 
 
-const Layout = ({ location, children }) => {
+const Layout = ({ location, children, invert }) => {
   return (
     <div>
-      <Navbar/>
+      <Navbar invert={invert}/>
       <main>{children}</main>
       <Footer/>
     </div>

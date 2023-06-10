@@ -85,9 +85,9 @@ export default function Hero(){
             </div>
             <div className='about-text'>
                 <div>
-                    <h2>Central Aero Electrical & Engineering</h2>
-                    <p>Central Aero is made up of two sister companies in the Super Air Hanger, Hamilton, New Zealand. Electrical run by Hamish Ross, and Engineering run by Paul Waterhouse.</p>
-                    <p>They've been providing quality parts and services to New Zealand and Overseas Pilots and Maintenance Facilities for over 17+ years. With knowledge and expertise in everything from Hot Air Balloons, Gliders, Microlights & Gyrocopters right through to Commercial Air transport Aircrafts & Helicopters Central Aero is ready to help keep you flying.</p>
+                    <h2>Engineering & Electrical <br/> Under One Roof</h2>
+                    <p>Central Aero is made up of two sister companies, Electrical run by Hamish Ross, and Engineering run by Paul Waterhouse. Working out of the Super Air Hanger near Hamilton Airport, their teams have provided quality parts and services to New Zealand and Overseas Pilots for over 17+ years.</p>
+                    <p>With knowledge and expertise in Commercial Air transport Aircrafts, Fixed Wing Planes, Helicopters right through to Hot Air Balloons, Gliders, Microlights & Gyrocopters - Central Aero is capable and ready to help with your engineering and electrical aviation needs.</p>
                     <button>Learn More</button>
                 </div>
             </div>

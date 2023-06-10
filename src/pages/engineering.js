@@ -172,7 +172,7 @@ export default function Electrical(){
         <Layout invert={true}>
             <ElectricalWrapper>
                 <ElectricalHero>
-                <h1>CENTRAL AERO ELECTRICAL</h1>
+                <h1>CENTRAL AERO ENGINEERING</h1>
                 <p>Central Aero Electrical is a New Zealand based CAANZ Part 145 Approved Repair and Overhaul Facility and have been providing quality services for 17+ years. Keeping New Zealand and Overseas Pilots flying safely and helping Maintenance Facilities provide quick turnarounds for their clients, meaning rave reviews and returning customers.</p>
                 <Search indices={searchIndices}/>
                 <Marquee>

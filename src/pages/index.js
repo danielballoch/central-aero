@@ -16,7 +16,7 @@ export default function Index(){
         <About/>
         <Engineering/>
         <Electrical/>
-        <Contact/>
+        {/* <Contact/> */}
     </Layout>
   )
 }

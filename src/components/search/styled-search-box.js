@@ -2,19 +2,35 @@ import styled, { css } from "styled-components"
 import SearchBox from "./search-box"
 
 const open = css`
-  width: 10em;
+  min-width: 500px;
+  height: 80px;
   background: ${({ theme }) => theme.background};
+  border: solid 2px black;
   cursor: text;
-  margin-left: -1.6em;
-  padding-left: 1.6em;
+  padding-left: 40px;
+  margin-right: 72px;
+  ${'' /* margin-left: -2.5em;
+  padding-left: 2.5em;
+  margin-right: -2.5em;
+  padding-right: 2.5em; */}
 `
 
 const closed = css`
-  width: 0;
+  min-width: 500px;
+  height: 80px;
   background: transparent;
+  border: solid 2px black;
+  transition: .3s;
   cursor: pointer;
-  margin-left: -1em;
-  padding-left: 1em;
+  padding-left: 40px;
+  margin-right: 72px;
+  ${'' /* margin-left: -2.4em;
+  padding-left: 2.4em;
+  margin-right: -2.4em;
+  padding-right: 2.4em; */}
+  :hover {
+    cursor: text;
+  }
 `
 
 export default styled(SearchBox)`
@@ -22,13 +38,14 @@ export default styled(SearchBox)`
   flex-direction: row-reverse;
   align-items: center;
   margin-bottom: 0;
-
+    
   .SearchInput {
     outline: none;
     border: ${({ hasFocus }) => (hasFocus ? "auto" : "none")};
-    font-size: 1em;
+    font-size: 1.6em;
     transition: 100ms;
     border-radius: 2px;
+    font-family: 'segoe ui';
     color: ${({ theme }) => theme.foreground};
     ::placeholder {
       color: ${({ theme }) => theme.faded};
@@ -37,8 +54,8 @@ export default styled(SearchBox)`
   }
 
   .SearchIcon {
-    width: 1em;
-    margin: 0.3em;
+    width: 2em;
+    margin: 20px;
     color: ${({ theme }) => theme.foreground};
     pointer-events: none;
   }
