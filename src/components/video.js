@@ -1,5 +1,5 @@
 import React from "react"
-import Backup from "../images/HeroBackup.png"
+import Backup from "../images/HeroBackup.jpg"
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
   <div 
