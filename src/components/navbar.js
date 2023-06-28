@@ -292,7 +292,7 @@ export default function Nav({invert}){
         <Navbar>
         {/* src={invert? InvertLogo : menuOpen? Logo : Logo} */}
         <NavWrapper className={scrollUp && initial? "NavBar Scroll Initial" : scrollUp? "NavBar Scroll" : "NavBar"}>
-            <Link to="/"><div className={invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : "invert-logo"}/></Link>
+            <Link to="/"><div className={invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : scrollUp? "invert-logo" : "image"}/></Link>
             <div>
                 <button className={invert? "hamburger invert": scrollUp && !initial ? "hamburger invert" : "hamburger"} onClick={() => {setMenuOpen(!menuOpen)}} aria-label="Navigation menu toggle">
                     <span className="hamburger-box">
