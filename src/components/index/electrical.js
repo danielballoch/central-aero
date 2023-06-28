@@ -28,7 +28,7 @@ div {
             width: 100%;
             a { 
                 width: fit-content;
-                padding: 10px 20px;
+                padding: 20px;
                 /* height: 60px; */
                 border-radius: 8px;
                 font-weight: 600;
