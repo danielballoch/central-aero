@@ -19,6 +19,9 @@ const pageQuery = `{
         fields {
           slug
         }
+        internal {
+          contentDigest
+        }
         excerpt(pruneLength: 5000)
       }
     }
