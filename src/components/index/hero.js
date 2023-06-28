@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Video from "../../components/video"
 // import LogoCover from "../images/cover.png"
-import HeroVideo from "../../videos/central-aero-hero.mp4"
+import HeroVideo from "../../videos/CentralAeroHeroRerender.mp4"
 
 const HeroWrapper = styled.div`
 display: grid;

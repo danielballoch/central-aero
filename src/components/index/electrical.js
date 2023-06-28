@@ -78,7 +78,7 @@ export default function Hero(){
                     <p>Central Aero Electrical offer quick turnarounds for a large range of exchange and overhaul components - from small fixed wing/touring planes to commercial passenger planes, helicopters and other aircrafts.</p>
                     <p>We offer custom orders and can advice on other suppliers for any parts we don't stock. If you need an electrical part new, repaired, overhauled, or can't find a particular component get in touch today.</p>
                     <div className='button-div'>
-                        <a href="/contact">Contact Electical</a>
+                        <a href="/contact-electrical">Contact Electical</a>
                         <a href="/electrical">View Electrical Parts/Services</a>
                     </div>
                 </div>

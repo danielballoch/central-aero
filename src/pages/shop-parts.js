@@ -65,8 +65,8 @@ select {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     /* background-color: lightblue; */
     position: sticky;
-    top: 175px;
-    max-height: 600px;
+    top: 125px;
+    max-height: 700px;
     margin: 10px 5px;
     width: 50%;
     display: flex;
@@ -80,6 +80,11 @@ select {
     }
     label {
         margin: 5px 0;
+    }
+    textarea {
+        min-height: 100px;
+        height: auto;
+        max-width: 413px;
     }
 }
 .content-right {
@@ -179,7 +184,7 @@ const BlogIndex = ({ data, location }) => {
                     <label>Phone:</label>
                     <input type="text"/>
                     <label>Part Number/Description</label>
-                    <input type="text"></input>
+                    <textarea></textarea>
                     <button>SEND ENQUIRY</button>
                 </div>
                 <div className="content-right">

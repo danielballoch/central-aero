@@ -1,7 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import Logo from "../images/CentralAeroTextOnlyLogo.png"
 import InvertLogo from "../images/CentralAeroTextOnlyLogoBlack.png"
+import MenuImage from "../images/aircrafts/central-aero-helicopter.jpg"
+import FB from '../images/facebook-logo.png'
 import { Link } from "gatsby"
 import Search from "./search"
 const searchIndices = [{ name: `Pages`, title: `Pages` }]
@@ -67,14 +69,19 @@ justify-content: center;
         margin-top: 10px;
     }
     img {
-        width: 80%;
+        width: 60%;
         height: 300px;
         margin: 30px 0;
         background-color: lightgrey;
+        filter: grayscale(100%);
+        border-radius: 2px;
+        object-fit: cover;
+        object-position: 50% 50%;
     }
 }
 .lower-menu {
     position: absolute;
+    display: flex;
     bottom: 10px;
     left: calc(50% - 300px);
     margin: 0 auto;
@@ -82,6 +89,13 @@ justify-content: center;
         color: white;
         text-decoration: none;
         margin: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    img {
+        height: 20px;
+        margin-left: 10px;
     }
 }
 
@@ -94,6 +108,29 @@ transform: translateX(0);
 background-color: rgba(0,0,0,0.6);
 backdrop-filter: blur(18px);
 }
+
+
+.NavBar {
+    z-index: 300;
+    position: fixed;
+    transform: translateY(-100px);
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    transition: .3s;
+}
+.Scroll {
+    transform: translateY(0);
+    @media(min-width: 900px){
+        background-color: rgba(255,255,255,0.98);
+    }
+}
+.Initial {
+    background-color: rgba(255,255,255,0);
+}
+
+
 `
 
 const NavWrapper = styled.div`
@@ -109,11 +146,20 @@ background-color: rgba(255,255,255, 0);
 flex-direction: row;
 justify-content: space-between;
 align-items: center;
-height: 140px;
-img {
-    /* margin-left: -148px; */
+height: 120px;
+.invert-logo {
+    background-image: url(${InvertLogo})!important;
+    background-position: 50% 50%;
+    text-decoration: none;
     height: 50px;
-    /* margin-right: 40px; */
+    width: 400px;
+}
+.image {
+    background-image: url(${Logo});
+    background-position: 50% 50%;
+    text-decoration: none;
+    height: 50px;
+    width: 400px;
 }
 a {
     font-family: Helvetica;
@@ -211,12 +257,44 @@ a {
 
 export default function Nav({invert}){
     const [menuOpen, setMenuOpen] = useState(false);
+    const [offset, setOffset] = useState(0);
+    const [initial, setInitial] = useState(true);
+    const [scrollUp, setScrollUp] = useState(true);
+
+
+        useEffect(() => {
+        if (typeof window !== `undefined` && window.onscroll !== offset) {
+            console.log("running")
+            window.onscroll = () => {
+                setOffset(window.scrollY);
+                console.log(offset)
+                if (offset > window.scrollY && scrollUp !== true && !menuOpen){
+                    console.log("hello1");
+                    setScrollUp(true);
+                } else if (offset < window.scrollY && scrollUp !== false && window.scrollY > 100 && !menuOpen) {
+                    setScrollUp(false);     
+                    console.log("hello2");
+                }
+                if (offset <= 100){
+                    setInitial(true)
+                } else if (offset !== 0 && initial !== false && !menuOpen){
+                    setInitial(false)
+                } 
+                // if (menuOpen){
+                //     setInitial(false);
+                //     setScrollUp(false);
+                // }
+            }
+        }
+        })
+
     return (
         <Navbar>
-        <NavWrapper>
-            <Link to="/"><img src={invert? InvertLogo : menuOpen? Logo : Logo}/></Link>
+        {/* src={invert? InvertLogo : menuOpen? Logo : Logo} */}
+        <NavWrapper className={scrollUp && initial? "NavBar Scroll Initial" : scrollUp? "NavBar Scroll" : "NavBar"}>
+            <Link to="/"><div className={invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : "invert-logo"}/></Link>
             <div>
-                <button className={invert? "hamburger invert": "hamburger"} onClick={() => {setMenuOpen(!menuOpen)}} aria-label="Navigation menu toggle">
+                <button className={invert? "hamburger invert": scrollUp && !initial ? "hamburger invert" : "hamburger"} onClick={() => {setMenuOpen(!menuOpen)}} aria-label="Navigation menu toggle">
                     <span className="hamburger-box">
                         <span className={menuOpen? "hamburger-inner hamburger-inner-active" : "hamburger-inner"}></span>
                     </span>
@@ -234,7 +312,7 @@ export default function Nav({invert}){
                         <Link to="/contact">Contact</Link>
                     </div>
                     <div className='menu-right'>
-                        <img/>
+                        <img src={MenuImage}/>
                         <Link className='contact'><b>Engineering:</b>  07 843 1200 </Link>
                         <Link className='contact'><b>Electrical:</b> 07 843 2936 </Link>
                         <Link className='address'>Super Air Hanger, 1 Ingram rd,<br/>
@@ -244,9 +322,9 @@ export default function Nav({invert}){
                     
                 </div>
                 <div className='lower-menu'>
-                    <Link to="#">©Central Aero 2023</Link>
-                    <Link to="#">Terms & Conditions</Link>
-                    <Link to="#">Connect with us * FB</Link>
+                    <Link to="/">©Central Aero 2023</Link>
+                    <Link to="/terms-and-conditions">Terms & Conditions</Link>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a>
                 </div>
             </div>
         </Navbar>
