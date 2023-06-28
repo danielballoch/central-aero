@@ -66,7 +66,7 @@ p {
         font-size: 14px;
     }
     p:last-of-type {
-        margin-top: 40px !important;
+        /* margin-top: 40px !important; */
         padding-bottom: 20px;
     }
     
@@ -110,8 +110,8 @@ export default function Hero(){
             <div className='nav-main'>
                 <div className='div1'>
                     <img src={Logo} className="logo"/>
-                    <p>Providing professional Aircraft Engineering & Electrical services for over 17+ years. We're a New Zealand owned & operated company, and take pride in our collective knowledge and experience helping to keep the Aciation community flying safely.</p>
-                    <p>© Copyright 2023 Central Aero</p>
+                    <p>Providing professional Aircraft Engineering & Electrical services for over 17+ years. We're a New Zealand owned & operated company, and take pride in our collective knowledge and experience helping to keep the Aviation community flying safely.</p>
+                    {/* <p>© Copyright 2023 Central Aero</p> */}
 
                     {/* <Link href="#"><p>Connect with us <img src={FB}/></p></Link> */}
                 </div>
@@ -137,7 +137,7 @@ export default function Hero(){
                 </div>
                 <img className="rotate-logo" src={Part145Logo}/>
             </div>
-            <div className='bottom'><Link to="/terms-and-conditions">Terms & Conditions</Link><a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a></div>
+            <div className='bottom'><Link to="/">©Central Aero 2023</Link><Link to="/terms-and-conditions">Terms & Conditions</Link><a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a></div>
         </Wrapper>
     )
 }

@@ -169,10 +169,10 @@ a {
 }
 .invert {
     .hamburger-inner {
-            background-color: black;
+            background-color: black!important;
         }
     .hamburger-inner:after {
-        background-color: black;
+        background-color: black!important;
     }
 }
 .hamburger {
@@ -291,10 +291,10 @@ export default function Nav({invert}){
     return (
         <Navbar>
         {/* src={invert? InvertLogo : menuOpen? Logo : Logo} */}
-        <NavWrapper className={scrollUp && initial? "NavBar Scroll Initial" : scrollUp? "NavBar Scroll" : "NavBar"}>
-            <Link to="/"><div className={invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : scrollUp? "invert-logo" : "image"}/></Link>
+        <NavWrapper className={menuOpen? "NavBar Scroll Initial" : scrollUp && initial? "NavBar Scroll Initial" : scrollUp? "NavBar Scroll" : "NavBar"}>
+            <Link to="/"><div className={menuOpen? "image" : invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : scrollUp? "invert-logo" : "image"}/></Link>
             <div>
-                <button className={invert? "hamburger invert": scrollUp && !initial ? "hamburger invert" : "hamburger"} onClick={() => {setMenuOpen(!menuOpen)}} aria-label="Navigation menu toggle">
+                <button className={invert? "hamburger invert": menuOpen? "hamburger" : scrollUp && !initial ? "hamburger invert" : "hamburger"} onClick={() => {setMenuOpen(!menuOpen)}} aria-label="Navigation menu toggle">
                     <span className="hamburger-box">
                         <span className={menuOpen? "hamburger-inner hamburger-inner-active" : "hamburger-inner"}></span>
                     </span>
