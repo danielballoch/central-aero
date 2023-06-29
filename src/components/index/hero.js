@@ -10,6 +10,20 @@ display: grid;
 max-height: 100vh;
 flex-direction: column;
 background-color: black;
+@media(max-width:1600px){
+    .center-text {
+        translate: .3s;
+        width: 910px!important;
+        h1 {
+            font-size: 80px!important;
+        }
+        .links {
+            a {
+                font-size: 23px!important;
+            }
+        }
+    }
+}
 .center-text {
     font-size: 18px;
     width: 1000px;

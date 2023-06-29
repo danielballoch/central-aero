@@ -4,27 +4,29 @@ import Image1 from '../../images/index-images/central-aero-hanger.jpg'
 import Image2 from '../../images/index-images/central-aero-heli.jpeg'
 
 const Wrapper = styled.div`
-height: 800px;
-display: grid;
-grid-template-columns: [column1-start] 35% [column1-end column2-start] 5% [column2-end] 60% [column3-end];
-grid-template-rows: [row1-start] 0% [row1-end] 100%;
-padding-top: 125px;
+min-height: 800px;
+display: flex;
+justify-content: center;
+align-items: center;
+/* padding-top: 125px; */
 /* background-color: #f7faff; */
 /* background-color: #F1F1F1; */
-/* background-color: #006bff; */
+@media(max-width:1280px){
+    flex-direction: column;
+}
 .about-images {
-    background-color: rgba(0,255,0, 1);
     display: flex;
     flex-direction: row;
     grid-column-start: column1-start;
     grid-column-end: column2-end;
     z-index: 100;
-    margin-top: 25px;
-    margin-left: 80px;
+    /* margin-top: 25px;
+    margin-left: 80px; */
     img {
         object-fit: cover; 
         height: 500px;
-        width: 370px;
+        max-width: 370px;
+        width: 100%;
         margin: 0 20px;
         background-color: rgba(0,0,0, 1);
         /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
@@ -49,7 +51,9 @@ padding-top: 125px;
         display: flex;
         flex-direction: column;
         margin: auto;
-        width: 640px;
+        width: 100%;
+        max-width: 640px;
+        margin-right: 20px;
         h2 {
             margin-top: 10px;
             font-size: 34px;
