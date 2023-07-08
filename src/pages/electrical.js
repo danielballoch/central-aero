@@ -7,6 +7,8 @@ import Image1 from "../images/electrical-images/Magneto.png"
 import Image2 from "../images/electrical-images/AC-Generator.png"
 import Image3 from "../images/electrical-images/DC-Starter.png"
 import Image4 from "../images/electrical-images/Alternator.png"
+import HeroImage from "../images/electrical-images/electrical-background-darker.png"
+import Placeholder from "../images/index-images/central-aero-electrical.jpg"
 import { I } from '@styled-icons/fa-solid'
 const searchIndices = [{ name: `Pages`, title: `Pages` }]
 
@@ -15,13 +17,27 @@ const searchIndices = [{ name: `Pages`, title: `Pages` }]
 const ElectricalHero = styled.div`
 display: flex;
 flex-direction: column; 
-justify-content: space-around;
+justify-content: space-between;
 align-items: center;
+background-image: url(${HeroImage});
+height: 100vh;
+background-position: 50% 50%;
+.hero-center-content {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 900px;
+    h1 {
+        margin-top: -100px;
+    }
+}
 `
 
 const ElectricalWrapper = styled.div`
 font-family: 'segoe ui';
-padding-top: 100px;
+/* padding-top: 100px; */
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -32,6 +48,7 @@ h1 {
     margin-top: 100px;
     font-size: 60px;
     font-weight: 500;
+    color: white;
     font-family: 'segoe ui';
 }
 p {
@@ -135,10 +152,11 @@ justify-content: center;
 const ServiceWrapper = styled.div`
 display: flex;
 flex-direction: row;
-
 img {
     width: 500px;
     height: 500px;
+    object-fit: cover;
+    object-position: 30% 50%;
 }
 div {
     display: flex;
@@ -169,12 +187,14 @@ let services = [
 
 export default function Electrical(){
     return (
-        <Layout invert={true}>
+        <Layout>
             <ElectricalWrapper>
                 <ElectricalHero>
-                <h1>CENTRAL AERO ELECTRICAL</h1>
-                <p>Central Aero Electrical is a New Zealand based CAANZ Part 145 Approved Repair and Overhaul Facility and have been providing quality services for 17+ years. Keeping New Zealand and Overseas Pilots flying safely and helping Maintenance Facilities provide quick turnarounds for their clients, meaning rave reviews and returning customers.</p>
-                <Search indices={searchIndices}/>
+                <div/>
+                <div className='hero-center-content'>
+                    <h1>Search Electrical Components for Exchange, Repair, or Overhaul.</h1>
+                    <Search indices={searchIndices}/>
+                </div>
                 <Marquee>
                     <div className='track'>
                         <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
@@ -205,17 +225,17 @@ export default function Electrical(){
                     ))}
                     
                 </ComponentsWrapper>
-                <a href="/electrical-products">View All Products</a>
+                <a href="/shop-parts">View All Products</a>
                 </div>
 
                 <Services>
                 {services.map(service => (
                     <ServiceWrapper>
-                        <img/>
+                        <img src={Placeholder}/>
                         <div>
                             <h2>{service[0]}</h2>
                             <p>{service[1]}</p>
-                            <a>View All Products</a>
+                            <a href="/shop-parts">View All Products</a>
                         </div>
                     </ServiceWrapper>
                 ))}

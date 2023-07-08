@@ -15,11 +15,21 @@ background-color: black;
         translate: .3s;
         width: 910px!important;
         h1 {
-            font-size: 80px!important;
+            font-size: 70px!important;
         }
         .links {
             a {
                 font-size: 23px!important;
+                .arrow {
+                    margin-right: 40px;
+                    margin-left: 10px;
+                }
+                :hover {
+                    .arrow {
+                        margin-right: 36px!important;
+                        margin-left: 14px!important;
+                    }
+                }
             }
         }
     }
@@ -27,6 +37,7 @@ background-color: black;
 .center-text {
     font-size: 18px;
     width: 1000px;
+    padding-top: 50px;
     margin: auto;
     color: white;
     background-color: unset;
@@ -111,7 +122,7 @@ export default function Hero(){
                     maxHeight: "100%"
                     }}>
             <div className="center-text">
-                <h1>We make sure your Aircrafts are Flying <br/> Fast, Efficiently,<br/> and Safely. </h1>
+                <h1>We make sure your<br/> Aircrafts are Flying <br/> Fast, Efficiently,<br/> and Safely. </h1>
                 <div className="links">
                 <Link to="/engineering">ENGINEERING SERVICES <i class="arrow right"/></Link>
                 <Link to="/electrical">ELECTRICAL PARTS/SERVICES <i class="arrow right"/></Link>

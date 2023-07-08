@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Image1 from "../images/electrical-images/AC-Generator.png"
 
 const ElectricalProducts = styled.div`
 padding-top: 140px;
@@ -36,7 +37,7 @@ select {
     border-radius: 5px;
 }
 .wrapper{
-    width: 1000px;
+    width: 1280px;
     margin: auto;
     
 }
@@ -65,9 +66,10 @@ select {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     /* background-color: lightblue; */
     position: sticky;
-    top: 125px;
+    top: 150px;
     max-height: 700px;
     margin: 10px 5px;
+    max-width: 480px; 
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -93,11 +95,11 @@ justify-content: space-between;
 margin-left: 5px;
 display: flex;
 flex-wrap: wrap;
-width: 50%;
+width: 100%;
 }
 .part-item{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    width: 47%;
+    width: 32%;
     /* background-color: lightblue; */
     margin: 10px 5px;
     text-decoration: none;
@@ -140,7 +142,7 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle} invert={true}>
         <ElectricalProducts>
         <div className="wrapper">
-            <div className="products-top">
+            {/* <div className="products-top">
                 <h1>Shop Electrical Components</h1>
                 <div className="filters">
                     <label>search parts:
@@ -171,7 +173,7 @@ const BlogIndex = ({ data, location }) => {
                     
                     <button>apply filters</button>
                 </div>
-            </div>
+            </div> */}
             <div className="content-wrapper">
                 <div className="content-left">
                     <h2>Searching for a part?</h2>
@@ -193,7 +195,7 @@ const BlogIndex = ({ data, location }) => {
                     const partnumber = post.frontmatter.partnumber
                     return (
                         <Link to={post.fields.slug} itemProp="url" className="part-item">
-                                <img/>
+                                <img src={Image1}/>
                                 <p>{title}</p>
                                 <p>part#: {partnumber}</p>
                         </Link>
