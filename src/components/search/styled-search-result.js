@@ -37,6 +37,7 @@ export default styled(SearchResult)`
       margin-bottom: 1em;
       a {
         display: block;
+        text-align: left;
         width: 100%;
         border: none;
         padding: 0;
@@ -51,6 +52,7 @@ export default styled(SearchResult)`
   }
   .ais-Snippet {
     text-transform: lowercase !important;
+    font-weight: 500;
   }
   .ais-PoweredBy-link {
     background-color: unset;

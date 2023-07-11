@@ -161,7 +161,9 @@ export default function Hero(){
                         <Link to="/shop-parts">SHOP PARTS</Link>
                         <Link to="/engineering">ENGINEERING</Link>
                         <Link to="/electrical">ELECTRICAL</Link>
+                        <Link to="/contact">CONTACT</Link>
                         <Link to="/faq">FAQ</Link>
+                        
                     </div>
                 </div>
                 <div className='footer2'>

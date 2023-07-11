@@ -3,12 +3,13 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import styled from "styled-components"
 import { Link } from "gatsby"
+import BackgroundImage from "../images/engineering-images/Hero2Dark.png"
 
 const ContactWrapper = styled.div`
 padding-top: 200px;
 display: flex;
 flex-direction: column;
-font-family: 'segoe ui';
+font-family: 'Helvetica';
 div:nth-of-type(2){
     padding-top: 100px;
     padding-bottom: 25px;
@@ -22,27 +23,74 @@ div:nth-of-type(3){
     width: 100%;
     margin: auto;
     h1 {
-        font-size: 60px;
+         /* margin-top: 10px; */
+         margin-bottom: 20px;
+        margin-left: -2px!important;
+        font-size: 70px;
+        font-weight: 700;
+        /* font-size: 60px; */
         color: #333;
     }
     p {
-        max-width: 750px;
+        max-width: 800px;
+        font-size: 18px;
     }
     a {
-        border: solid 1px black;
-        padding: 14px;
         margin-right: 20px;
         :hover {
             cursor: pointer;
         }
     }
+    .links {
+        background-color: rgba(0,0,0,0);
+        margin-bottom: 100px;
+        a {
+            font-size: 26px;
+            /* color: #333; */
+            color: #333;
+            margin-right: 20px;
+            background-color: rgba(0,0,0,0);
+            transition: .3s;
+            text-decoration: none;
+            /* border-bottom: 3px solid rgba(255,255,255,0); */
+            :hover {
+                /* border-bottom: 3px solid white; */
+                /* color: #fde027; */
+                cursor: pointer;
+                .arrow {
+                    /* border-color: #fde027; */
+                    margin-left: 24px;
+                    margin-right: 76px;
+                }
+            }
+        }
+         
+    }
+    .arrow {
+    transition: .3s;
+    border: solid black;
+    border-width: 0 4px 4px 0;
+    display: inline-block;
+    padding: 8px;
+    margin-right: 80px;
+    margin-left: 20px;
+    }
+    .right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    }
+}
 }
 .form-div {
     display: flex;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
     background-color: #543C3C;
-    /* height: 600px; */
+    /* height: 800px; */
+    background-image: url(${BackgroundImage});
+    background-size: contain;
+    background-position: center;
+    background-filter: brightness(10%);
 }
 form {
     width: 600px;
@@ -115,11 +163,11 @@ export default function ContactElectrical(){
     <Layout invert={true}>
         <ContactWrapper>
             <div className="intro-div">
-                <h1>Contact</h1>
+                <h1>Contact Us</h1>
                 <p>To enquire about our electrical or engineering services please use the relevant contact form or information listed and we'll get back to you as soon as possible. We also have a frequently asked questions page which may answer any support related questions.</p>
-                <div className="button-div">
-                    <Link to="/faq">Frequently Asked Questions</Link>
-                    <Link to="/shop-parts">Shop Components</Link>
+                <div className="links">
+                    <Link to="/faq">Frequently Asked Questions <i class="arrow right"/></Link>
+                    <Link to="/shop-parts">Shop Parts<i class="arrow right"/></Link>
                 </div>
             </div>
             <div className="form-div">
@@ -172,4 +220,4 @@ export default function ContactElectrical(){
   )
 }
 
-export const Head = () => <Seo title="Contact Engineering | Central Aero" />
+export const Head = () => <Seo title="Contact Us" />

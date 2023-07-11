@@ -5,24 +5,19 @@ import styled from 'styled-components'
 import Plane from "../images/aircrafts/central-aero-planes.jpg"
 import Helicopter from "../images/aircrafts/central-aero-helicopter2.jpg"
 import { DrumstickBite } from '@styled-icons/fa-solid'
+import HeroImage1 from "../images/engineering-images/EngineeringHero1.png" 
+import HeroImage2 from "../images/engineering-images/EngineeringHero2.png"
 
 
 const EngineeringWrapper = styled.div`
 font-family: 'segoe ui';
-padding-top: 100px;
+/* padding-top: 100px; */
 display: flex;
 flex-direction: column;
 justify-content: center;
 margin: auto;
 align-items: center;
 min-height: 100vh;
-h1 {
-    margin-top: 100px;
-    font-size: 60px;
-    font-weight: 500;
-    font-family: 'segoe ui';
-    color: white;
-}
 p {
     max-width: 500px;
     font-family: 'segoe ui';
@@ -41,6 +36,14 @@ a {
     text-transform: uppercase;
     :hover {
         cursor: pointer;
+    }
+    :nth-of-type(2){
+        background-color: white;
+        color: black;
+        :hover {
+            color: white;
+            background-color: black;
+        }
     }
 
 }
@@ -67,13 +70,19 @@ a {
     .content {
         width: 580px;
         h2 {
-            margin: 0;
+            margin-top: 0;
         }
         a {
             margin-right: 40px;
         }
         p {
             max-width: unset;
+            margin-bottom: 5px;
+        }
+        div {
+            /* height: 50px; */
+            display: flex;
+            margin-top: 40px;
         }
     }
     
@@ -81,6 +90,7 @@ a {
         margin-left: 40px;
         width: 600px;
         height: 380px;
+        
     }
 }
 `
@@ -88,16 +98,62 @@ a {
 const EngineeringHero = styled.div`
 display: flex;
 flex-direction: column; 
-justify-content: space-around;
+justify-content: center;
 align-items: center;
-height: 400px;
+height: 100vh;
 width: 100%;
 position: relative;
-
-h1 {
+.center-content {
+    text-align: center;
+    max-width: 900px;
     z-index: 100;
+    h1 {
+    z-index: 100;
+    font-weight: 600;
     color: white !important;
-    margin: 0 !important;
+    margin-top: 0 !important;
+    font-size: 68px;
+    font-family: 'segoe ui';
+    color: white;
+    }
+    p {
+        padding: 0 20px;
+        max-width: unset;
+        color: white;
+        font-size: 19px;
+        width: 100%;
+    }
+    .button-div {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+            a { 
+                scroll-behavior: smooth;
+                width: fit-content;
+                padding: 20px;
+                /* height: 60px; */
+                border-radius: 8px;
+                font-weight: 600;
+                border: 3px solid white;
+                background-color: rgba(0,0,0,0);
+                color: white;
+                text-decoration: none;
+                transition: .3s;
+                :hover {
+                    cursor: pointer;
+                    background-color: white;
+                    color: black;
+                }
+                :nth-of-type(2){
+                    margin-left: 40px;
+                }
+                :first-of-type {
+                    background-color: white;
+                    color: black;
+                }
+            }
+        }
 }
 :before {
   content: "";
@@ -105,8 +161,9 @@ h1 {
   top: 0; left: 0;
   width: 100%; height: 100%;
   background-position: 50% 50%;
-  background-image: url(${Plane});
-  filter: brightness(10%);
+  background-image: url(${HeroImage1});
+  background-size: contain;
+  filter: brightness(20%);
 }
 `
 
@@ -136,8 +193,8 @@ margin-left: 100px;
 
 const Services = styled.div`
 display: flex;
-justify-content: center;
-width: 80vw;
+justify-content: left;
+max-width: 1170px;
 margin-top: 40px;
 flex-wrap: wrap;
 `
@@ -200,13 +257,20 @@ let services = [
 
 export default function Electrical(){
     return (
-        <Layout invert={true}>
+        <Layout>
             <EngineeringWrapper>
-                {/* <EngineeringHero>
-                    <h1>CENTRAL AERO ENGINEERING</h1>
-                </EngineeringHero> */}
+                <EngineeringHero>
+                    <div className='center-content'>
+                        <h1>CENTRAL AERO ENGINEERING</h1>
+                        <p>Supporting New Zealand Airports, Pilots, and Hobbyist flyers with everything from maintenance and airworthiness reviews to air accident investigation and consultancy. Whatever your aviation need Central Aero Engineering has the knowledge and expertise to keep you flying safely.</p>
+                        <div className='button-div'>
+                            <Link to="#services">View Our Services</Link><Link to="/contact-engineering">Contact Engineering</Link>
+                        </div>
+                    </div>
+                    <div className='bottom-arrow'>Bottom Arrow</div>
+                </EngineeringHero>
 
-                <ServicesSection>
+                {/* <ServicesSection>
                     <img src={Helicopter}/>
                     <div className='intro-content'>
                         <h2>Central Aero Engineering</h2>
@@ -218,29 +282,33 @@ export default function Electrical(){
                             <Link>Read FAQ</Link>
                         </div>
                     </div>
-                </ServicesSection>
+                </ServicesSection> */}
                 <div className='stewart-systems'>
                         <div className='content-wrapper'>
                             <div className='content'>
                                 <h2>New Zealand Stewart Systems Distributer: Call us for all your fabric covering materials</h2>
-                                <p>We're proud to be the only Stewart Systems Distributor in New Zealand. </p>
+                                {/* <hr/> */}
+                                <p><b>We're proud to be the only Stewart Systems Distributor in New Zealand.</b></p>
                                 <p>What is Stewart Systems? They're a innovative company based in Ohio USA setting the standard for aircraft fabric covering and painting technology for the 21st century. They manufacture non-hazardous, waterborne products for covering & painting aircrafts.</p>
                                 <div>
                                     <Link>Learn More</Link>
-                                    <Link>Contact Engineering</Link>
+                                    <Link to="/contact-engineering">Contact Engineering</Link>
                                 </div>
                             </div>
                         </div>
                         <img src={Helicopter}/>
                 </div>
-                <Services>
+                <h2 id="services">Our Engineering Services</h2>
+                <Services >
                     {services.map(service => (
                         <ServiceWrapper>
-                            <img/>
+                            <img src={Plane}/>
                             <div>
                                 <h2>{service[0]}</h2>
                                 <p>{service[1]}</p>
                                 <a>Learn More</a>
+
+                                
                             </div>
                         </ServiceWrapper>
                     ))}
