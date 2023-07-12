@@ -21,6 +21,7 @@ font-family: 'Helvetica';
         font-size: 70px;
         font-weight: 700;
         /* font-size: 60px; */
+        
         color: #333;
     }
     p {

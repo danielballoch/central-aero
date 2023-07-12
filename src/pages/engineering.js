@@ -18,6 +18,9 @@ justify-content: center;
 margin: auto;
 align-items: center;
 min-height: 100vh;
+#services {
+    padding-top: 40px;
+}
 p {
     max-width: 500px;
     font-family: 'segoe ui';

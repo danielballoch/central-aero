@@ -23,6 +23,7 @@ background-image: url(${HeroImage});
 height: 100vh;
 background-position: 50% 50%;
 .hero-center-content {
+    
     display: flex;
     text-align: center;
     justify-content: center;
@@ -31,6 +32,15 @@ background-position: 50% 50%;
     width: 900px;
     h1 {
         margin-top: -100px;
+        z-index: 100;
+        font-weight: 600;
+        font-size: 68px;
+        font-family: 'segoe ui';
+        color: white;
+    }
+    p {
+        color: white;
+        font-size: 18px;
     }
 }
 `
@@ -44,6 +54,7 @@ justify-content: center;
 margin: auto;
 align-items: center;
 min-height: 100vh;
+
 h1 {
     margin-top: 100px;
     font-size: 60px;
@@ -65,9 +76,13 @@ p {
         cursor: pointer;
     }
 } */
+.button-div {
+    margin: 60px 0 20px 0;
+}
 a { 
     width: fit-content;
     padding: 10px 20px;
+    margin: 0 20px;
     /* height: 60px; */
     border-radius: 8px;
     font-weight: 600;
@@ -80,26 +95,35 @@ a {
     :hover {
         cursor: pointer;
     }
+    :nth-of-type(2){
+        background-color: white;
+        color: black;
+        :hover {
+            color: white;
+            background-color: black;
+        }
+    }
 
 }
 .products-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 100px 0;
+    margin: 100px 0 200px 0;
     height: auto;
 }
 `
 
 const ComponentsWrapper = styled.div`
 display: flex;
+flex-wrap: wrap;
 margin: auto;
 justify-content: center;
 .component {
     text-align: center;
     img {
         /* width: 200px; */
-        height: 160px;
+        height: 100px;
         margin: 20px;
         /* background-color: lightgrey; */
     }
@@ -191,40 +215,45 @@ export default function Electrical(){
                 <ElectricalHero>
                 <div/>
                 <div className='hero-center-content'>
-                    <h1>Search Electrical Components for Exchange, Repair, or Overhaul.</h1>
+                    <h1>CENTRAL AERO ELECTRICAL</h1>
+                    <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility. We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p>
+                    <p></p>
                     <Search indices={searchIndices}/>
                 </div>
-                <Marquee>
-                    <div className='track'>
-                        <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
-                        <div className='dash'/>
-                        <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
-                        <div className='dash'/>
-                        <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
-                        <div className='dash'/>
-                        <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
-                        <div className='dash'/>
-                        <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
-                        <div className='dash'/>
-                        <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
-                        <div className='dash'/>
-                    </div>
-                </Marquee>
-            </ElectricalHero>
+                    <Marquee>
+                        <div className='track'>
+                            <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
+                            <div className='dash'/>
+                            <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
+                            <div className='dash'/>
+                            <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
+                            <div className='dash'/>
+                            <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
+                            <div className='dash'/>
+                            <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
+                            <div className='dash'/>
+                            <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
+                            <div className='dash'/>
+                        </div>
+                    </Marquee>
+                </ElectricalHero>
 
                 <div className='products-section'>
-                <h2>Electrical Products</h2>
-                <p>We have a large range of electrical components for fixed wing/touring planes, commercial planes, helicopters and other aircrafts.</p>
-                <ComponentsWrapper>
-                    {components.map((component, i) => (
-                        <div className='component'>
-                        <img src={i === 0? Image1 : i === 1? Image2 : i === 2? Image3 : Image4}/>
-                            <p><b>{component}</b></p>
-                        </div>
-                    ))}
-                    
-                </ComponentsWrapper>
-                <a href="/shop-parts">View All Products</a>
+                    <h2>Electrical Products</h2>
+                    <p>We stock the best electrical components from trusted brands such as SKURKA, Safran, Champion, Hartzell etc and also have a selection of specialty parts. If your fixed wing/touring planes, commercial planes, helicopters, or other aircrafts need new electrical components or existing components repaired/overhauled get in touch today.</p>
+                    <ComponentsWrapper>
+                        {components.map((component, i) => (
+                            <div className='component'>
+                            <img src={i === 0? Image1 : i === 1? Image2 : i === 2? Image3 : Image4}/>
+                                <p><b>{component}</b></p>
+                            </div>
+                        ))}
+                        
+                    </ComponentsWrapper>
+                    <div className="button-div">
+                        <a href="/shop-parts">View All Products</a>
+                        <a href="/contact-electrical">Contact Electrical</a>
+                    </div>
                 </div>
 
                 <Services>

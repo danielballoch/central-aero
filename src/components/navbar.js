@@ -6,6 +6,10 @@ import MenuImage from "../images/aircrafts/central-aero-helicopter.jpg"
 import FB from '../images/facebook-logo.png'
 import { Link } from "gatsby"
 import Search from "./search"
+import CALogo from "../images/CALogoSmallSquare.png"
+import CALogo1 from "../images/CA-Logo-Square-Black.png"
+
+
 const searchIndices = [{ name: `Pages`, title: `Pages` }]
 
 
@@ -91,7 +95,7 @@ justify-content: center;
         height: 300px;
         margin: 30px 0;
         background-color: lightgrey;
-        filter: grayscale(100%);
+        /* filter: grayscale(100%); */
         border-radius: 2px;
         object-fit: cover;
         object-position: 50% 50%;
@@ -330,7 +334,7 @@ export default function Nav({invert}){
                         <Link to="/contact">Contact</Link>
                     </div>
                     <div className='menu-right'>
-                        <img src={MenuImage}/>
+                        <img src={CALogo}/>
                         <Link className='contact'><b>Engineering:</b>  07 843 1200 </Link>
                         <Link className='contact'><b>Electrical:</b> 07 843 2936 </Link>
                         <Link className='address'>Super Air Hanger, 1 Ingram rd,<br/>
