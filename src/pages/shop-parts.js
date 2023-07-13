@@ -96,6 +96,10 @@ margin-left: 5px;
 display: flex;
 flex-wrap: wrap;
 width: 100%;
+h3 {
+    width: 100%;
+    text-align: center;
+}
 }
 .part-item{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -123,10 +127,13 @@ width: 100%;
 `
 
 const BlogIndex = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata?.title || `Title`
-  const posts = data.allMarkdownRemark.nodes
+//   const siteTitle = data.site.siteMetadata?.title || `Title`
+  const siteTitle = `Title`
+  const repairProducts = data.repair.nodes
+  const orderProducts = data.order.nodes 
+console.log(data)
 
-  if (posts.length === 0) {
+  if (repairProducts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
         <p>
@@ -190,17 +197,31 @@ const BlogIndex = ({ data, location }) => {
                     <button>SEND ENQUIRY</button>
                 </div>
                 <div className="content-right">
-                {posts.map(post => {
+                <h3>Components we Repair/Overhaul</h3>
+                {repairProducts.map(post => {
                     const title = post.frontmatter.title || post.fields.slug
                     const partnumber = post.frontmatter.partnumber
                     return (
                         <Link to={post.fields.slug} itemProp="url" className="part-item">
                                 <img src={Image1}/>
-                                <p>{title}</p>
-                                <p>part#: {partnumber}</p>
+                                <p><b>{title}</b></p>
+                                <p><b>part#:</b> {partnumber}</p>
                         </Link>
                     )
-                    })}
+                })}
+                <h3>In Stock Components Available for Order</h3>
+                {orderProducts.map(post => {
+                    const title = post.frontmatter.title || post.fields.slug
+                    const partnumber = post.frontmatter.partnumber
+                    return (
+                        <Link to={post.fields.slug} itemProp="url" className="part-item">
+                                <img src={Image1}/>
+                                <p><b>{title}</b></p>
+                                <p><b>part#:</b> {partnumber}</p>
+                                <p>In Stock</p>
+                        </Link>
+                    )
+                })}
                 </div>
             </div>
         </div>
@@ -225,13 +246,14 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
+    repair: allMarkdownRemark(filter: { frontmatter: {type: {eq: "repair"}}}) {
       nodes {
         excerpt
         fields {
           slug
         }
         frontmatter {
+          type
           date(formatString: "MMMM DD, YYYY")
           title
           partnumber
@@ -239,5 +261,20 @@ export const pageQuery = graphql`
         }
       }
     }
+    order: allMarkdownRemark(filter: { frontmatter: {type: {ne: "repair"}}}) {
+        nodes {
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            type
+            date(formatString: "MMMM DD, YYYY")
+            title
+            partnumber
+            description
+          }
+        }
+      }
   }
 `

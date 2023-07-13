@@ -128,7 +128,7 @@ const FAQ = () => {
         {question: "Is there a warranty on parts and repairs?", answer: "Majority of new parts sold are covered by the OEM warranty. See terms and conditions on an individual product baisis. Concerning repairs and overhauls - although Central Aero Electrical is not Factory Authorized by brands such as Champion, Hartzel, Safran etc. We do hold a Safran technical data and subscription agreement, have all mandatory brush holder alignment tooling requirements for Skurka Starter Generators, and offer our own 1 year warrenty on all products repaired or overhauled. See terms and conditions here."},
         {question: "Why should I work with Central Aero?",answer: ""},
         {question: "How does a component exchange work?",answer: ""},
-        {question: "Is Central Aero Certified?",answer: ""},
+        {question: "Is Central Aero Certified?",answer: "Yes. Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility. Central Aero Engineering holds an number of certifications including Part 43 organisation with capability on Group 1 and Group 2 Fixed Wing Aircraft, Group 1 and Group 2 Helicopters, Certificate of Airworthiness issue, Maintenance Control Services and more."},
         {question: "How can I get in touch?",answer: ""},
     ] 
 

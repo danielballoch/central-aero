@@ -6,7 +6,7 @@ import MenuImage from "../images/aircrafts/central-aero-helicopter.jpg"
 import FB from '../images/facebook-logo.png'
 import { Link } from "gatsby"
 import Search from "./search"
-import CALogo from "../images/CALogoSmallSquare.png"
+import CALogo from "../images/CALogoWhite.png"
 import CALogo1 from "../images/CA-Logo-Square-Black.png"
 
 
@@ -344,7 +344,7 @@ export default function Nav({invert}){
                     
                 </div>
                 <div className='lower-menu'>
-                    <Link to="/">©Central Aero 2023</Link>
+                    <Link to="/">© Central Aero 2023</Link>
                     <Link to="/terms-and-conditions">Terms & Conditions</Link>
                     <a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a>
                 </div>

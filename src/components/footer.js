@@ -186,7 +186,7 @@ export default function Hero(){
                     </div>
                 </div>
             </div>
-            <div className='bottom'><Link to="/">©Central Aero 2023</Link><Link to="/terms-and-conditions">Terms & Conditions</Link><a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a></div>
+            <div className='bottom'><Link to="/">© Central Aero 2023</Link><Link to="/terms-and-conditions">Terms & Conditions</Link><a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a></div>
         </Wrapper>
     )
 }
