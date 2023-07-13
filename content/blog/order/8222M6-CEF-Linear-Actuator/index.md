@@ -1,11 +1,11 @@
 ---
-title: DC Starter Generator
-partnumber: 23080
+title: 8222M6 CEF Linear Actuator
+partnumber: 8222M6
 date: "2015-05-28T22:40:32.169Z"
 description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
 ---
 
-# DC Starter Generator
-## Part#: 23080
+# 8222M6 CEF Linear Actuator
+## Part#: 8222M6
 
-We offer Repairs, Overhauls, and Exchange of Safran generators with fixed price exchange available.
+We offer Repairs, Overhauls, and Exchange of 8222M6 CEF Linear Actuators with fixed price exchange available.

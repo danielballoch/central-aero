@@ -61,6 +61,8 @@ select {
 }
 .content-wrapper{
     display: flex;
+    max-width: 1280px;
+    width: 98vw;
 }
 .content-left{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -91,21 +93,24 @@ select {
 }
 .content-right {
 display: flex;
-justify-content: space-between;
+flex-wrap: wrap;
+justify-content: left;
 margin-left: 5px;
 display: flex;
 flex-wrap: wrap;
 width: 100%;
 h3 {
     width: 100%;
-    text-align: center;
+    padding-left: 20px;
+    /* text-align: center; */
 }
 }
 .part-item{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    width: 32%;
+    max-width: 260px;
+    /* width: 31%; */
     /* background-color: lightblue; */
-    margin: 10px 5px;
+    margin: 10px 7px;
     text-decoration: none;
     img {
         
@@ -246,7 +251,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    repair: allMarkdownRemark(filter: { frontmatter: {type: {eq: "repair"}}}) {
+    repair: allMarkdownRemark(filter: { frontmatter: {type: {eq: "repair"}}}, sort: { frontmatter: {title: ASC }}) {
       nodes {
         excerpt
         fields {
@@ -261,7 +266,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    order: allMarkdownRemark(filter: { frontmatter: {type: {ne: "repair"}}}) {
+    order: allMarkdownRemark(filter: { frontmatter: {type: {ne: "repair"}}}, sort: { frontmatter: {title: ASC }}) {
         nodes {
           excerpt
           fields {
