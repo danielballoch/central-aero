@@ -8,7 +8,7 @@ import Part145Logo from '../images/circletext-capital.png'
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
-height: 600px;
+min-height: 600px;
 display: flex;
 align-items: center;
 justify-content: flex-end;
@@ -16,11 +16,16 @@ justify-content: flex-end;
 font-family: 'Helvetica';
 /* color: white; */
 color: #333;
+@media(max-width: 1494px){
+    div {
+        margin: 25px!important;
+    }
+}
 .br {
     display: none;
-    @media(max-width: 1588px){
+    /* @media(max-width: 1400px){
         display: block;
-    }
+    } */
     
 }
 .footer-main {
@@ -28,8 +33,9 @@ color: #333;
     margin-bottom: 30px;
     align-items: center;
     display: flex;
-    @media(max-width: 1390px){
+    @media(max-width: 1260px){
         flex-direction: column;
+        margin-top: 100px;
     }
     a {
         transition: .3s;
@@ -103,6 +109,9 @@ p {
         width: unset;
     }
     div {
+        a {
+            white-space: nowrap!important;
+        }
         display: flex;
         flex-direction: column;
         margin: 50px;
@@ -123,6 +132,7 @@ p {
     padding: 10px;
     display: flex;
     font-size: 14px;
+    margin: 0!important;
     a {
         margin: 0 40px;
         text-decoration: none;
