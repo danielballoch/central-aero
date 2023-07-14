@@ -170,30 +170,6 @@ position: relative;
 }
 `
 
-
-
-
-const ServicesSection = styled.div`
-display:flex;
-/* justify-content: center; */
-align-items: center;
-width: 100%;
-img {
-    width: 50%;
-    height: auto;
-}
-.intro-content {
-/* position: sticky; */
-height: 500px;
-/* background-color: red; */
-top: 200px;
-margin-left: 100px;
- a {
-    margin-right: 20px;
- }   
-}
-`
-
 const Services = styled.div`
 display: flex;
 justify-content: left;
@@ -225,6 +201,7 @@ h2 {
 }
 p {
     text-align: left;
+    font-size: 16px;
 }
 button {
     margin: 0;
@@ -273,19 +250,6 @@ export default function Electrical(){
                     <div className='bottom-arrow'>Bottom Arrow</div>
                 </EngineeringHero>
 
-                {/* <ServicesSection>
-                    <img src={Helicopter}/>
-                    <div className='intro-content'>
-                        <h2>Central Aero Engineering</h2>
-                        <p><b>Providing Aircraft Engineering services for over 17+ years</b></p>
-                        <p>At Central Aero Engineering we take pride in our collective experience and knowledge of Airframes, engines, both piston and turbine, and electrical systems. Because of this we're able to offer a wide range of services to keep our customers flying with the confidence their aircrafts are operating safely and efficiently. </p>
-                        <p>We work with Airports, Tour Operators, Maintenance Facilities, Military, and Hobby Pilots from New Zealand and across the globe. So whether you have a touring helicopter that needs repairs, a transport plane, or would just like advice on a custom personal project we can help with all your Aircraft Engineering needs.</p>
-                        <div>
-                            <Link>Contact Engineering</Link>
-                            <Link>Read FAQ</Link>
-                        </div>
-                    </div>
-                </ServicesSection> */}
                 <div className='stewart-systems'>
                         <div className='content-wrapper'>
                             <div className='content'>

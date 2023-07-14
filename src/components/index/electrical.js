@@ -20,7 +20,7 @@ div {
             font-weight: 700;
         }
         p {
-            font-size: 18px;
+            font-size: 16px;
         }
         .button-div {
             display: flex;

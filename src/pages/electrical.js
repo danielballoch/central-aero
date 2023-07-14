@@ -40,7 +40,7 @@ background-position: 50% 50%;
     }
     p {
         color: white;
-        font-size: 18px;
+        font-size: 18px!important;
     }
 }
 `
@@ -66,6 +66,7 @@ p {
     max-width: 700px;
     text-align: center;
     font-family: 'segoe ui';
+    font-size: 16px;
 }
 /* button {
     background-color: white;
@@ -171,6 +172,9 @@ const Services = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
+a {
+    margin: 0;
+}
 `
 const ServiceWrapper = styled.div`
 display: flex;

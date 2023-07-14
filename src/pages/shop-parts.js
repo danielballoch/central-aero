@@ -8,6 +8,10 @@ import Image1 from "../images/electrical-images/AC-Generator.png"
 const ElectricalProducts = styled.div`
 padding-top: 140px;
 font-family: 'segoe ui';
+p {
+    font-size: 16px;
+}
+
 button {
     min-width: 180px;
     height: fit-content;
@@ -255,7 +259,7 @@ console.log(data)
                         <Link to={post.fields.slug} itemProp="url" className="part-item">
                                 <img src={Image1}/>
                                 <p><b>{title}</b></p>
-                                <p><b>Including:</b> {partnumber}</p>
+                                <p>Including: {partnumber}</p>
                         </Link>
                     )
                 })}
@@ -267,7 +271,6 @@ console.log(data)
                         <Link to={post.fields.slug} itemProp="url" className="part-item">
                                 <img src={Image1}/>
                                 <p><b>{title}</b></p>
-                                <p><b>part#:</b> {partnumber}</p>
                                 <p>In Stock</p>
                         </Link>
                     )
