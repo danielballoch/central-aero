@@ -26,7 +26,7 @@ button {
         cursor: pointer;
     }
 }
-input {
+input,textarea {
     font-size: 16px;
     padding: 5px;
 }
@@ -61,16 +61,18 @@ select {
 }
 .content-wrapper{
     display: flex;
+    justify-content: center;
     max-width: 1280px;
     width: 98vw;
 }
 .content-left{
+    border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     /* background-color: lightblue; */
     position: sticky;
-    top: 150px;
+    top: 130px;
     max-height: 700px;
-    margin: 10px 5px;
+    margin: 200px 5px;
     max-width: 480px; 
     width: 50%;
     display: flex;
@@ -90,22 +92,65 @@ select {
         height: auto;
         max-width: 413px;
     }
+    @media(max-height: 860px){
+        /* padding: 0 40px; */
+        hight: fit-content;
+        top: 10px;
+        /* padding: 0 40px; */
+    }
 }
 .content-right {
 display: flex;
 flex-wrap: wrap;
-justify-content: left;
+justify-content: center;
 margin-left: 5px;
 display: flex;
 flex-wrap: wrap;
+/* max-width: 50%; */
 width: 100%;
+box-sizing: border-box;
+@media(max-width: 1170px){
+    width: 260px!important;
+    .title-div {
+        width: 260px!important;
+
+    }
+}
+@media(max-width: 1304px){
+     width: 560px;
+    .title-div {
+        width: 554px!important;
+
+    }
+    h3 {
+        font-size: 20px;
+    }
+}
 h3 {
+    box-sizing: border-box;
+    text-align: center;
+    /* width: 100%; */
+    /* width: fit-content; */
+    background-color: black;
+    color: white;
+    padding: 20px 40px;
+    /* margin: auto; */
+    margin-left: 10px;
+    margin-bottom: 0;
+    margin-right: 10px;
+    margin-top: 120px;
+    font-weight: 400;
+    
+    font-family: "segoe ui";
+    border-radius: 5px;
+}
+.title-div {
     width: 100%;
-    padding-left: 20px;
-    /* text-align: center; */
+    box-sizing: border-box;
 }
 }
 .part-item{
+    border-radius: 5px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     max-width: 260px;
     /* width: 31%; */
@@ -202,7 +247,7 @@ console.log(data)
                     <button>SEND ENQUIRY</button>
                 </div>
                 <div className="content-right">
-                <h3>Components we Repair/Overhaul</h3>
+                <div className="title-div"><h3>COMPONENTS WE REPAIR AND OVERHAUL</h3></div>
                 {repairProducts.map(post => {
                     const title = post.frontmatter.title || post.fields.slug
                     const partnumber = post.frontmatter.partnumber
@@ -210,11 +255,11 @@ console.log(data)
                         <Link to={post.fields.slug} itemProp="url" className="part-item">
                                 <img src={Image1}/>
                                 <p><b>{title}</b></p>
-                                <p><b>part#:</b> {partnumber}</p>
+                                <p><b>Including:</b> {partnumber}</p>
                         </Link>
                     )
                 })}
-                <h3>In Stock Components Available for Order</h3>
+                <div className="title-div"><h3>COMPONENTS AVAILIBLE FOR ORDER</h3></div>
                 {orderProducts.map(post => {
                     const title = post.frontmatter.title || post.fields.slug
                     const partnumber = post.frontmatter.partnumber

@@ -94,13 +94,21 @@ div:nth-of-type(3){
 }
 form {
     width: 600px;
-    height: 500px;
+    min-height: 550px;
     background-color: white;
     padding: 40px;
     display: flex;
     flex-direction: column;
     h2 {
         margin-top: 0;
+    }
+    label {
+        margin-top: 10px;
+        margin-bottom: 2px;
+    }
+    input,textarea {
+        font-size: 16px;
+        padding: 5px;
     }
     textarea {
         max-width: 100%;

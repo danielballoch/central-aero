@@ -88,11 +88,19 @@ font-family: 'Helvetica';
 }
 form {
     width: 600px;
-    height: 500px;
+    min-height: 500px;
     background-color: white;
     padding: 40px;
     display: flex;
     flex-direction: column;
+    label {
+        margin-top: 10px;
+        margin-bottom: 2px;
+    }
+    input,textarea {
+        font-size: 16px;
+        padding: 5px;
+    }
     textarea {
         max-width: 100%;
         height: 100px;

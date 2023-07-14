@@ -6,9 +6,10 @@ import Seo from "../components/seo"
 
 
 const Wrapper = styled.div`
-margin-top: 100px;
+padding-top: 200px;
+margin: auto;
 max-width: 900px;
-margin: 200px auto;
+
 `
 
 const BlogPostTemplate = ({
