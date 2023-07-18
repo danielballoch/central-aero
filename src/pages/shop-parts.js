@@ -76,7 +76,7 @@ select {
     position: sticky;
     top: 130px;
     max-height: 700px;
-    margin: 200px 5px;
+    margin: 120px 5px;
     max-width: 480px; 
     width: 50%;
     display: flex;
@@ -109,6 +109,7 @@ flex-wrap: wrap;
 justify-content: center;
 margin-left: 5px;
 display: flex;
+/* margin-top: 80px; */
 flex-wrap: wrap;
 /* max-width: 50%; */
 width: 100%;
