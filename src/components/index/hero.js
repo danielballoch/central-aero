@@ -122,7 +122,7 @@ export default function Hero(){
                     maxHeight: "100%"
                     }}>
             <div className="center-text">
-                <h1>We make sure your<br/> Aircrafts are Flying <br/> Fast, Efficiently,<br/> and Safely. </h1>
+                <h1>We make sure your<br/> Aircraft is Flying <br/> Fast, Efficiently,<br/> and Safely. </h1>
                 <div className="links">
                     <Link to="/engineering">ENGINEERING SERVICES <i class="arrow right"/></Link>
                     <Link to="/electrical">ELECTRICAL PARTS/SERVICES <i class="arrow right"/></Link>

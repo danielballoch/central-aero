@@ -27,7 +27,7 @@ const BlogPostTemplate = ({
             itemType="http://schema.org/Article"
         >
             <header>
-                <h1 itemProp="headline">{post.frontmatter.title}</h1>
+                <h1 itemProp="headline">{post.frontmatter.title} Service Page</h1>
             </header>
             <section
             dangerouslySetInnerHTML={{ __html: post.html }}
@@ -82,8 +82,6 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        partnumber
-        date(formatString: "MMMM DD, YYYY")
         description
       }
     }
