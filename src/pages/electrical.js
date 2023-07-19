@@ -9,20 +9,28 @@ import Image4 from "../images/electrical-images/Alternator.png"
 import HeroImage from "../images/electrical-images/electrical-background-darker.png"
 import Placeholder from "../images/index-images/central-aero-electrical.jpg"
 import { I } from '@styled-icons/fa-solid'
+import { StaticImage } from 'gatsby-plugin-image'
 const searchIndices = [{ name: `Pages`, title: `Pages` }]
 
 
 
 const ElectricalHero = styled.div`
-display: flex;
+grid-area: 1/1;
+    position: relative;
+    place-items: end;
+    justify-items: center;
+    display: grid;
+    max-height: 100%;
+    z-index: 300;
+    margin-bottom: 20px;
+/* display: flex;
 flex-direction: column; 
 justify-content: space-between;
-align-items: center;
-background-image: url(${HeroImage});
+align-items: center; */
+/* background-image: url(${HeroImage}); */
 height: 100vh;
 background-position: 50% 50%;
 .hero-center-content {
-    
     display: flex;
     text-align: center;
     justify-content: center;
@@ -53,6 +61,27 @@ justify-content: center;
 margin: auto;
 align-items: center;
 min-height: 100vh;
+.hero-wrap {
+    display: grid;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    .hero-bg-img {
+    grid-area: 1/1;
+    position: relative;
+    placeItems: center;
+    display: grid;
+    height: 100%;
+    img {
+        height: 100%;
+        background-color: black;
+        /* filter: brightness(20%); */
+    }
+}
+}
 
 h1 {
     margin-top: 100px;
@@ -215,31 +244,33 @@ export default function Electrical(){
     return (
         <Layout>
             <ElectricalWrapper>
-                <ElectricalHero>
-                <div/>
-                <div className='hero-center-content'>
-                    <h1>CENTRAL AERO ELECTRICAL</h1>
-                    <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility. We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p>
-                    <p></p>
-                    <Search indices={searchIndices}/>
-                </div>
-                    <Marquee>
-                        <div className='track'>
-                            <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
-                            <div className='dash'/>
-                            <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
-                            <div className='dash'/>
-                            <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
-                            <div className='dash'/>
-                            <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
-                            <div className='dash'/>
-                            <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
-                            <div className='dash'/>
-                            <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
-                            <div className='dash'/>
+                <div className='hero-wrap'>
+                    <ElectricalHero>
+                        <div className='hero-center-content'>
+                            <h1>CENTRAL AERO ELECTRICAL</h1>
+                            <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility. We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p>
+                            <p></p>
+                            <Search indices={searchIndices}/>
                         </div>
-                    </Marquee>
-                </ElectricalHero>
+                        <Marquee>
+                            <div className='track'>
+                                <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
+                                <div className='dash'/>
+                                <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
+                                <div className='dash'/>
+                                <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
+                                <div className='dash'/>
+                                <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
+                                <div className='dash'/>
+                                <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
+                                <div className='dash'/>
+                                <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
+                                <div className='dash'/>
+                            </div>
+                        </Marquee>
+                    </ElectricalHero>
+                    <StaticImage className="hero-bg-img" src="../images/electrical-images/electrical-background-darker.png"/>
+                </div>
 
                 <div className='products-section'>
                     <h2>Electrical Products</h2>
@@ -262,6 +293,7 @@ export default function Electrical(){
                 <Services>
                 {services.map(service => (
                     <ServiceWrapper>
+                        
                         <img src={Placeholder}/>
                         <div>
                             <h2>{service[0]}</h2>
