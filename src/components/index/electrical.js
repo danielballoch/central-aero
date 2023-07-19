@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import MainImage from '../../images/index-images/central-aero-electrical.jpg'
+import { StaticImage } from 'gatsby-plugin-image'
 
 const Wrapper = styled.div`
 display: flex;
@@ -60,11 +61,13 @@ div {
         }
     }
 }
-img {
+.static-img {
     width: 50%;
-    object-fit: cover; 
-    object-position: -675px center;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    img {
+        object-fit: cover; 
+        object-position: -675px center;
+    }
 }
 `
 
@@ -83,7 +86,7 @@ export default function Hero(){
                     </div>
                 </div>
             </div>
-            <img src={MainImage}/>
+            <StaticImage className="static-img" src="../../images/index-images/central-aero-electrical.jpg" placeholder="blurred"/>
         </Wrapper>
     )
 }

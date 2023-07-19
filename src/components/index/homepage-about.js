@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image1 from '../../images/index-images/central-aero-hanger.jpg'
-import Image2 from '../../images/index-images/central-aero-heli.jpeg'
+import { StaticImage } from 'gatsby-plugin-image'
 
 const Wrapper = styled.div`
 min-height: 800px;
@@ -22,8 +21,7 @@ align-items: center;
     z-index: 100;
     /* margin-top: 25px;
     margin-left: 80px; */
-    img {
-        object-fit: cover; 
+    .static-image {
         height: 500px;
         max-width: 370px;
         width: 100%;
@@ -31,7 +29,10 @@ align-items: center;
         background-color: rgba(0,0,0, 1);
         /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
         box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-        :last-of-type {
+        
+    }
+    .center-image {
+        img {
             object-position: -80px center;
         }
     }
@@ -85,8 +86,8 @@ export default function Hero(){
     return(
         <Wrapper>
             <div className='about-images'>
-                <img src={Image1}/>
-                <img src={Image2}/>
+                <StaticImage placeholder="blurred" className='static-image' alt="Engineering Showcase" src="../../images/index-images/central-aero-hanger.jpg"/>
+                <StaticImage placeholder="blurred" className='static-image center-image' alt="Electrical Showcase" src="../../images/index-images/central-aero-heli.jpeg"/>
             </div>
             <div className='about-text'>
                 <div>
