@@ -134,7 +134,7 @@ position: relative;
     img {
         height: 100%;
         background-color: black;
-        object-fit: fill!important;
+        filter: brightness(20%);
     }
 }
 .center-content {
@@ -267,7 +267,7 @@ export default function Electrical({data}){
                             </div>
                         </div>
                     </div>
-                    <StaticImage placeholder="blurred" className="hero-bg-img" src="../images/engineering-images/EngineeringHero.png"/>
+                    <StaticImage placeholder="blurred" className="hero-bg-img" src="../images/engineering-images/EngineeringHero1.png"/>
                 </EngineeringHero>
 
                 <div className='stewart-systems'>
