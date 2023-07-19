@@ -54,6 +54,7 @@ align-items: center;
         width: 100%;
         max-width: 640px;
         margin-right: 20px;
+        margin-left: 20px;
         h2 {
             margin-top: 10px;
             font-size: 34px;
@@ -66,7 +67,7 @@ align-items: center;
             border-radius: 8px;
             font-weight: 600;
             width: 170px;
-            height: 60px;
+            height: 70px;
             background-color: black;
             /* background-color: #006bff; */
             /* background-color: #bc5b2f; */
@@ -92,7 +93,7 @@ export default function Hero(){
                     <h2>Engineering & Electrical <br/> Under One Roof</h2>
                     <p>Central Aero is made up of two sister companies, Electrical run by Hamish Ross, and Engineering run by Paul Waterhouse. Working out of the Super Air Hanger near Hamilton Airport, their teams have provided quality parts and services to New Zealand and Overseas Pilots for over 17+ years.</p>
                     <p>With knowledge and expertise in Commercial Air transport Aircrafts, Fixed Wing Planes, Helicopters right through to Hot Air Balloons, Gliders, Microlights & Gyrocopters - Central Aero is capable and ready to help with your engineering and electrical aviation needs.</p>
-                    <button>Learn More</button>
+                    {/* <button>Get in Touch</button> */}
                 </div>
             </div>
         </Wrapper>
