@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from "../components/layout.js"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import styled from 'styled-components'
 import Plane from "../images/aircrafts/central-aero-planes.jpg"
 import Helicopter from "../images/aircrafts/central-aero-helicopter2.jpg"
@@ -25,7 +25,7 @@ p {
     max-width: 500px;
     font-family: 'segoe ui';
 }
-a { 
+.button1 { 
     width: fit-content;
     padding: 10px 20px;
     /* height: 60px; */
@@ -40,15 +40,23 @@ a {
     :hover {
         cursor: pointer;
     }
-    :nth-of-type(2){
-        background-color: white;
-        color: black;
-        :hover {
-            color: white;
-            background-color: black;
-        }
+}
+.button2{
+    width: fit-content;
+    padding: 10px 20px;
+    /* height: 60px; */
+    border-radius: 8px;
+    font-weight: 600;
+    border: 3px solid black;
+    text-decoration: none;
+    transition: .3s;
+    text-transform: uppercase;
+    background-color: white;
+    color: black;
+    :hover {
+        color: white;
+        background-color: black;
     }
-
 }
 .products-section {
     display: flex;
@@ -176,6 +184,12 @@ justify-content: left;
 max-width: 1170px;
 margin-top: 40px;
 flex-wrap: wrap;
+.no-style {
+    text-decoration: none;
+    p {
+        color: #333;
+    }
+}
 `
 const ServiceWrapper = styled.div`
 display: flex;
@@ -210,7 +224,7 @@ button {
 
 let components = ["Starter Generators","Magnetos","Fuel Pumps","Alternators","Generator Control Units", "Voltage Regulators"]
 
-let services = [
+let oldServices = [
     ["Aeroplanes","Micro-light or GA – no problem, stressed skin, tubular, wood & fabric, composite, no matter what type you own, Private or Air transport operations, we can help you. "],
     ["Helicopters","Piston or Turbine, Robinson, Schwizer/Hughes, MD, Bell and Eurocopter, MBB BO105, Tracking and balancing, Central Aero Engineering has the experience you need. "],
     ["Aircraft import, assembly & C of A issue","Are you looking at purchasing an aeroplane or helicopter, use our experience to help you make an informed choice – our knowledge of helicopters in particular is of benefit to you, ALWAYS have a pre purchase inspection done when buying an aircraft. Call us for advice if you are considering buying an aeroplane or helicopter."],
@@ -235,7 +249,10 @@ let services = [
 
 
 
-export default function Electrical(){
+export default function Electrical({data}){
+    const services = data.services.nodes
+    console.log(data)
+    console.log(services)
     return (
         <Layout>
             <EngineeringWrapper>
@@ -244,7 +261,7 @@ export default function Electrical(){
                         <h1>CENTRAL AERO ENGINEERING</h1>
                         <p>Supporting New Zealand Airports, Pilots, and Hobbyist flyers with everything from maintenance and airworthiness reviews to air accident investigation and consultancy. Whatever your aviation need Central Aero Engineering has the knowledge and expertise to keep you flying safely.</p>
                         <div className='button-div'>
-                            <Link to="#services">View Our Services</Link><Link to="/contact-engineering">Contact Engineering</Link>
+                            <Link className="button1" to="#services">View Our Services</Link><Link className="button2" to="/contact-engineering">Contact Engineering</Link>
                         </div>
                     </div>
                     <div className='bottom-arrow'>Bottom Arrow</div>
@@ -258,8 +275,8 @@ export default function Electrical(){
                                 <p><b>We're proud to be the only Stewart Systems Distributor in New Zealand.</b></p>
                                 <p>What is Stewart Systems? They're a innovative company based in Ohio USA setting the standard for aircraft fabric covering and painting technology for the 21st century. They manufacture non-hazardous, waterborne products for covering & painting aircrafts.</p>
                                 <div>
-                                    <Link>Learn More</Link>
-                                    <Link to="/contact-engineering">Contact Engineering</Link>
+                                    <Link className="button1">Learn More</Link>
+                                    <Link className="button2" to="/contact-engineering">Contact Engineering</Link>
                                 </div>
                             </div>
                         </div>
@@ -268,6 +285,20 @@ export default function Electrical(){
                 <h2 id="services">Our Engineering Services</h2>
                 <Services >
                     {services.map(service => (
+                        <Link className="no-style" to={"/"+service.frontmatter.path + "#top"}>
+                            <ServiceWrapper>
+                                <img src={Plane}/>
+                                <div>
+                                    <h2>{service.frontmatter.title}</h2>
+                                    <p>{service.frontmatter.body}</p>
+                                    <a className='button1'>Learn More</a>  
+                                </div>
+                            </ServiceWrapper>
+                        </Link>
+                    ))}
+                </Services>
+                {/* <Services >
+                    {oldServiceservices.map(service => (
                         <ServiceWrapper>
                             <img src={Plane}/>
                             <div>
@@ -279,10 +310,32 @@ export default function Electrical(){
                             </div>
                         </ServiceWrapper>
                     ))}
-                </Services>
+                </Services> */}
                
             </EngineeringWrapper>
             {/* <FeaturedProducts/> */}
         </Layout>
     )
 }
+
+
+
+
+export const pageQuery = graphql`
+  {
+    services: allMarkdownRemark(filter: { frontmatter: {type: {eq: "service"}}}, sort: { frontmatter: {title: ASC }}) {
+      nodes {
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          type
+          title
+          body
+          path
+        }
+      }
+    }
+  }
+`

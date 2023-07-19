@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState} from "react"
 import styled from "styled-components" 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+// import Seo from "../components/seo"
 import { Link } from "gatsby"
 
 
@@ -162,4 +162,4 @@ const FAQ = () => {
 
 export default FAQ;
 
-export const Head = () => <Seo title="Frequently Asked Questions | Central Aero" />
+// export const Head = () => <Seo title="Frequently Asked Questions | Central Aero" />

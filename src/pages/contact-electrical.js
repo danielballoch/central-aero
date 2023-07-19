@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+// import Seo from "../components/seo"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import BackgroundImage from "../images/engineering-images/Hero2Dark.png"
@@ -178,4 +178,4 @@ export default function ContactElectrical(){
   )
 }
 
-export const Head = () => <Seo title="Contact Electrical" />
+// export const Head = () => <Seo title="Contact Electrical" />

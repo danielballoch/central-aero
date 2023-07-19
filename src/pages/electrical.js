@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from "../components/layout.js"
 import styled from 'styled-components'
-import FeaturedProducts from "../components/featured-products"
 import Search from "../components/search"
 import Image1 from "../images/electrical-images/Magneto.png"
 import Image2 from "../images/electrical-images/AC-Generator.png"

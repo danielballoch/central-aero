@@ -7,7 +7,7 @@ import Contact from '../components/index/contact.js'
 
 
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+// import Seo from "../components/seo"
 
 export default function Index(){
   return (
@@ -21,6 +21,6 @@ export default function Index(){
   )
 }
 
-export const Head = () => <Seo title="Homepage" />
+// export const Head = () => <Seo title="Homepage" />
 
 

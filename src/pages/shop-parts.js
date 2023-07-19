@@ -2,7 +2,7 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
-import Seo from "../components/seo"
+// import Seo from "../components/seo"
 import Image1 from "../images/electrical-images/AC-Generator.png"
 
 const ElectricalProducts = styled.div`
@@ -291,7 +291,7 @@ export default BlogIndex
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-export const Head = () => <Seo title="SHOP PARTS | CENTRAL AERO ELECTRICAL" />
+// export const Head = () => <Seo title="SHOP PARTS | CENTRAL AERO ELECTRICAL" />
 
 export const pageQuery = graphql`
   {
@@ -315,7 +315,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    order: allMarkdownRemark(filter: { frontmatter: {type: {ne: "repair"}}}, sort: { frontmatter: {title: ASC }}) {
+    order: allMarkdownRemark(filter: { frontmatter: {type: {eq: "order"}}}, sort: { frontmatter: {title: ASC }}) {
         nodes {
           excerpt
           fields {
