@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Logo from "../images/CentralAeroTextOnlyLogoBlack.png"
+import WhiteLogo from "../images/CentralAeroTextOnlyLogo.png"
 import FB from '../images/facebook-logo.png'
 import Part145Logo from '../images/circletext-capital.png'
 
@@ -64,6 +65,9 @@ p {
     .logo {
             height: 80px;
             margin: 0 -8px;
+            background-image: url(${Logo});
+            background-repeat: no-repeat;
+            background-position: 0% 50%; 
         }
     div {
         display: flex;
@@ -79,7 +83,8 @@ p {
         }
     }
     .div1 {
-        width: 400px;
+        max-width: 400px;
+        width: 100%;
         p {
             margin: auto;
             width: fit-content;
@@ -150,7 +155,7 @@ p {
 }
 .rotate-logo {
 height: 100px;
-/* filter: invert(100%); */
+filter: invert(100%);
 animation:spin 30s linear infinite;
 }
 
@@ -161,6 +166,89 @@ animation:spin 30s linear infinite;
         transform: rotate(-360deg); 
     }
 }
+
+@media(max-width: 640px){
+    background-color: black;
+    color: white;
+    .footer1 {
+        flex-direction: column;
+        margin-bottom: 0!important;
+        .logo {
+            background-image: url(${WhiteLogo});
+            background-size: contain;
+        }
+        .div1 {
+            margin: 20px;
+            max-width: 90vw!important; 
+        }
+        .div2 {
+            
+            flex-direction: row;
+            flex-wrap: wrap;
+            margin: 0!important;
+            a { 
+                margin: 10px;
+                color: white;
+            }
+        }
+    }
+    .footer2 {
+        display: grid;
+        margin-top: 0!important;
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        
+        div {
+            margin: 0!important;
+            position: relative;
+            place-items: left;
+            display: grid;
+            z-index: 300;
+            a {
+                color: white;
+            } 
+        }
+        div:nth-of-type(1) {
+            grid-column-start: 0;
+            grid-column-end: 1;
+            grid-row-start: 1;
+            grid-row-end:2;
+        }
+        div:nth-of-type(2) {
+            grid-column-start: 0;
+            grid-column-end: 1;
+            grid-row-start: 2;
+            grid-row-end:3;
+        }
+        div:last-of-type {
+            grid-column-start: 0;
+            grid-column-end: 1;
+            grid-row-start: 1;
+            grid-row-end:3;
+            position: relative;
+            placeItems: center;
+            /* height: 100%; */
+            img {
+                height: 300px!important;
+                width: 300px!important;
+            }
+            margin-top: 25px!important;
+            height: 300px!important;
+            width: 300px!important;
+            opacity: .15;
+        }
+    }
+    .bottom {
+
+        font-size: 10px!important;
+        a {
+            margin: 10px;
+            color: white;
+        }
+    }
+}
 `
 
 export default function Hero(){
@@ -169,7 +257,7 @@ export default function Hero(){
             <div className='footer-main'>
                 <div className='footer1'>
                     <div className='div1'>
-                        <img src={Logo} className="logo"/>
+                        <span  className="logo"/>
                         <p>Providing professional Aircraft Engineering & Electrical services for over 17+ years. We're a New Zealand owned & operated company, and take pride in our collective knowledge and experience helping to keep the Aviation community flying safely.</p>
                         {/* <p>© Copyright 2023 Central Aero</p> */}
 
@@ -196,9 +284,6 @@ export default function Hero(){
                     <div>
                         <Link href="tel:07-843-1200"><b>Engineering:</b><br className='br'/>  07 843 1200 </Link>
                         <Link href="tel:07-843-2936"><b>Electrical:</b><br className='br'/> 07 843 2936 </Link>
-                        {/* <p>Open Hours: 7:00am - 5:00pm,<br/>
-                        Monday - Friday</p> */}
-
                     </div>
                     <div>
                         <img className="rotate-logo" src={Part145Logo}/>

@@ -9,7 +9,7 @@ const ContactWrapper = styled.div`
 padding-top: 200px;
 display: flex;
 flex-direction: column;
-font-family: 'Helvetica';
+/* font-family: 'Helvetica'; */
 .intro-div {
     max-width: 1000px;
     width: 100%;

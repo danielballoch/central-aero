@@ -12,7 +12,8 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 
 const EngineeringWrapper = styled.div`
-font-family: 'segoe ui';
+/* font-family: 'segoe ui';
+font-family: "Helvetica"; */
 /* padding-top: 100px; */
 display: flex;
 flex-direction: column;
@@ -25,7 +26,7 @@ min-height: 100vh;
 }
 p {
     max-width: 500px;
-    font-family: 'segoe ui';
+    /* font-family: "Helvetica"; */
 }
 .button1 { 
     width: fit-content;
@@ -73,7 +74,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 800px;
+    min-height: 800px;
     .content-wrapper {
         width: 50%;
         display: flex;
@@ -81,7 +82,7 @@ p {
         align-items: center;
     }
     .content {
-        width: 580px;
+        max-width: 600px;
         h2 {
             margin-top: 0;
         }
@@ -104,6 +105,39 @@ p {
         width: 600px;
         height: 380px;
         
+    }
+}
+@media(max-width: 1280px){
+    .stewart-systems {
+        flex-direction: column-reverse;
+        margin-top: 0;
+        .img {
+            max-width: 100vw;
+            margin-left: 0;
+        }
+        .content-wrapper {
+            width: 100%;
+        }
+        .content {
+            margin-top: 30px;
+        }
+    }
+}
+@media(max-width: 650px){
+    #services {
+        margin-bottom: 0;
+        margin-top: 120px;
+        padding: 0 20px;
+    }
+    .stewart-systems {
+        max-width: 100vw;
+        padding: 0 20px;
+        .button-div {
+            flex-direction: column;
+            .button2 {
+                margin-top: 30px;
+            }
+        }
     }
 }
 `
@@ -147,7 +181,7 @@ position: relative;
     color: white !important;
     margin-top: 0 !important;
     font-size: 68px;
-    font-family: 'segoe ui';
+    /* font-family: 'segoe ui', "Helvetica"; */
     color: white;
     }
     p {
@@ -155,6 +189,7 @@ position: relative;
         max-width: unset;
         color: white;
         font-size: 19px;
+        /* font-family: "Helvetica"; */
         width: 100%;
     }
     .button-div {
@@ -189,16 +224,27 @@ position: relative;
             }
         }
 }
-/* :before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-position: 50% 50%;
-  background-image: url(${HeroImage1});
-  background-size: contain;
-  filter: brightness(20%);
-} */
+@media(max-width: 540px){
+    .center-content {
+        h1 {
+            margin-top: 30px!important;
+            font-size: 40px;
+            padding: 0 20px;
+        }
+        p {
+            font-size: 14px;
+        }
+        .button-div {
+            flex-direction: column;
+            align-items: center;
+            font-size: 14px;
+            .button2 {
+                margin-top: 20px;
+                margin-left: 0!important;
+            }
+        }
+    }
+}
 `
 
 const Services = styled.div`
@@ -211,6 +257,14 @@ flex-wrap: wrap;
     text-decoration: none;
     p {
         color: #333;
+    }
+}
+@media(max-width: 540px){
+    margin-top: 0;
+    a:first-of-type {
+        div {
+            margin-top: 20px;
+        }
     }
 }
 `
@@ -276,8 +330,8 @@ export default function Electrical({data}){
                                 <h2>New Zealand Stewart Systems Distributer: Call us for all your fabric covering materials</h2>
                                 {/* <hr/> */}
                                 <p><b>We're proud to be the only Stewart Systems Distributor in New Zealand.</b></p>
-                                <p>What is Stewart Systems? They're a innovative company based in Ohio USA setting the standard for aircraft fabric covering and painting technology for the 21st century. They manufacture non-hazardous, waterborne products for covering & painting aircrafts.</p>
-                                <div>
+                                <p>What is Stewart Systems? They're an innovative aircraft fabric covering and painting technology company setting the standard for the 21st century. Based in Ohio USA they manufacture non-hazardous, waterborne products for covering & painting aircrafts.</p>
+                                <div className='button-div'>
                                     <Link className="button1">Learn More</Link>
                                     <Link className="button2" to="/contact-engineering">Contact Engineering</Link>
                                 </div>

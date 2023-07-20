@@ -10,10 +10,13 @@ display: grid;
 max-height: 100vh;
 flex-direction: column;
 background-color: black;
+.br-hide {
+    display: none;
+}
 @media(max-width:1600px){
     .center-text {
         translate: .3s;
-        width: 910px!important;
+        max-width: 910px!important;
         h1 {
             font-size: 70px!important;
         }
@@ -34,14 +37,61 @@ background-color: black;
         }
     }
 }
+@media(max-width: 960px){
+    .center-text {
+        transform: scale(0.8);
+    }
+}
+@media(max-width: 800px){
+    height: 100vh;
+    .center-text {
+        transform: scale(0.8);
+        .links {
+            display: flex;
+            flex-direction: column;
+            a {
+                font-size: 40px!important;
+                margin-bottom: 20px;
+            }
+        }
+    }
+}
+@media(max-width: 702px){
+    .center-text{
+        padding-top: 200px!important;
+        .br-hide {
+            display: block;
+        }
+        h1 {
+        margin-top: 0!important;
+        font-size: 50px!important;
+        }
+        .links {
+            a {
+                font-size: 20px!important;
+                margin-bottom: 40px!important;
+            }
+            .br-hide {
+                display: none;
+            }
+            .arrow {
+                margin: 0!important;
+            }
+        }
+    }
+    .br-desktop {
+        display: none;
+    }
+    
+}
 .center-text {
     font-size: 18px;
-    width: 1000px;
+    max-width: 1000px;
     padding-top: 50px;
     margin: auto;
     color: white;
     background-color: unset;
-    font-family: "Helvetica";
+    /* font-family: "Helvetica"; */
     h1 {
         /* color: black; */
         color: white;
@@ -122,10 +172,10 @@ export default function Hero(){
                     maxHeight: "100%"
                     }}>
             <div className="center-text">
-                <h1>We make sure your<br/> Aircraft is Flying <br/> Fast, Efficiently,<br/> and Safely. </h1>
+                <h1>We make sure your<br className="br-desktop"/> Aircraft is Flying <br className="br-desktop"/> Fast, Efficiently,<br className="br-desktop"/> and Safely. </h1>
                 <div className="links">
-                    <Link to="/engineering">ENGINEERING SERVICES <i class="arrow right"/></Link>
-                    <Link to="/electrical">ELECTRICAL PARTS/SERVICES <i class="arrow right"/></Link>
+                    <Link to="/engineering">ENGINEERING<br className="br-hide"/> SERVICES <i class="arrow right"/></Link>
+                    <Link to="/electrical">ELECTRICAL<br className="br-hide"/> PARTS/SERVICES <i class="arrow right"/></Link>
                 </div>
             </div>
         </div>

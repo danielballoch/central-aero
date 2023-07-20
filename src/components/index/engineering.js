@@ -4,13 +4,14 @@ import { StaticImage } from 'gatsby-plugin-image'
 
 const Wrapper = styled.div`
 display: flex;
-height: 100vh;
+min-height: 100vh;
 div {
     display: flex;
     flex-direction: column;
     width: 50%;
     .text-content {
-        width: 600px;
+        width: 100%;
+        max-width: 600px;
         margin: auto;
         font-family: 'Helvetica';
         h2 {
@@ -68,6 +69,48 @@ div {
         object-position: left center;
     }
 }
+@media(max-width: 1240px){
+flex-direction: column-reverse;
+margin-bottom: 100px;
+div, .static-image {
+    width: 100%;
+    margin: auto;
+}
+h2 {
+    margin-top: 50px!important;
+}
+.text-content {
+    padding: 0 20px !important;
+}
+}
+@media(max-width: 700px){
+    h2 {
+        font-size: 40px!important;
+        margin-top: 30px!important;
+    }
+    h3 {
+        font-size: 20px!important;
+        margin-top: 10px!important;
+    }
+    .button-div  {
+        flex-direction: column!important;
+        a {
+            margin-bottom: 20px;
+            margin-left: 0!important;
+            padding: 20px 20px !important;
+        }
+        
+    }
+    .static-img {
+        min-height: 400px!important;
+        img {
+            object-position: 0 50%!important;
+        }
+        /* img {
+            height: 400px!important;
+        } */
+    }
+}
 `
 
 export default function Hero(){
@@ -87,7 +130,7 @@ export default function Hero(){
                     </div>
                 </div>
             </div>
-            <StaticImage className="static-image" src="../../images/index-images/central-aero-engineering.jpg" placeholder="blurred"/>
+            <StaticImage className="static-img" src="../../images/index-images/central-aero-engineering.jpg"/>
         </Wrapper>
     )
 }

@@ -21,7 +21,8 @@ z-index: 500;
     /* transition: .3s; */
 transition: transform .3s;
 opacity: 0;
-font-family: 'segoe ui';
+/* font-family: 'segoe ui'; */
+font-family: "Helvetica";
 transform: translateX(100%);
 position: absolute;
 top: 0;
@@ -34,6 +35,9 @@ z-index: 100;
 display: flex;
 flex-direction: column;
 justify-content: center;
+.mobile-br {
+    display: none;
+}
 @media(max-width:1600px){
     
     .menu-content {
@@ -139,23 +143,98 @@ backdrop-filter: blur(18px);
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
+    width: 100vw;
     transition: .3s;
 }
 .Scroll {
     transform: translateY(0);
-    @media(min-width: 900px){
-        background-color: rgba(255,255,255,0.98);
-    }
+    background-color: rgba(255,255,255,0.98);
 }
 .Initial {
     background-color: rgba(255,255,255,0);
 }
-
-
+@media(max-width:600px){
+   
+    .menu-left {
+        display: flex;
+        width: 100%;
+        margin-right: 20px!important;
+    }
+    .menu-right {
+        width: fit-content!important;
+        .contact {
+            font-size: 18px!important;
+        }
+        .address {
+            font-size: 14px!important;
+        }
+    }
+    .Scroll {
+        height: 80px;
+    }
+    .menu {
+        
+        .menu-content {
+        align-items: flex-end;
+        scale: 1!important;
+        max-width: 100vw!important;
+        padding: 10px;
+        width: 100%;
+        a {
+            font-size: 27px;
+        }
+        img {
+            width: 100px!important;
+            height: 100px!important;
+            margin: 0!impotant
+        }
+        .mobile-br {
+            display: block;
+        }
+    }
+    }
+   
+    .image {
+        /* width: 300px!important; */
+        background-position: 0% 50%;
+        height: 60px!important;
+        width: 300px!important;
+    }
+    .invert-logo {
+        /* width: 300px!important; */
+        background-position: 0% 50%;
+        height: 60px!important;
+        width: 300px!important;
+    }
+    .lower-menu {
+        position: unset!important;
+        font-size: 10px!important;
+        a {
+            margin: 10px!important;
+            color: white;
+        }
+    }
+}
+@media(max-width:400px){
+    .image {
+        /* width: 300px!important; */
+        background-position: 0% 50%;
+        height: 40px!important;
+        width: 250px!important;
+    }
+    .invert-logo {
+        background-position: 0% 50%;
+        height: 40px!important;
+        width: 250px!important;
+    }
+}
 `
 
 const NavWrapper = styled.div`
+@media(max-width:600px){
+    padding: 0px 10px;
+}
+font-family: "Helvetica";
 position: absolute;
 display: flex;
 width: 100%;
@@ -170,21 +249,25 @@ justify-content: space-between;
 align-items: center;
 height: 120px;
 .invert-logo {
+    background-size: contain;
     background-image: url(${InvertLogo})!important;
-    background-position: 50% 50%;
+    /* background-position: 50% 50%; */
+    background-repeat: no-repeat;
     text-decoration: none;
-    height: 50px;
+    height: 80px;
     width: 400px;
 }
 .image {
+    background-size: contain;
     background-image: url(${Logo});
+    background-repeat: no-repeat;
     background-position: 50% 50%;
     text-decoration: none;
-    height: 50px;
+    height: 80px;
     width: 400px;
 }
 a {
-    font-family: Helvetica;
+    font-family: 'Helvetica';
     /* padding: 10px; */
     color: white;
     text-decoration: none;
@@ -335,10 +418,10 @@ export default function Nav({invert}){
                     </div>
                     <div className='menu-right'>
                         <img src={CALogo}/>
-                        <Link className='contact'><b>Engineering:</b>  07 843 1200 </Link>
-                        <Link className='contact'><b>Electrical:</b> 07 843 2936 </Link>
-                        <Link className='address'>Super Air Hanger, 1 Ingram rd,<br/>
-                        Rukuhia, Hamilton, 3282,<br/>
+                        <Link className='contact'><b>Engineering:</b><br className='mobile-br'/>  07 843 1200 </Link>
+                        <Link className='contact'><b>Electrical:</b><br className='mobile-br'/> 07 843 2936 </Link>
+                        <Link className='address'>Super Air Hanger,<br className='mobile-br'/> 1 Ingram rd,<br className='desktop-br'/>
+                        Rukuhia, Hamilton,<br className='mobile-br'/> 3282,<br/>
                         New Zealand</Link>
                     </div>
                     
