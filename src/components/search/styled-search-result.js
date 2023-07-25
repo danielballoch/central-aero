@@ -17,6 +17,9 @@ const Popover = css`
   padding: 1em;
   border-radius: 2px;
   background: ${({ theme }) => theme.background};
+  @media(max-width: 750px){
+    max-width: 300px;
+  }
 `
 
 export default styled(SearchResult)`
@@ -69,5 +72,17 @@ export default styled(SearchResult)`
     svg {
       width: 70px;
     }
+  }
+  @media(max-width: 750px){
+    .Hits {
+    li.ais-Hits-item {
+      a {
+        font-size: 14px;
+        h4 {
+            font-size: 20px;
+        }
+      }
+    }
+  }
   }
 `

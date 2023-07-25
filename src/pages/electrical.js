@@ -22,7 +22,7 @@ grid-area: 1/1;
     display: grid;
     max-height: 100%;
     z-index: 300;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 /* display: flex;
 flex-direction: column; 
 justify-content: space-between;
@@ -36,24 +36,47 @@ background-position: 50% 50%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 900px;
+    max-width: 900px;
     h1 {
-        margin-top: -100px;
+        margin-top: -50px;
         z-index: 100;
         font-weight: 600;
         font-size: 68px;
-        font-family: 'segoe ui';
+        /* font-family: 'segoe ui'; */
         color: white;
     }
     p {
         color: white;
         font-size: 18px!important;
+        margin-bottom: 0;
+    }
+}
+@media(max-width: 750px){
+    .hero-center-content {
+        width: 98vw;
+        h1 {
+        font-size: 40px;
+        }
+        p {
+            font-size: 14px!important;
+            padding: 0 20px;
+        }
+        .SearchInput {
+            max-width: 295px;
+            min-width: 0;
+        }
+    }
+   
+}
+@media(max-width: 545px){
+    .herobr {
+        display: none;
     }
 }
 `
 
 const ElectricalWrapper = styled.div`
-font-family: 'segoe ui';
+/* font-family: 'segoe ui'; */
 /* padding-top: 100px; */
 display: flex;
 flex-direction: column;
@@ -88,12 +111,12 @@ h1 {
     font-size: 60px;
     font-weight: 500;
     color: white;
-    font-family: 'segoe ui';
+    /* font-family: 'segoe ui'; */
 }
 p {
     max-width: 700px;
     text-align: center;
-    font-family: 'segoe ui';
+    /* font-family: 'segoe ui'; */
     font-size: 16px;
 }
 /* button {
@@ -107,6 +130,7 @@ p {
 } */
 .button-div {
     margin: 60px 0 20px 0;
+    
 }
 a { 
     width: fit-content;
@@ -141,6 +165,20 @@ a {
     margin: 100px 0 200px 0;
     height: auto;
 }
+@media(max-width: 500px){
+    .button-div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        a:nth-of-type(2) {
+            margin-top: 30px;
+        }
+    }
+    .products-section p {
+        padding: 0 20px;
+    }
+        
+}
 `
 
 const ComponentsWrapper = styled.div`
@@ -150,6 +188,9 @@ margin: auto;
 justify-content: center;
 .component {
     text-align: center;
+    p {
+        padding: 0;
+    }
     img {
         /* width: 200px; */
         height: 100px;
@@ -174,8 +215,11 @@ const Marquee = styled.div`
     align-items: center;
     border: 3px solid black;
     background-color: black;
+    br {
+        display: none;
+    }
     h4 {
-        font-family: 'segoe ui';
+        /* font-family: 'segoe ui'; */
         margin: 20px 40px;
         font-weight: 400;
         color: white;
@@ -194,6 +238,22 @@ const Marquee = styled.div`
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+@media(max-width: 750px){
+    .track {
+        text-align: center!important;
+        animation: marquee 30s linear infinite;
+        br {
+            display: block;
+        }
+        h4 {
+            text-align: center;
+            font-size: 16px;
+        }
+    }
+    .dash {
+        transform: scale(.8);
+    }
+}
 `
 
 const Services = styled.div`
@@ -208,14 +268,16 @@ const ServiceWrapper = styled.div`
 display: flex;
 flex-direction: row;
 img {
-    width: 500px;
-    height: 500px;
+    max-width: 500px;
+    max-height: 500px;
+    width: 100vw;
+    height: 98vh;
     object-fit: cover;
     object-position: 30% 50%;
 }
 div {
     display: flex;
-    width: 500px;
+    max-width: 500px;
     justify-content: center;
     flex-direction: column;
     margin-left: 80px;
@@ -228,6 +290,18 @@ p {
 }
 button {
     margin: 0;
+}
+@media(max-width:1080px){
+    flex-direction: column;
+    div {
+        max-width: 100vw;
+        padding: 20px;
+        margin: 40px auto 80px auto;
+    }
+    img {
+        margin: auto;
+        max-width: 100vw;
+}
 }
 `
 
@@ -248,23 +322,23 @@ export default function Electrical(){
                     <ElectricalHero>
                         <div className='hero-center-content'>
                             <h1>CENTRAL AERO ELECTRICAL</h1>
-                            <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility. We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p>
+                            <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility.<br className='herobr'/> We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p>
                             <p></p>
                             <Search indices={searchIndices}/>
                         </div>
                         <Marquee>
                             <div className='track'>
-                                <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
+                                <h4>CAANZ PART 145 APPROVED<br/> REPAIR AND OVERHAUL FACILITY</h4>
                                 <div className='dash'/>
-                                <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
+                                <h4>1 YEAR WARRENTY ON<br/> ALL PRODUCTS/SERVICES</h4>
                                 <div className='dash'/>
-                                <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
+                                <h4>PROMPT TURNAROUND TIME<br/> FOR ALL REPAIRS AND OVERHAULS</h4>
                                 <div className='dash'/>
-                                <h4>CAANZ Part 145 Approved Repair and Overhaul Facility</h4>
+                                <h4>CAANZ PART 145 APPROVED<br/> REPAIR AND OVERHAUL FACILITY</h4>
                                 <div className='dash'/>
-                                <h4>1 YEAR WARRENTY ON ALL PRODUCTS/SERVICES</h4>
+                                <h4>1 YEAR WARRENTY ON<br/> ALL PRODUCTS/SERVICES</h4>
                                 <div className='dash'/>
-                                <h4>PROMPT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
+                                <h4>PROMPT TURNAROUND TIME<br/> FOR ALL REPAIRS AND OVERHAULS</h4>
                                 <div className='dash'/>
                             </div>
                         </Marquee>

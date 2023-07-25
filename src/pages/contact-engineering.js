@@ -75,11 +75,12 @@ font-family: 'Helvetica';
     }
 }
 .form-div {
+    padding: 100px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #543C3C;
-    height: 800px;
+    /* min-height: 800px; */
     background-image: url(${BackgroundImage});
     background-size: contain;
     background-position: center;
@@ -89,6 +90,8 @@ font-family: 'Helvetica';
 form {
     width: 600px;
     min-height: 500px;
+    height: 100%;
+    max-height: 800px;
     background-color: white;
     padding: 40px;
     display: flex;
@@ -131,6 +134,7 @@ form {
         }
     }
 .info-div {
+    align-self: center;
     margin-left: 40px;
     color: white;
     h2 {
@@ -151,6 +155,69 @@ form {
         }
     }
     
+}
+@media(max-width:1200px){
+    .intro-div {
+        padding: 20px;
+    }
+    
+    .form-div {
+        flex-direction: column;
+        .info-div {
+            margin-left: 0;
+            h2 {
+                margin: 40px 0px 20px;
+            }
+        }
+    }
+
+}
+@media(max-width:763px){
+    h1 {
+        font-size: 60px!important;
+    }
+    .links {
+        display: flex;
+        flex-direction: column;
+        a {
+            /* white-space: nowrap; */
+            font-size: 22px!important;
+            margin-right: 0!important;
+            i {
+                margin-left: 10px!important;
+                margin-right: 0!important;
+                transform: rotate(-45deg) scale(.8)!important;
+            }
+            @media(max-width:364px){
+                font-size: 18px!important;
+                i {
+                    margin-left: 10px!important;
+                }
+            }
+        }
+        a:nth-of-type(2){
+            margin-top: 20px;
+        }
+        
+    }
+}
+@media(max-width:600px){
+    form {
+        max-width: 600px!important;
+        width: 100vw!important;
+        padding: 40px!important;
+    }
+    .info-div {
+        width: 100vw;
+        padding: 20px;
+    }
+}
+@media(max-width:380px){
+    form {
+        h2 {
+            font-size: 28px; 
+        }
+    }
 }
 `
 

@@ -13,6 +13,7 @@ const open = css`
   padding-left: 2.5em;
   margin-right: -2.5em;
   padding-right: 2.5em; */}
+
 `
 
 const closed = css`
@@ -58,5 +59,12 @@ export default styled(SearchBox)`
     margin: 20px;
     color: white;
     pointer-events: none;
+  }
+  @media(max-width: 750px){
+    min-width: 0;
+    transform: scale(.8);
+    .SearchInput {
+        
+    }
   }
 `
