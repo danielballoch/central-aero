@@ -75,6 +75,7 @@ p {
     display: flex;
     margin: 0;
     justify-content: space-between;
+    align-items: center;
 }
 .arrow {
   transition: .2s;

@@ -75,7 +75,8 @@ select {
     /* background-color: lightblue; */
     position: sticky;
     top: 130px;
-    max-height: 700px;
+    max-height: 1000px;
+    height: fit-content;
     margin: 120px 5px;
     max-width: 480px; 
     width: 50%;
@@ -97,10 +98,7 @@ select {
         max-width: 413px;
     }
     @media(max-height: 860px){
-        /* padding: 0 40px; */
-        hight: fit-content;
-        top: 10px;
-        /* padding: 0 40px; */
+        /* height: fit-content; */
     }
 }
 .content-right {
@@ -178,7 +176,30 @@ h3 {
         }
     }
 }
-
+@media(max-width: 580px){
+    .content-wrapper {
+        flex-direction: column!important;
+        align-items: center;
+        width: 100vw!important;
+        .content-left {
+            position: static;
+            width: 96%;
+            padding: 30px;
+            margin: 0;
+        }
+        .content-right {
+            width: 100%!important;
+            .part-item {
+                /* transform: scale(.5); */
+                max-width: 150px;
+                /* height: fit-content; */
+                img {
+                    height: 100px;
+                }
+            }
+        }
+    }
+}
 `
 
 const BlogIndex = ({ data, location }) => {

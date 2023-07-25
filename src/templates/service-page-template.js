@@ -6,7 +6,8 @@ import Layout from "../components/layout"
 
 
 const Wrapper = styled.div`
-padding-top: 200px;
+/* padding-top: 200px; */
+padding: 200px 20px 100px 20px;
 font-family: 'segoe ui';
 margin: auto;
 max-width: 900px;
@@ -14,7 +15,7 @@ hr {
         margin: 50px 0;
     }
 header {
-    height: 300px;
+    min-height: 300px;
     
 }
 .button-div {
@@ -69,6 +70,16 @@ section {
     flex-direction: column;
     justify-content: left;
     align-items: flex-start; */
+}
+@media(max-width: 500px){
+    .button-div {
+        display: flex;
+        flex-direction: column;
+        .button2 {
+            margin-left: 0;
+            margin-top: 20px;
+        }
+    }
 }
 `
 

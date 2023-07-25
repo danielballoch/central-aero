@@ -155,7 +155,6 @@ p {
 }
 .rotate-logo {
 height: 100px;
-filter: invert(100%);
 animation:spin 30s linear infinite;
 }
 
@@ -199,7 +198,9 @@ animation:spin 30s linear infinite;
         justify-content: center;
         align-items: center;
         position: relative;
-        
+        .rotate-logo {
+            filter: invert(100%);
+        }
         div {
             margin: 0!important;
             position: relative;
@@ -241,7 +242,6 @@ animation:spin 30s linear infinite;
         }
     }
     .bottom {
-
         font-size: 10px!important;
         a {
             margin: 10px;
