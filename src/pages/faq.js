@@ -75,9 +75,11 @@ p {
     display: flex;
     margin: 0;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
+    align-items: start;
 }
 .arrow {
+  margin-top: 14px;
   transition: .2s;
   height: 3px;
   width: 3px;
