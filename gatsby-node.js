@@ -4,9 +4,8 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // Define the template for blog post
-// const blogPost = path.resolve(`./src/templates/blog-post.js`)
-const blogPost = path.resolve(`./src/templates/service-page-template.js`);
-const productPage = path.resolve(`./src/templates/blog-post.js`);
+const servicePage = path.resolve(`./src/templates/service-page-template.js`);
+const productPage = path.resolve(`./src/templates/electrical-part-page-template.js`);
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -47,20 +46,20 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return
   }
 
-  const posts = result.data.services.nodes
+  const services = result.data.services.nodes
   const products = result.data.products.nodes
 
   // Create blog posts pages
   // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
   // `context` is available in the template as a prop and as a variable in GraphQL
 
-  if (posts.length > 0) {
-    posts.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : posts[index - 1].id
-      const nextPostId = index === posts.length - 1 ? null : posts[index + 1].id
+  if (services.length > 0) {
+    services.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : services[index - 1].id
+      const nextPostId = index === services.length - 1 ? null : services[index + 1].id
             createPage({
                 path: post.frontmatter.path,
-                component: blogPost,
+                component: servicePage,
                 context: {
                   id: post.id,
                   previousPostId,
@@ -73,6 +72,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     products.forEach((product, index) => {
       const previousProductId = index === 0 ? null : products[index - 1].id
       const nextProductId = index === products.length - 1 ? null : products[index + 1].id
+      const thirdProductId = index !== products.length - 2 && index !== products.length - 1 ? products[index + 2].id : null
             createPage({
                 path: product.fields.slug,
                 component: productPage,
@@ -80,6 +80,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
                   id: product.id,
                   previousProductId,
                   nextProductId,
+                  thirdProductId
                 },
               })
     })

@@ -71,6 +71,50 @@ section {
     justify-content: left;
     align-items: flex-start; */
 }
+.blog-post-nav {
+    div {
+        display: flex;
+        justify-content: space-between;
+        
+        a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* align-items: center; */
+            text-decoration: none;
+            flex: 1;
+            img {
+                max-width: 250px;
+                max-height: 200px;
+                background-color: lightgrey;
+                
+            }
+            p {
+                padding: 0px 5px;
+                color: #333;
+                margin-top: 10px;
+            }
+        }
+    }
+}
+@media(max-width: 800px){
+    .blog-post-nav {
+        div {
+            align-items: flex-start;
+            a {
+                margin-right: 10px;
+                img {
+                    /* height: 100px;
+                    width: 125px; */
+                }
+            }
+            a:last-of-type {
+                margin-right: 0;
+            }
+            
+        }
+    }
+}
 @media(max-width: 500px){
     .button-div {
         display: flex;
@@ -80,11 +124,21 @@ section {
             margin-top: 20px;
         }
     }
+    .blog-post-nav {
+        div {
+            a {
+                p {
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
 }
 `
 
 const BlogPostTemplate = ({
-  data: { previous, next, site, markdownRemark: post },
+  data: { previous, next, third, site, markdownRemark: post },
   location,
 }) => {
   const siteTitle = site.siteMetadata?.title || `Title`
@@ -93,29 +147,51 @@ const BlogPostTemplate = ({
     <Layout invert={true} location={location} title={siteTitle}>
         <Wrapper id="top">
         <article
+            className="blog-post"
             itemScope
             itemType="http://schema.org/Article"
         >
             <header>
-                <h1 itemProp="headline">{post.frontmatter.title} Service Page</h1>
-                <p>{post.frontmatter.body}</p>
+                <h1 itemProp="headline">{post.frontmatter.title}</h1>
+                <p>{post.frontmatter.description}</p>
                 <hr></hr>
                 <div className="button-div">
-                    <Link to="/engineering#services" className="button1">View All Services</Link>
-                    <Link to="/contact-engineering" className="button2">Contact Engineering</Link>
+                    <Link to="/shop-parts" className="button1">View All Products</Link>
+                    <Link to="/contact-electrical" className="button2">Contact Electrical</Link>
                 </div>
-                
             </header>
             <section
             dangerouslySetInnerHTML={{ __html: post.html }}
             itemProp="articleBody"
             />
+            <hr />
         </article>
-        <hr/>
-        <div className="button-div">
-                    <Link to="/engineering#services" className="button1">View all services</Link>
-                    <Link to="/contact-engineering" className="button2">Contact Engineering</Link>
-                </div>
+        
+        <nav className="blog-post-nav">
+        <h3>Other Products</h3>
+        <div>
+                {previous && (
+                    <Link to={previous.fields.slug}>
+                        <img src="../images/CA-Logo-Square-Black.png"/>
+                        <p><b>{previous.frontmatter.title}</b></p>
+                    </Link>
+                )}
+                <br/>
+                {next && (
+                    <Link to={next.fields.slug}>
+                        <img src="../images/CA-Logo-Square-Black.png"/>
+                        <p><b>{next.frontmatter.title}</b></p>
+                    </Link>
+                )}
+                <br/>
+                {third && (
+                    <Link to={third.fields.slug}>
+                        <img src="../images/CA-Logo-Square-Black.png"/>
+                        <p><b>{third.frontmatter.title}</b></p>
+                </Link>
+                )}
+            </div>
+        </nav>
       </Wrapper>
     </Layout>
   )
@@ -135,8 +211,9 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
-    $previousPostId: String
-    $nextPostId: String
+    $previousProductId: String
+    $nextProductId: String
+    $thirdProductId: String
   ) {
     site {
       siteMetadata {
@@ -149,11 +226,12 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
+        partnumber
+        date(formatString: "MMMM DD, YYYY")
         description
-        body
       }
     }
-    previous: markdownRemark(id: { eq: $previousPostId }) {
+    previous: markdownRemark(id: { eq: $previousProductId }) {
       fields {
         slug
       }
@@ -161,14 +239,21 @@ export const pageQuery = graphql`
         title
       }
     }
-    next: markdownRemark(id: { eq: $nextPostId }) {
+    next: markdownRemark(id: { eq: $nextProductId }) {
       fields {
         slug
       }
       frontmatter {
         title
-
       }
     }
+    third: markdownRemark(id: { eq: $thirdProductId }) {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+        }
+      }
   }
 `
