@@ -137,7 +137,7 @@ const FAQ = () => {
 
     return(
         <Layout invert={true}>
-            <div style={{ display: "grid"}} id="homeSection">
+            <div style={{ display: "grid"}} id="top" >
             <div
                 style={{
                     gridArea: "1/1",

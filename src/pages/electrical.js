@@ -317,7 +317,7 @@ let services = [
 export default function Electrical(){
     return (
         <Layout>
-            <ElectricalWrapper>
+            <ElectricalWrapper id="top">
                 <div className='hero-wrap'>
                     <ElectricalHero>
                         <div className='hero-center-content'>

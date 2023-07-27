@@ -309,8 +309,8 @@ export default function Electrical({data}){
     
 
     return (
-        <Layout>
-            <EngineeringWrapper>
+        <Layout >
+            <EngineeringWrapper id="top">
                 <EngineeringHero>
                     <div className='main-content'>
                         <div className='center-content'>
@@ -332,7 +332,7 @@ export default function Electrical({data}){
                                 <p><b>We're proud to be the only Stewart Systems Distributor in New Zealand.</b></p>
                                 <p>What is Stewart Systems? They're an innovative aircraft fabric covering and painting technology company setting the standard for the 21st century. Based in Ohio USA they manufacture non-hazardous, waterborne products for covering & painting aircrafts.</p>
                                 <div className='button-div'>
-                                    <Link className="button1">Learn More</Link>
+                                    <Link className="button1" to="/stewart-systems">Learn More</Link>
                                     <Link className="button2" to="/contact-engineering">Contact Engineering</Link>
                                 </div>
                             </div>

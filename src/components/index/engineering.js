@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { StaticImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
 display: flex;
@@ -125,8 +126,8 @@ export default function Hero(){
                     {/* <p>We also offer consultancy services to the industry as Maintenance controllers, Air accident investigation, Auditing, and Airworthiness reviews.</p>
                     <p>Whether you are a homebuilder, micro light owner or an air transport operator, fixed wing or helicopter, Central Aero Engineering can assist you with your aviation engineering requirements to get you flying and to keep you flying.</p> */}
                     <div className='button-div'>
-                        <a href="/contact-engineering">Contact Engineering</a>
-                        <a href="/engineering">View Engineering Services</a>
+                        <Link href="/contact-engineering">Contact Engineering</Link>
+                        <Link href="/engineering">View Engineering Services</Link>
                     </div>
                 </div>
             </div>

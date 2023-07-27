@@ -264,12 +264,12 @@ export default function Hero(){
                         {/* <Link href="#"><p>Connect with us <img src={FB}/></p></Link> */}
                     </div>
                     <div className='div2'>
-                        <Link to="/">HOME</Link>
-                        <Link to="/shop-parts">SHOP PARTS</Link>
-                        <Link to="/engineering">ENGINEERING</Link>
-                        <Link to="/electrical">ELECTRICAL</Link>
-                        <Link to="/contact">CONTACT</Link>
-                        <Link to="/faq">FAQ</Link>
+                        <Link to="/#home">HOME</Link>
+                        <Link to="/shop-parts#top">SHOP PARTS</Link>
+                        <Link to="/engineering#top">ENGINEERING</Link>
+                        <Link to="/electrical#top">ELECTRICAL</Link>
+                        <Link to="/contact#top">CONTACT</Link>
+                        <Link to="/faq#top">FAQ</Link>
                         
                     </div>
                 </div>
@@ -290,7 +290,7 @@ export default function Hero(){
                     </div>
                 </div>
             </div>
-            <div className='bottom'><Link to="/">© Central Aero 2023</Link><Link to="/terms-and-conditions">Terms & Conditions</Link><a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a></div>
+            <div className='bottom'><Link to="/">© Central Aero 2023</Link><Link to="/terms-and-conditions#top">Terms & Conditions</Link><a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a></div>
         </Wrapper>
     )
 }

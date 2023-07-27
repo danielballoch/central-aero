@@ -168,7 +168,7 @@ const BlogPostTemplate = ({
         </article>
         
         <nav className="blog-post-nav">
-        <h3>Other Products</h3>
+        <h3>Related Products</h3>
         <div>
                 {previous && (
                     <Link to={previous.fields.slug}>

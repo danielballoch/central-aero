@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import MainImage from '../../images/index-images/central-aero-electrical.jpg'
 import { StaticImage } from 'gatsby-plugin-image'
+import { Link } from 'gatsby'
 
 const Wrapper = styled.div`
 display: flex;
@@ -113,7 +114,7 @@ div, .static-image {
 
 export default function Hero(){
     return(
-        <Wrapper>
+        <Wrapper >
             <div>
                 <div className='text-content'>
                     <h2>Electrical</h2>
@@ -121,8 +122,8 @@ export default function Hero(){
                     <p>Central Aero Electrical offer quick turnarounds for a large range of exchange and overhaul components - from small fixed wing/touring planes to commercial passenger planes, helicopters and other aircrafts.</p>
                     <p>We offer custom orders and can advice on other suppliers for any parts we don't stock. If you need an electrical part new, repaired, overhauled, or can't find a particular component get in touch today.</p>
                     <div className='button-div'>
-                        <a href="/contact-electrical">Contact Electical</a>
-                        <a href="/electrical">View Electrical Parts/Services</a>
+                        <Link href="/contact-electrical">Contact Electical</Link>
+                        <Link href="/electrical">View Electrical Parts/Services</Link>
                     </div>
                 </div>
             </div>

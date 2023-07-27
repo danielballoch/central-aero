@@ -11,8 +11,8 @@ import Layout from "../components/layout"
 
 export default function Index(){
   return (
-    <Layout>
-        <Hero/>
+    <Layout id="top">
+        <Hero id="top"/>
         <About/>
         <Engineering/>
         <Electrical/>

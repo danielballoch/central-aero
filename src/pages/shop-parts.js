@@ -223,7 +223,7 @@ console.log(data)
 
   return (
     <Layout location={location} title={siteTitle} invert={true}>
-        <ElectricalProducts>
+        <ElectricalProducts id="top">
         <div className="wrapper">
             {/* <div className="products-top">
                 <h1>Shop Electrical Components</h1>

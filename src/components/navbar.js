@@ -97,7 +97,7 @@ justify-content: center;
     img {
         width: 100%;
         height: 300px;
-        margin: 30px 0;
+        margin: 20px 0;
         background-color: lightgrey;
         /* filter: grayscale(100%); */
         border-radius: 2px;
@@ -427,8 +427,8 @@ export default function Nav({invert}){
                     
                 </div>
                 <div className='lower-menu'>
-                    <Link to="/">© Central Aero 2023</Link>
-                    <Link to="/terms-and-conditions">Terms & Conditions</Link>
+                    <Link to="/#home">© Central Aero 2023</Link>
+                    <Link to="/terms-and-conditions#top">Terms & Conditions</Link>
                     <a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a>
                 </div>
             </div>
