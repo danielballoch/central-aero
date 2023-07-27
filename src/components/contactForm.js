@@ -129,10 +129,10 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
 
       async function onSubmit(data){
         // const reRef = useRef<>();
-        // const token = await reRef.current.executeAsync();
-        // reRef.current.reset();
-        console.log("this is where form data should log")
-        console.log(data)
+        const token = await reRef.current.executeAsync();
+        reRef.current.reset();
+        // console.log("this is where form data should log")
+        // console.log(data)
         // console.log(token)
         
         
@@ -143,7 +143,7 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
             phone: data.Phone,
             email: data.Email,
             message:data.Message,
-            // token,
+            token,
         }),
           headers: {
             "content-type": `application/json`,
@@ -167,11 +167,11 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
       })
   return (
             <FormDiv>
-                {/* <ReCAPTCHA 
+                <ReCAPTCHA 
                     sitekey={process.env.GATSBY_RE_SITEKEY} 
                     size="invisible"
                     ref={reRef} 
-                /> */}
+                />
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h2>{title}</h2>
                     <label htmlFor="name">Name:</label>
@@ -189,7 +189,7 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
                         required
                         {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
                     />
-                   
+    
                     <label htmlFor="phone">Phone: </label>
                     <input 
                         type="phone" 

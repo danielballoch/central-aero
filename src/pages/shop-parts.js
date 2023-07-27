@@ -1,9 +1,11 @@
-import React from "react"
+import React, {useRef, useEffect, useState} from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
 // import Seo from "../components/seo"
 import Image1 from "../images/electrical-images/AC-Generator.png"
+import { useForm } from "react-hook-form"
+import ReCAPTCHA from "react-google-recaptcha";
 
 const ElectricalProducts = styled.div`
 padding-top: 140px;
@@ -203,75 +205,122 @@ h3 {
 `
 
 const BlogIndex = ({ data, location }) => {
+
+    const reRef = useRef();
+    const [serverState, setServerState] = useState({
+        formSent: false,
+    });
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm()
+
+
+      async function onSubmit(data){
+        // const reRef = useRef<>();
+        const token = await reRef.current.executeAsync();
+        reRef.current.reset();
+        // console.log("this is where form data should log")
+        // console.log(data)
+        // console.log(token)
+        
+        
+        fetch(`/api/sendgrid`, {
+          method: `POST`,
+          body: JSON.stringify({
+            name: data.Name,
+            phone: data.Phone,
+            email: data.Email,
+            message:data.Message,
+            token,
+        }),
+          headers: {
+            "content-type": `application/json`,
+          },
+        })
+          .then(res => res.json())
+          .then(body => {
+            console.log(`response from API:`, body);
+          })
+          .then(setServerState({formSent: true}))
+      }
+      console.log({ errors })
+      useEffect(() => {
+          if (serverState.formSent === true) {
+            setTimeout(() => {
+                setServerState({
+                    formSent: false
+                })
+            }, 3000)
+          }
+      })
 //   const siteTitle = data.site.siteMetadata?.title || `Title`
   const siteTitle = `Title`
   const repairProducts = data.repair.nodes
   const orderProducts = data.order.nodes 
-console.log(data)
+    // console.log(data)
 
   if (repairProducts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
         <p>
-          No blog posts found. Add markdown posts to "content/blog" (or the
-          directory you specified for the "gatsby-source-filesystem" plugin in
-          gatsby-config.js).
+          No products found. Please reload or contact 07 843 2936 or hamish@centralaero.nz for help.
         </p>
       </Layout>
     )
   }
-
   return (
     <Layout location={location} title={siteTitle} invert={true}>
+        <ReCAPTCHA 
+            sitekey={process.env.GATSBY_RE_SITEKEY} 
+            size="invisible"
+            ref={reRef} 
+        />
         <ElectricalProducts id="top">
         <div className="wrapper">
-            {/* <div className="products-top">
-                <h1>Shop Electrical Components</h1>
-                <div className="filters">
-                    <label>search parts:
-                    <input type="search"/>
-                    </label>
-                    <label>filter type:
-                        <select>
-                            <option value="Magneto">Magnetos</option>
-                            <option value="AC Generator">AC Generators</option>
-                            <option value="DC Starter Generator">DC Starter Generators</option>
-                            <option value="Alternator">Alternators</option>
-                        </select>
-                    </label>
-                    <label>filter brand:
-                        <select>
-                            <option value="Safran">Safran</option>
-                            <option value="Skurka">Skurka</option>
-                            <option value="Hartzell">Hartzell</option>
-                        </select>
-                    </label>
-                    
-                    <label>sort order:
-                        <select>
-                            <option value="A-Z">Alphabetical (A-Z)</option>
-                            <option value="option2">Alphabetical (Z-A)</option>
-                        </select>
-                    </label>
-                    
-                    <button>apply filters</button>
-                </div>
-            </div> */}
             <div className="content-wrapper">
-                <div className="content-left">
+                <form className="content-left" onSubmit={handleSubmit(onSubmit)}>
                     <h2>Searching for a part?</h2>
                     <h2>Need a repair?</h2>
                     <p>Let our electrical team help you find what you need, fill out the form below or call us at 07 843 2936.</p>
-                    <label>Name:</label>
-                    <input type="text"></input>
+                    <label htmlFor="name">Name:</label>
+                    <input type="text" 
+                        name="name" 
+                        required  
+                        {...register("Name", { required: true, maxLength: 100 })} 
+                    />
                     <label>Email:</label>
-                    <input type="text"/>
+                    <input  
+                        type="email" 
+                        name="email" 
+                        required
+                        {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
+                    />
                     <label>Phone:</label>
-                    <input type="text"/>
+                    <input 
+                        type="phone" 
+                        name="phone" 
+                        required
+                        {...register("Phone", { required: true})}
+                    />
                     <label>Part Number/Description</label>
-                    <textarea></textarea>
-                    <button>SEND ENQUIRY</button>
-                </div>
+                    <textarea
+                         name="message" 
+                        id="message" 
+                        rows="5" 
+                        required
+                        {...register("Message", { required: true, maxLength: 2000 })} 
+                    />
+                    <button
+                    type="submit" 
+                        class="g-recaptcha"
+                        data-sitekey="site_key"
+                        data-callback='onSubmit'
+                        data-action='submit'
+                    >SEND ENQUIRY</button>
+                </form>
                 <div className="content-right">
                 <div className="title-div"><h3>COMPONENTS WE REPAIR AND OVERHAUL</h3></div>
                 {repairProducts.map(post => {
