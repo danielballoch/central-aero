@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 import SearchResult from "./search-result"
 
 const Popover = css`
-  max-height: 80vh;
+  max-height: 33vh;
   overflow: scroll;
   -webkit-overflow-scrolling: touch;
   position: absolute;
