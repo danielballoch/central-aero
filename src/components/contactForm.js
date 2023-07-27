@@ -55,6 +55,21 @@ form {
             
         }
     }
+    .message-sent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: -40px;
+        position: absolute;
+        z-index: 100;
+        width: 600px;
+        min-height: 500px;
+        background-color: rgba(255,255,255,.9);
+        div {
+            max-width: 450px;
+        }
+    }
 }
 .info-div {
     align-self: center;
@@ -173,6 +188,12 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
                     ref={reRef} 
                 />
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="message-sent">
+                        <div>
+                            <h2>Your Message has been sent!</h2>
+                            <p>Thanks for enquiring with Central Aero. We'll be in touch as soon as possible.</p>
+                        </div>
+                    </div>
                     <h2>{title}</h2>
                     <label htmlFor="name">Name:</label>
                     <input
