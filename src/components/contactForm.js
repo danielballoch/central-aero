@@ -1,6 +1,8 @@
-import React from "react"
+import React, {useRef, useEffect, useState} from "react"
 import styled from "styled-components"
 import BackgroundImage from "../images/engineering-images/Hero2Dark.png"
+import { useForm } from "react-hook-form"
+import ReCAPTCHA from "react-google-recaptcha";
 
 const FormDiv = styled.div`
 padding: 100px 0;
@@ -113,15 +115,106 @@ form {
 `
 
 export default function ContactElectrical({formEmail,title, infoTitle, infoNumber, infoContacts}){
+    const reRef = useRef();
+    const [serverState, setServerState] = useState({
+        formSent: false,
+    });
+
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+      } = useForm()
+
+
+      async function onSubmit(data){
+        // const reRef = useRef<>();
+        // const token = await reRef.current.executeAsync();
+        // reRef.current.reset();
+        console.log("this is where form data should log")
+        console.log(data)
+        // console.log(token)
+        
+        
+        fetch(`/api/sendgrid`, {
+          method: `POST`,
+          body: JSON.stringify({
+            name: data.Name,
+            phone: data.Phone,
+            email: data.Email,
+            message:data.Message,
+            // token,
+        }),
+          headers: {
+            "content-type": `application/json`,
+          },
+        })
+          .then(res => res.json())
+          .then(body => {
+            console.log(`response from API:`, body);
+          })
+          .then(setServerState({formSent: true}))
+      }
+      console.log({ errors })
+      useEffect(() => {
+          if (serverState.formSent === true) {
+            setTimeout(() => {
+                setServerState({
+                    formSent: false
+                })
+            }, 3000)
+          }
+      })
   return (
             <FormDiv>
-                <form>
+                {/* <ReCAPTCHA 
+                    sitekey={process.env.GATSBY_RE_SITEKEY} 
+                    size="invisible"
+                    ref={reRef} 
+                /> */}
+                <form onSubmit={handleSubmit(onSubmit)}>
                     <h2>{title}</h2>
-                    <label>Name:</label><input type="text"></input>
-                    <label>Email:</label><input type="text"></input>
-                    <label>Phone:</label><input type="text"></input>
-                    <label>Message:</label><textarea></textarea>
-                    <button>Send Message</button>
+                    <label htmlFor="name">Name:</label>
+                    <input
+                        type="text" 
+                        name="name" 
+                        required  
+                        {...register("Name", { required: true, maxLength: 100 })} 
+                    />
+                    
+                    <label htmlFor="email">Email: </label>
+                    <input  
+                        type="email" 
+                        name="email" 
+                        required
+                        {...register("Email", { required: true, pattern: /^\S+@\S+$/i })}
+                    />
+                   
+                    <label htmlFor="phone">Phone: </label>
+                    <input 
+                        type="phone" 
+                        name="phone" 
+                        required
+                        {...register("Phone", { required: true})}
+                    />
+                   
+                    <label htmlFor="message">Message:</label>
+                    <textarea
+                         name="message" 
+                        id="message" 
+                        rows="5" 
+                        required
+                        {...register("Message", { required: true, maxLength: 2000 })} 
+                    />
+                    
+                    <button
+                        type="submit" 
+                        class="g-recaptcha"
+                        data-sitekey="site_key"
+                        data-callback='onSubmit'
+                        data-action='submit'
+                    >
+                    Send Message</button>
                 </form>
                 <div className="info-div">
                     <h2><b>{infoTitle}</b> {infoNumber}</h2>
