@@ -24,6 +24,7 @@ form {
     padding: 40px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     h2 {
         margin-top: 0;
     }
@@ -55,7 +56,7 @@ form {
             
         }
     }
-    .message-sent {
+    .message {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -63,11 +64,30 @@ form {
         margin: -40px;
         position: absolute;
         z-index: 100;
-        width: 600px;
-        min-height: 500px;
-        background-color: rgba(255,255,255,.9);
+        max-width: 600px;
+        width: 100vw;
+        height: 0px;
+        overflow: hidden;
+        color: rgba(255,255,255,0);
+        background-color: rgba(255,255,255,0);
+        transition: background-color .5s ease, color .5s ease,  height 2s;
+        p, h2 {
+            transition: color .5s ease;
+            color: rgba(255,255,255,0);
+        }
         div {
+            width: 90vw;
             max-width: 450px;
+        }
+    }
+    .sent {
+        color: black;
+        transition: background-color .5s ease, color .5s ease;
+        height: 500px;
+        background-color: rgba(255,255,255,.9);
+        p, h2 {
+            transition: color .5s ease;
+            color: black;
         }
     }
 }
@@ -131,9 +151,7 @@ form {
 
 export default function ContactElectrical({formEmail,title, infoTitle, infoNumber, infoContacts}){
     const reRef = useRef();
-    const [serverState, setServerState] = useState({
-        formSent: false,
-    });
+    const [serverState, setServerState] = useState({formSent: false});
 
     const {
         register,
@@ -188,9 +206,9 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
                     ref={reRef} 
                 />
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="message-sent">
+                    <div className={serverState.formSent === true ? "message sent" : "message"}>
                         <div>
-                            <h2>Your Message has been sent!</h2>
+                            <h2>Your message has been sent!</h2>
                             <p>Thanks for enquiring with Central Aero. We'll be in touch as soon as possible.</p>
                         </div>
                     </div>

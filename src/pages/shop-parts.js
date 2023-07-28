@@ -102,6 +102,40 @@ select {
     @media(max-height: 860px){
         /* height: fit-content; */
     }
+    .message {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: -40px;
+        position: absolute;
+        z-index: 100;
+        max-width: 440px;
+        width: 100vw;
+        height: 0px;
+        overflow: hidden;
+        color: rgba(255,255,255,0);
+        background-color: rgba(255,255,255,0);
+        transition: background-color .5s ease, color .5s ease,  height 2s;
+        p, h2 {
+            transition: color .5s ease;
+            color: rgba(255,255,255,0);
+        }
+        div {
+            width: 90vw;
+            max-width: 350px;
+        }
+    }
+    .sent {
+        color: black;
+        transition: background-color .5s ease, color .5s ease;
+        height: 714px;
+        background-color: rgba(255,255,255,.9);
+        p, h2 {
+            transition: color .5s ease;
+            color: black;
+        }
+    }
 }
 .content-right {
 display: flex;
@@ -282,6 +316,12 @@ const BlogIndex = ({ data, location }) => {
         <div className="wrapper">
             <div className="content-wrapper">
                 <form className="content-left" onSubmit={handleSubmit(onSubmit)}>
+                    <div className={serverState.formSent === true ? "message sent" : "message"}>
+                        <div>
+                            <h2>Enquiry Sent!</h2>
+                            <p>Thanks for contacting Central Aero. We'll be in touch as soon as possible.</p>
+                        </div>
+                    </div>
                     <h2>Searching for a part?</h2>
                     <h2>Need a repair?</h2>
                     <p>Let our electrical team help you find what you need, fill out the form below or call us at 07 843 2936.</p>
