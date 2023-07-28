@@ -51,8 +51,10 @@ flex-direction: column;
                 cursor: pointer;
                 .arrow {
                     /* border-color: #fde027; */
-                    margin-left: 24px;
-                    margin-right: 76px;
+                    /* margin-left: 24px;
+                    margin-right: 76px; */
+                    animation: bounce 1s ease;
+                    animation-iteration-count: infinite;
                 }
             }
         }
@@ -70,6 +72,17 @@ flex-direction: column;
     .right {
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
+    }
+}
+@keyframes bounce {
+    0%   { margin-left: 20px; 
+           margin-right: 80px
+    }
+    50%  { margin-left: 24px; 
+           margin-right: 76px; 
+    }
+    100% { margin-left: 20px; 
+           margin-right: 80px; 
     }
 }
 .button-div {

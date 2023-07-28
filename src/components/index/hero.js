@@ -118,15 +118,29 @@ background-color: black;
             :hover {
                 /* border-bottom: 3px solid white; */
                 color: #fde027;
-                cursor: pointer;
+                cursor: pointer; 
                 .arrow {
                     border-color: #fde027;
-                    margin-left: 24px;
-                    margin-right: 76px;
+                    animation: bounce 1s ease;
+                    animation-iteration-count: infinite;
+                    /* margin-left: 24px;
+                    margin-right: 76px; */
                 }
             }
         }
+        
+    }
          
+    }
+@keyframes bounce {
+    0%   { margin-left: 20px; 
+           margin-right: 80px
+    }
+    50%  { margin-left: 24px; 
+           margin-right: 76px; 
+    }
+    100% { margin-left: 20px; 
+           margin-right: 80px; 
     }
 }
 div {
