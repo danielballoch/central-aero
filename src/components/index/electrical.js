@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useRef, useLayoutEffect} from 'react'
 import styled from 'styled-components'
 import MainImage from '../../images/index-images/central-aero-electrical.jpg'
 import { StaticImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
+import { gsap } from 'gsap';
 
 const Wrapper = styled.div`
 display: flex;
@@ -113,9 +114,36 @@ div, .static-image {
 `
 
 export default function Hero(){
+    const electricalRef = useRef(null);
+    useLayoutEffect(() => {
+        let ctx = gsap.context(() => {
+            const element = electricalRef.current;
+            let scrollSettings1 = {
+                trigger: ".text-box3",
+                start: "center bottom",
+                toggleActions: "play none none reverse",
+                // markers: true
+            };
+            let scrollSettings2 = {
+                trigger: ".img-ani3",
+                start: "center bottom",
+                toggleActions: "play none none reverse",
+                // markers: true
+            };
+            setTimeout(()=>{
+                console.log("working?")
+                gsap.fromTo(element.querySelector(".img-ani3"),{opacity: 0, x: 100},{opacity: 1, x: 0, scrollTrigger: scrollSettings2});
+                gsap.fromTo(element.querySelector(".text-box3"),{opacity: 0, x: 100},{opacity: 1, x: 0, scrollTrigger: scrollSettings1});
+                // gsap.fromTo(element.querySelector(".m1"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings3});
+                // gsap.fromTo(element.querySelector(".m2"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings4});
+                
+            },100)
+        });
+        return () => ctx.revert(); // <- cleanup!
+}, []);
     return(
-        <Wrapper >
-            <div>
+        <Wrapper ref={electricalRef}>
+            <div className='text-box3'>
                 <div className='text-content'>
                     <h2>Electrical</h2>
                     <h3>CAANZ Part 145 Approved Repair/Overhaul Facility</h3>
@@ -127,7 +155,7 @@ export default function Hero(){
                     </div>
                 </div>
             </div>
-            <StaticImage className="static-img" src="../../images/index-images/central-aero-electrical.jpg" placeholder="blurred"/>
+            <StaticImage className="static-img img-ani3" src="../../images/index-images/central-aero-electrical.jpg" placeholder="blurred"/>
         </Wrapper>
     )
 }

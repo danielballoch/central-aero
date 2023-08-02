@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useRef, useLayoutEffect} from 'react'
 import styled from 'styled-components'
 import { StaticImage } from 'gatsby-plugin-image'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 const Wrapper = styled.div`
 min-height: 800px;
@@ -111,17 +113,45 @@ align-items: center;
 `
 
 export default function Hero(){
+    gsap.registerPlugin(ScrollTrigger);
+    const membershipRef = useRef(null);
+        useLayoutEffect(() => {
+            let ctx = gsap.context(() => {
+                const element = membershipRef.current;
+                let scrollSettings1 = {
+                    trigger: ".text-box",
+                    start: "center bottom",
+                    toggleActions: "play none none reverse",
+                    // markers: true
+                };
+                let scrollSettings2 = {
+                    trigger: ".img-ani",
+                    start: "center bottom",
+                    toggleActions: "play none none reverse",
+                    // markers: true
+                };
+                setTimeout(()=>{
+                    gsap.fromTo(element.querySelector(".img-ani"),{opacity: 0, x: -100},{opacity: 1, x: 0, scrollTrigger: scrollSettings2});
+                    gsap.fromTo(element.querySelector(".text-box"),{opacity: 0, x: -100},{opacity: 1, x: 0, scrollTrigger: scrollSettings1});
+                    // gsap.fromTo(element.querySelector(".m1"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings3});
+                    // gsap.fromTo(element.querySelector(".m2"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings4});
+                    
+                },100)
+                
+            });
+            return () => ctx.revert(); // <- cleanup!
+    }, []);
     return(
-        <Wrapper>
-            <div className='about-images'>
+        <Wrapper ref={membershipRef}>
+            <div className='about-images img-ani' onLoad={() => ScrollTrigger.refresh()}>
                 <StaticImage placeholder="blurred" className='static-image' alt="Engineering Showcase" src="../../images/index-images/central-aero-hanger.jpg"/>
                 <StaticImage placeholder="blurred" className='static-image center-image' alt="Electrical Showcase" src="../../images/index-images/central-aero-heli.jpeg"/>
             </div>
             <div className='about-text'>
-                <div>
-                    <h2>Engineering & Electrical <br/> Under One Roof</h2>
-                    <p>Central Aero is made up of two sister companies, Electrical run by Hamish Ross, and Engineering run by Paul Waterhouse. Working out of the Super Air Hanger near Hamilton Airport, their teams have provided quality parts and services to New Zealand and Overseas Pilots for over 17+ years.</p>
-                    <p>With knowledge and expertise in Commercial Air transport Aircrafts, Fixed Wing Planes, Helicopters right through to Hot Air Balloons, Gliders, Microlights & Gyrocopters - Central Aero is capable and ready to help with your engineering and electrical aviation needs.</p>
+                <div className='text-box'>
+                    <h2 className='title'>Engineering & Electrical <br/> Under One Roof</h2>
+                    <p className='m1'>Central Aero is made up of two sister companies, Electrical run by Hamish Ross, and Engineering run by Paul Waterhouse. Working out of the Super Air Hanger near Hamilton Airport, their teams have provided quality parts and services to New Zealand and Overseas Pilots for over 17+ years.</p>
+                    <p className='m2'>With knowledge and expertise in Commercial Air transport Aircrafts, Fixed Wing Planes, Helicopters right through to Hot Air Balloons, Gliders, Microlights & Gyrocopters - Central Aero is capable and ready to help with your engineering and electrical aviation needs.</p>
                     {/* <button>Get in Touch</button> */}
                 </div>
             </div>
