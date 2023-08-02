@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useRef, useLayoutEffect} from 'react'
 import Layout from "../components/layout.js"
 import styled from 'styled-components'
 import Search from "../components/search"
@@ -8,9 +8,13 @@ import Image3 from "../images/electrical-images/DC-Starter.png"
 import Image4 from "../images/electrical-images/Alternator.png"
 import HeroImage from "../images/electrical-images/electrical-background-darker.png"
 import Placeholder from "../images/index-images/central-aero-electrical.jpg"
-import { I } from '@styled-icons/fa-solid'
 import { StaticImage } from 'gatsby-plugin-image'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+
 const searchIndices = [{ name: `Pages`, title: `Pages` }]
+
 
 
 
@@ -315,9 +319,79 @@ let services = [
 
 
 export default function Electrical(){
+    gsap.registerPlugin(ScrollTrigger);
+    const electricalRef = useRef(null);
+        useLayoutEffect(() => {
+            let ctx = gsap.context(() => {
+                const element = electricalRef.current;
+                let scrollSettings1 = {
+                    trigger: ".header-ani",
+                    start: "top bottom",
+                    toggleActions: "play none none reverse",
+                    // markers: true
+                };
+                let scrollSettings2 = {
+                    trigger: ".products-text-ani",
+                    start: "top bottom",
+                    toggleActions: "play none none reverse",
+                    // markers: true
+                };
+                let scrollSettings3 = {
+                    trigger: ".products-buttons-ani",
+                    start: "top bottom",
+                    toggleActions: "play none none reverse",
+                    // markers: true
+                };
+                // let scrollSettingsPin = {
+                //     pin: ".pin",
+                //     start: "top top",
+                //     end: "+=1500"
+                // };
+                setTimeout(()=>{
+                    // gsap.fromTo(element.querySelector(".img-ani3"),{opacity: 0, x: -100},{opacity: 1, x: 0, scrollTrigger: scrollSettings2});
+                    // gsap.fromTo(element.querySelector(".text-box3"),{opacity: 0, x: -100},{opacity: 1, x: 0, scrollTrigger: scrollSettings1});
+                    gsap.fromTo(element.querySelector(".header-ani"),{opacity: 0, y: 100},{opacity: 1, y: 0, scrollTrigger: scrollSettings1});
+                    gsap.fromTo(element.querySelector(".products-text-ani"),{opacity: 0, y: 100},{opacity: 1, y: 0, scrollTrigger: scrollSettings2});
+                    gsap.fromTo(element.querySelector(".products-buttons-ani"),{opacity: 0, y: 100},{opacity: 1, y: 0, scrollTrigger: scrollSettings3});
+                    // gsap.fromTo(element.querySelector(".pin"),{opacity: 1, x: 0},{opacity: 1, x: 0, scrollTrigger: scrollSettingsPin});
+                    for (let i = 0; i < components.length; i++){
+                        let className = ".component-ani"+i;
+                        let scrollSettings = {
+                            trigger: className,
+                            start: "top bottom",
+                            toggleActions: "play none none reverse",
+                            // markers: true
+                        };
+                        gsap.fromTo(element.querySelector(className),{opacity: 0, y: 100,},{opacity: 1, y: 0, scrollTrigger: scrollSettings});
+                    }
+                    for (let i = 0; i < services.length; i++){
+                        let className = ".img"+i;
+                        let scrollSettingsPin = {
+                            trigger: className,
+                            start: "center bottom",
+                            toggleActions: "play none none reverse",
+                            // markers: true
+                        };
+                        gsap.fromTo(element.querySelector(className),{opacity: 0, x:0},{opacity: 1, x:0, scrollTrigger: scrollSettingsPin});
+                        let className2 = ".text"+i;
+                        let scrollSettingsPin2 = {
+                            trigger: className2,
+                            start: "center bottom",
+                            toggleActions: "play none none reverse",
+                            // markers: true
+                        };
+                        gsap.fromTo(element.querySelector(className2),{opacity: 0, x:0},{opacity: 1, x:0, scrollTrigger: scrollSettingsPin2});
+                    }
+                    // gsap.fromTo(element.querySelector(".m2"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings4});
+                    
+                },100)
+                
+            });
+            return () => ctx.revert(); // <- cleanup!
+    }, []);
     return (
         <Layout>
-            <ElectricalWrapper id="top">
+            <ElectricalWrapper id="top" ref={electricalRef}>
                 <div className='hero-wrap'>
                     <ElectricalHero>
                         <div className='hero-center-content'>
@@ -347,29 +421,28 @@ export default function Electrical(){
                 </div>
 
                 <div className='products-section'>
-                    <h2>Electrical Products</h2>
-                    <p>We stock the best electrical components from trusted brands such as SKURKA, Safran, Champion, Hartzell etc and also have a selection of specialty parts. If your fixed wing/touring planes, commercial planes, helicopters, or other aircrafts need new electrical components or existing components repaired/overhauled get in touch today.</p>
+                    <h2 className='header-ani'>Electrical Products</h2>
+                    <p className='products-text-ani'>We stock the best electrical components from trusted brands such as SKURKA, Safran, Champion, Hartzell etc and also have a selection of specialty parts. If your fixed wing/touring planes, commercial planes, helicopters, or other aircrafts need new electrical components or existing components repaired/overhauled get in touch today.</p>
                     <ComponentsWrapper>
                         {components.map((component, i) => (
-                            <div className='component'>
-                            <img src={i === 0? Image1 : i === 1? Image2 : i === 2? Image3 : Image4}/>
+                            <div className={"component component-ani"+i}>
+                                <img src={i === 0? Image1 : i === 1? Image2 : i === 2? Image3 : Image4}/>
                                 <p><b>{component}</b></p>
                             </div>
                         ))}
                         
                     </ComponentsWrapper>
-                    <div className="button-div">
+                    <div className="button-div products-buttons-ani">
                         <a href="/shop-parts">View All Products</a>
                         <a href="/contact-electrical">Contact Electrical</a>
                     </div>
                 </div>
 
                 <Services>
-                {services.map(service => (
-                    <ServiceWrapper>
-                        
-                        <img src={Placeholder}/>
-                        <div>
+                {services.map((service, i) => (
+                    <ServiceWrapper >
+                        <img src={Placeholder} className={'img'+i}/>
+                        <div className={'text'+i}>
                             <h2>{service[0]}</h2>
                             <p>{service[1]}</p>
                             <a href="/shop-parts">View All Products</a>

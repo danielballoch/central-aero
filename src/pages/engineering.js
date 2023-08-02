@@ -1,13 +1,11 @@
-import React from 'react'
+import React, {useRef, useLayoutEffect} from 'react'
 import Layout from "../components/layout.js"
-import { Link, graphql, useStaticQuery } from "gatsby"
+import { Link, graphql} from "gatsby"
 import styled from 'styled-components'
 import Plane from "../images/aircrafts/central-aero-planes.jpg"
-import Helicopter from "../images/aircrafts/central-aero-helicopter2.jpg"
-import { DrumstickBite } from '@styled-icons/fa-solid'
-import HeroImage1 from "../images/engineering-images/EngineeringHero1.png" 
-import HeroImage2 from "../images/engineering-images/EngineeringHero2.png"
 import { StaticImage } from 'gatsby-plugin-image'
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 
 
@@ -303,16 +301,55 @@ button {
 
 export default function Electrical({data}){
     const services = data.services.nodes
-    console.log(data)
-    console.log(services)
-
-    
-
+    gsap.registerPlugin(ScrollTrigger);
+    const engineeringRef = useRef(null);
+        useLayoutEffect(() => {
+            let ctx = gsap.context(() => {
+                const element = engineeringRef.current;
+                let scrollSettings1 = {
+                    trigger: ".text-box3",
+                    start: "center bottom",
+                    toggleActions: "play none none reverse",
+                    // markers: true
+                };
+                let scrollSettings2 = {
+                    trigger: ".img-ani3",
+                    start: "center bottom",
+                    toggleActions: "play none none reverse",
+                    // markers: true
+                };
+                let scrollSettings3 = {
+                    trigger: ".header-ani",
+                    start: "top bottom",
+                    toggleActions: "play none none reverse",
+                    // markers: true
+                };
+                setTimeout(()=>{
+                    gsap.fromTo(element.querySelector(".img-ani3"),{opacity: 0, x: -100},{opacity: 1, x: 0, scrollTrigger: scrollSettings2});
+                    gsap.fromTo(element.querySelector(".text-box3"),{opacity: 0, x: -100},{opacity: 1, x: 0, scrollTrigger: scrollSettings1});
+                    gsap.fromTo(element.querySelector(".header-ani"),{opacity: 0, y: 100},{opacity: 1, y: 0, scrollTrigger: scrollSettings3});
+                    for (let i = 0; i < services.length; i++){
+                        let className = ".service-ani"+i;
+                        let scrollSettings = {
+                            trigger: className,
+                            start: "top bottom",
+                            toggleActions: "play none none reverse",
+                            // markers: true
+                        };
+                        gsap.fromTo(element.querySelector(className),{opacity: 0, y: 100,},{opacity: 1, y: 0, scrollTrigger: scrollSettings});
+                    }
+                    // gsap.fromTo(element.querySelector(".m2"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings4});
+                    
+                },100)
+                
+            });
+            return () => ctx.revert(); // <- cleanup!
+    }, []);
     return (
         <Layout >
-            <EngineeringWrapper id="top">
+            <EngineeringWrapper id="top" ref={engineeringRef}>
                 <EngineeringHero>
-                    <div className='main-content'>
+                    <div className='main-content '>
                         <div className='center-content'>
                             <h1>CENTRAL AERO ENGINEERING</h1>
                             <p>Supporting New Zealand Airports, Pilots, and Hobbyist flyers with everything from maintenance and airworthiness reviews to air accident investigation and consultancy. Whatever your aviation need Central Aero Engineering has the knowledge and expertise to keep you flying safely.</p>
@@ -325,25 +362,25 @@ export default function Electrical({data}){
                 </EngineeringHero>
 
                 <div className='stewart-systems'>
-                        <div className='content-wrapper'>
-                            <div className='content'>
-                                <h2>New Zealand Stewart Systems Distributer: Call us for all your fabric covering materials</h2>
-                                {/* <hr/> */}
-                                <p><b>We're proud to be the only Stewart Systems Distributor in New Zealand.</b></p>
-                                <p>What is Stewart Systems? They're an innovative aircraft fabric covering and painting technology company setting the standard for the 21st century. Based in Ohio USA they manufacture non-hazardous, waterborne products for covering & painting aircrafts.</p>
-                                <div className='button-div'>
-                                    <Link className="button1" to="/stewart-systems">Learn More</Link>
-                                    <Link className="button2" to="/contact-engineering">Contact Engineering</Link>
-                                </div>
+                    <div className='content-wrapper text-box3'>
+                        <div className='content'>
+                            <h2>New Zealand Stewart Systems Distributer: Call us for all your fabric covering materials</h2>
+                            {/* <hr/> */}
+                            <p><b>We're proud to be the only Stewart Systems Distributor in New Zealand.</b></p>
+                            <p>What is Stewart Systems? They're an innovative aircraft fabric covering and painting technology company setting the standard for the 21st century. Based in Ohio USA they manufacture non-hazardous, waterborne products for covering & painting aircrafts.</p>
+                            <div className='button-div'>
+                                <Link className="button1" to="/stewart-systems">Learn More</Link>
+                                <Link className="button2" to="/contact-engineering">Contact Engineering</Link>
                             </div>
                         </div>
-                        <StaticImage className="img" placeholder='blurred' src="../images/aircrafts/central-aero-helicopter2.jpg"/>
+                    </div>
+                    <StaticImage className="img img-ani3" placeholder='blurred' src="../images/aircrafts/central-aero-helicopter2.jpg"/>
                 </div>
-                <h2 id="services">Our Engineering Services</h2>
-                <Services >
-                    {services.map(service => (
+                <h2 id="services" className='header-ani'>Our Engineering Services</h2>
+                <Services>
+                    {services.map((service, i) => (
                         <Link className="no-style" to={"/"+service.frontmatter.path + "#top"}>
-                            <ServiceWrapper>
+                            <ServiceWrapper className={"service-ani"+i}>
                                 <img src={Plane}/>
                                 <div>
                                     <h2>{service.frontmatter.title}</h2>
