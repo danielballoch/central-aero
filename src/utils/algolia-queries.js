@@ -4,35 +4,29 @@ const pagePath = `content`
 const indexName = `Pages`
 
 const pageQuery = `{
-  pages: allMarkdownRemark(
-    filter: {
-      fileAbsolutePath: { regex: "/${escapeStringRegexp(pagePath)}/" },
-    }
-  ) {
+  pages: allSanityElectricalComponents{
     edges {
       node {
         id
-        frontmatter {
-          title
-          partnumber
-        }
-        fields {
-          slug
-        }
+        component_title
+        component_subtext
+        component_path
+        blurb
         internal {
-          contentDigest
+            contentDigest
+            type
+            owner
         }
-        excerpt(pruneLength: 5000)
       }
     }
   }
 }`
 
-function pageToAlgoliaRecord({ node: { id, frontmatter, fields, ...rest } }) {
+function pageToAlgoliaRecord({ node: { id, component_title, component_subtext, ...rest } }) {
   return {
     objectID: id,
-    ...frontmatter,
-    ...fields,
+    ...component_title,
+    ...component_subtext,
     ...rest,
   }
 }
@@ -42,7 +36,6 @@ const queries = [
     query: pageQuery,
     transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
     indexName,
-    settings: { attributesToSnippet: [`excerpt:20`] },
   },
 ]
 

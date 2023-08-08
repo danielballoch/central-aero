@@ -117,34 +117,28 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map(node => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
+            serialize: ({ query: { site, allSanityElectricalComponents } }) => {
+              return allSanityElectricalComponents.nodes.map(node => {
+                return Object.assign({}, node, {
+                  description: node.blurb,
+                  date: node._updatedAt,
+                  url: site.siteMetadata.siteUrl + "/shop-parts/" + node.component_path,
+                  guid: site.siteMetadata.siteUrl + node._id,
                 })
               })
             },
             query: `{
-              allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+              allSanityElectricalComponents(sort: {frontmatter: {date: DESC}}) {
                 nodes {
-                  excerpt
-                  html
-                  fields {
-                    slug
-                  }
-                  frontmatter {
-                    title
-                    date
-                  }
+                  component_path
+                  blurb
+                  _updatedAt
+                  _id
                 }
               }
             }`,
             output: "/rss.xml",
-            title: "Gatsby Starter Blog RSS Feed",
+            title: "Central Aero RSS Feed",
           },
         ],
       },

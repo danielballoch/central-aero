@@ -57,8 +57,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       const previousPostId = index === 0 ? null : electricalsanity[index - 1].id
       const nextPostId = index === electricalsanity.length - 1 ? null : electricalsanity[index + 1].id
       const thirdProductId = index !== electricalsanity.length - 2 && index !== electricalsanity.length - 1 ? electricalsanity[index + 2].id : null
-      console.log("Check engineering path:", post.component_path)
-      console.log("Check all engineering data", post)
             createPage({
                 path: "shop-parts/"+post.component_path,
                 component: productTemplate,
@@ -75,8 +73,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     engineeringsanity.forEach((post, index) => {
       const previousPostId = index === 0 ? null : engineeringsanity[index - 1].id
       const nextPostId = index === engineeringsanity.length - 1 ? null : engineeringsanity[index + 1].id
-      
-      console.log("Check service path:", post.service_path)
             createPage({
                 path: post.service_path,
                 component: serviceTemplate,
