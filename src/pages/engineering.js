@@ -4,6 +4,7 @@ import { Link, graphql} from "gatsby"
 import styled from 'styled-components'
 import Plane from "../images/aircrafts/central-aero-planes.jpg"
 import { StaticImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -379,12 +380,12 @@ export default function Electrical({data}){
                 <h2 id="services" className='header-ani'>Our Engineering Services</h2>
                 <Services>
                     {services.map((service, i) => (
-                        <Link className="no-style" to={"/"+service.frontmatter.path + "#top"}>
+                        <Link className="no-style" to={"/"+service.service_path + "#top"}>
                             <ServiceWrapper className={"service-ani"+i}>
-                                <img src={Plane}/>
+                                <GatsbyImage image={service.service_image.asset.gatsbyImage} placeholder="blur"/>
                                 <div>
-                                    <h2>{service.frontmatter.title}</h2>
-                                    <p>{service.frontmatter.body}</p>
+                                    <h2>{service.service_title}</h2>
+                                    <p>{service.blurb}</p>
                                     <a className='button1'>Learn More</a>  
                                 </div>
                             </ServiceWrapper>
@@ -397,23 +398,39 @@ export default function Electrical({data}){
 }
 
 
-
-
 export const pageQuery = graphql`
-  {
-    services: allMarkdownRemark(filter: { frontmatter: {type: {eq: "service"}}}, sort: { frontmatter: {title: ASC }}) {
-      nodes {
-        excerpt
-        fields {
-          slug
+{
+    services: allSanityEngineeringServices {
+        nodes {
+            service_image {
+                asset {
+                    gatsbyImage(width:350)
+                }
+            }
+            service_title
+            service_path
+            blurb
         }
-        frontmatter {
-          type
-          title
-          body
-          path
-        }
-      }
     }
-  }
+}
 `
+
+
+// export const pageQuery = graphql`
+//   {
+//     services: allMarkdownRemark(filter: { frontmatter: {type: {eq: "service"}}}, sort: { frontmatter: {title: ASC }}) {
+//       nodes {
+//         excerpt
+//         fields {
+//           slug
+//         }
+//         frontmatter {
+//           type
+//           title
+//           body
+//           path
+//         }
+//       }
+//     }
+//   }
+// `

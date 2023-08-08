@@ -10,6 +10,7 @@
   "dependencies": {
     "@fontsource/merriweather": "^4.5.14",
     "@fontsource/montserrat": "^4.5.14",
+    "@portabletext/react": "^3.0.4",
     "@sendgrid/mail": "^7.7.0",
     "@styled-icons/fa-solid": "^10.47.0",
     "algoliasearch": "^4.17.0",
@@ -23,6 +24,7 @@
     "gatsby-remark-prismjs": "^7.8.0",
     "gatsby-remark-responsive-iframe": "^6.8.0",
     "gatsby-source-filesystem": "^5.11.0",
+    "gatsby-source-sanity": "^7.8.1",
     "gatsby-transformer-remark": "^6.8.0",
     "gatsby-transformer-sharp": "^5.11.0",
     "gsap": "^3.12.2",

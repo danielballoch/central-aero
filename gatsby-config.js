@@ -27,6 +27,18 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
     {
+        resolve: 'gatsby-source-sanity',
+        options: {
+          projectId: "wuqx5iz0",
+          dataset: "production",
+          // To enable preview of drafts, copy .env-example into .env,
+          // and add a token with read permissions
+          token: process.env.SANITY_TOKEN,
+          watchMode: true,
+          overlayDrafts: true
+        }
+    },
+    {
         resolve: `gatsby-plugin-algolia`,
         options: {
           appId: process.env.GATSBY_ALGOLIA_APP_ID,

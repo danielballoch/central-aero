@@ -364,22 +364,21 @@ const BlogIndex = ({ data, location }) => {
                 <div className="content-right">
                 <div className="title-div"><h3>COMPONENTS WE REPAIR AND OVERHAUL</h3></div>
                 {repairProducts.map(post => {
-                    const title = post.frontmatter.title || post.fields.slug
-                    const partnumber = post.frontmatter.partnumber
+                    const title = post.component_title || post.component_path
+                    const subtitle = post.component_subtext
                     return (
-                        <Link to={post.fields.slug} itemProp="url" className="part-item">
+                        <Link to={post.component_path} itemProp="url" className="part-item">
                                 <img src={Image1}/>
                                 <p><b>{title}</b></p>
-                                <p>Including: {partnumber}</p>
+                                <p>{subtitle}</p>
                         </Link>
                     )
                 })}
                 <div className="title-div"><h3>COMPONENTS AVAILIBLE FOR ORDER</h3></div>
                 {orderProducts.map(post => {
-                    const title = post.frontmatter.title || post.fields.slug
-                    const partnumber = post.frontmatter.partnumber
+                    const title = post.component_title || post.component_path
                     return (
-                        <Link to={post.fields.slug} itemProp="url" className="part-item">
+                        <Link to={post.component_path} itemProp="url" className="part-item">
                                 <img src={Image1}/>
                                 <p><b>{title}</b></p>
                                 <p>In Stock</p>
@@ -410,35 +409,77 @@ export const pageQuery = graphql`
         title
       }
     }
-    repair: allMarkdownRemark(filter: { frontmatter: {type: {eq: "repair"}}}, sort: { frontmatter: {title: ASC }}) {
-      nodes {
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          type
-          date(formatString: "MMMM DD, YYYY")
-          title
-          partnumber
-          description
-        }
-      }
-    }
-    order: allMarkdownRemark(filter: { frontmatter: {type: {eq: "order"}}}, sort: { frontmatter: {title: ASC }}) {
+    repair: allSanityElectricalComponents(filter: { component_type: {eq: "repair"}}, sort: { component_title: ASC }) {
         nodes {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            type
-            date(formatString: "MMMM DD, YYYY")
-            title
-            partnumber
-            description
-          }
+            component_title
+            component_subtext
+            component_path
+            blurb
+            component_content {
+                _type
+                style
+                children {
+                    text
+                    _type
+                }
+            }
+        }
+    }
+    order: allSanityElectricalComponents(filter: { component_type: {eq: "order"}}, sort: { component_title: ASC }) {
+        nodes {
+            component_title
+            component_subtext
+            component_path
+            blurb
+            component_content {
+                _type
+                style
+                children {
+                    text
+                    _type
+                }
+            }
         }
       }
   }
 `
+
+// export const pageQuery = graphql`
+//   {
+//     site {
+//       siteMetadata {
+//         title
+//       }
+//     }
+//     repair: allMarkdownRemark(filter: { frontmatter: {type: {eq: "repair"}}}, sort: { frontmatter: {title: ASC }}) {
+//       nodes {
+//         excerpt
+//         fields {
+//           slug
+//         }
+//         frontmatter {
+//           type
+//           date(formatString: "MMMM DD, YYYY")
+//           title
+//           partnumber
+//           description
+//         }
+//       }
+//     }
+//     order: allMarkdownRemark(filter: { frontmatter: {type: {eq: "order"}}}, sort: { frontmatter: {title: ASC }}) {
+//         nodes {
+//           excerpt
+//           fields {
+//             slug
+//           }
+//           frontmatter {
+//             type
+//             date(formatString: "MMMM DD, YYYY")
+//             title
+//             partnumber
+//             description
+//           }
+//         }
+//       }
+//   }
+// `

@@ -6,6 +6,8 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 // Define the template for blog post
 const servicePage = path.resolve(`./src/templates/service-page-template.js`);
 const productPage = path.resolve(`./src/templates/electrical-part-page-template.js`);
+const serviceTemplate = path.resolve(`./src/templates/service-template-sanity.js`)
+const productTemplate = path.resolve(`./src/templates/product-template-sanity.js`)
 
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
@@ -16,23 +18,18 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   // Get all markdown blog posts sorted by date
   const result = await graphql(`
     {
-      services: allMarkdownRemark(filter: { frontmatter: {type: {eq: "service"}}}, sort: { frontmatter: { date: ASC } }, limit: 1000) {
+      engineeringsanity: allSanityEngineeringServices {
         nodes {
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            path
-          }
+            id
+            service_title
+            service_path
         }
       }
-      products: allMarkdownRemark(filter: { frontmatter: {type: {in: ["order","repair"]}}}, sort: { frontmatter: { date: ASC } }, limit: 1000) {
+      electricalsanity: allSanityElectricalComponents {
         nodes {
-          id
-          fields {
-            slug
-          }
+            id
+            component_title
+            component_path
         }
       }
     }
@@ -45,64 +42,103 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     )
     return
   }
+  console.log(result)
+//   const services = result.data.services.nodes
+//   const products = result.data.products.nodes
+  const engineeringsanity = result.data.engineeringsanity.nodes
+  const electricalsanity = result.data.electricalsanity.nodes
+  console.log(engineeringsanity, electricalsanity)
 
-  const services = result.data.services.nodes
-  const products = result.data.products.nodes
-
-  // Create blog posts pages
-  // But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
-  // `context` is available in the template as a prop and as a variable in GraphQL
-
-  if (services.length > 0) {
-    services.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : services[index - 1].id
-      const nextPostId = index === services.length - 1 ? null : services[index + 1].id
+//   Create blog posts pages
+//   But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
+//   `context` is available in the template as a prop and as a variable in GraphQL
+  if (electricalsanity.length > 0) {
+    electricalsanity.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : electricalsanity[index - 1].id
+      const nextPostId = index === electricalsanity.length - 1 ? null : electricalsanity[index + 1].id
+      const thirdProductId = index !== electricalsanity.length - 2 && index !== electricalsanity.length - 1 ? electricalsanity[index + 2].id : null
+      console.log("Check engineering path:", post.component_path)
+      console.log("Check all engineering data", post)
             createPage({
-                path: post.frontmatter.path,
-                component: servicePage,
+                path: "shop-parts/"+post.component_path,
+                component: productTemplate,
                 context: {
                   id: post.id,
                   previousPostId,
                   nextPostId,
-                },
-              })
-    })
-  }
-  if (products.length > 0) {
-    products.forEach((product, index) => {
-      const previousProductId = index === 0 ? null : products[index - 1].id
-      const nextProductId = index === products.length - 1 ? null : products[index + 1].id
-      const thirdProductId = index !== products.length - 2 && index !== products.length - 1 ? products[index + 2].id : null
-            createPage({
-                path: product.fields.slug,
-                component: productPage,
-                context: {
-                  id: product.id,
-                  previousProductId,
-                  nextProductId,
                   thirdProductId
                 },
               })
     })
   }
-}
-
-/**
- * @type {import('gatsby').GatsbyNode['onCreateNode']}
- */
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === `MarkdownRemark`) {
-    const value = createFilePath({ node, getNode })
-
-    createNodeField({
-      name: `slug`,
-      node,
-      value,
+  if (engineeringsanity.length > 0) {
+    engineeringsanity.forEach((post, index) => {
+      const previousPostId = index === 0 ? null : engineeringsanity[index - 1].id
+      const nextPostId = index === engineeringsanity.length - 1 ? null : engineeringsanity[index + 1].id
+      
+      console.log("Check service path:", post.service_path)
+            createPage({
+                path: post.service_path,
+                component: serviceTemplate,
+                context: {
+                  id: post.id,
+                  previousPostId,
+                  nextPostId
+                },
+              })
     })
   }
 }
+//   if (services.length > 0) {
+//     services.forEach((post, index) => {
+//       const previousPostId = index === 0 ? null : services[index - 1].id
+//       const nextPostId = index === services.length - 1 ? null : services[index + 1].id
+//             createPage({
+//                 path: post.frontmatter.path,
+//                 component: servicePage,
+//                 context: {
+//                   id: post.id,
+//                   previousPostId,
+//                   nextPostId,
+//                 },
+//               })
+//     })
+//   }
+//   if (products.length > 0) {
+//     products.forEach((product, index) => {
+//       const previousProductId = index === 0 ? null : products[index - 1].id
+//       const nextProductId = index === products.length - 1 ? null : products[index + 1].id
+//       const thirdProductId = index !== products.length - 2 && index !== products.length - 1 ? products[index + 2].id : null
+//             createPage({
+//                 path: product.fields.slug,
+//                 component: productPage,
+//                 context: {
+//                   id: product.id,
+//                   previousProductId,
+//                   nextProductId,
+//                   thirdProductId
+//                 },
+//               })
+//     })
+//   }
+// }
+
+// /**
+//  * @type {import('gatsby').GatsbyNode['onCreateNode']}
+//  */
+// exports.onCreateNode = ({ node, actions, getNode }) => {
+//   const { createNodeField } = actions
+
+//   if (node.internal.type === `MarkdownRemark`) {
+//     const value = createFilePath({ node, getNode })
+
+//     createNodeField({
+//       name: `slug`,
+//       node,
+//       value,
+//     })
+//   }
+// }
 
 
 
