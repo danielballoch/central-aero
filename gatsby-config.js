@@ -35,16 +35,8 @@ module.exports = {
           // and add a token with read permissions
           token: process.env.SANITY_TOKEN,
           watchMode: true,
-          overlayDrafts: true
+          overlayDrafts: false
         }
-    },
-    {
-        resolve: `gatsby-plugin-algolia`,
-        options: {
-          appId: process.env.GATSBY_ALGOLIA_APP_ID,
-          apiKey: process.env.ALGOLIA_ADMIN_KEY,
-          queries: require("./src/utils/algolia-queries")
-        },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -99,50 +91,14 @@ module.exports = {
             backgroundColor: `transparent`,
           }
         }
-      },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allSanityElectricalComponents } }) => {
-              return allSanityElectricalComponents.nodes.map(node => {
-                return Object.assign({}, node, {
-                  description: node.blurb,
-                  date: node._updatedAt,
-                  url: site.siteMetadata.siteUrl + "/shop-parts/" + node.component_path,
-                  guid: site.siteMetadata.siteUrl + node._id,
-                })
-              })
-            },
-            query: `{
-              allSanityElectricalComponents(sort: {frontmatter: {date: DESC}}) {
-                nodes {
-                  component_path
-                  blurb
-                  _updatedAt
-                  _id
-                }
-              }
-            }`,
-            output: "/rss.xml",
-            title: "Central Aero RSS Feed",
-          },
-        ],
-      },
     },
-    
+    {
+        resolve: `gatsby-plugin-algolia`,
+        options: {
+          appId: process.env.GATSBY_ALGOLIA_APP_ID,
+          apiKey: process.env.ALGOLIA_ADMIN_KEY,
+          queries: require("./src/utils/algolia-queries")
+        },
+    },
   ],
 }

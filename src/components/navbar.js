@@ -360,7 +360,7 @@ a {
 }
 `
 
-export default function Nav({invert}){
+export default function Nav({invert, phones}){
     const [menuOpen, setMenuOpen] = useState(false);
     const [offset, setOffset] = useState(0);
     const [initial, setInitial] = useState(true);
@@ -369,16 +369,16 @@ export default function Nav({invert}){
 
         useEffect(() => {
         if (typeof window !== `undefined` && window.onscroll !== offset) {
-            console.log("running")
+            // console.log("running")
             window.onscroll = () => {
                 setOffset(window.scrollY);
-                console.log(offset)
+                // console.log(offset)
                 if (offset > window.scrollY && scrollUp !== true && !menuOpen){
-                    console.log("hello1");
+                    // console.log("hello1");
                     setScrollUp(true);
                 } else if (offset < window.scrollY && scrollUp !== false && window.scrollY > 100 && !menuOpen) {
                     setScrollUp(false);     
-                    console.log("hello2");
+                    // console.log("hello2");
                 }
                 if (offset <= 100){
                     setInitial(true)
@@ -418,8 +418,8 @@ export default function Nav({invert}){
                     </div>
                     <div className='menu-right'>
                         <img src={CALogo}/>
-                        <Link className='contact'><b>Engineering:</b><br className='mobile-br'/>  07 843 1200 </Link>
-                        <Link className='contact'><b>Electrical:</b><br className='mobile-br'/> 07 843 2936 </Link>
+                        <Link className='contact'><b>Engineering:</b><br className='mobile-br'/>  {phones.engineering_phone} </Link>
+                        <Link className='contact'><b>Electrical:</b><br className='mobile-br'/> {phones.electrical_phone} </Link>
                         <Link className='address'>Super Air Hanger,<br className='mobile-br'/> 1 Ingram rd,<br className='desktop-br'/>
                         Rukuhia, Hamilton,<br className='mobile-br'/> 3282,<br/>
                         New Zealand</Link>

@@ -2,7 +2,7 @@ import React, {useRef, useEffect, useState} from "react"
 import styled from "styled-components" 
 import Layout from "../components/layout"
 // import Seo from "../components/seo"
-import { Link } from "gatsby"
+import { Link,graphql } from "gatsby"
 
 
 const Faq = styled.div`
@@ -112,7 +112,7 @@ const Content = ({question, answer,i}) => {
     return (
         <ContentBox itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" onClick={() => {setToggle(!toggle)}}>
             <div key={"question " + i}>
-                <h3 itemProp="name"><p>Q{i+1}: {question}<span className={toggle ? "arrow" : "arrow down"}/></p></h3>
+                <h3 itemProp="name"><p>{question}<span className={toggle ? "arrow" : "arrow down"}/></p></h3>
                 <div className={toggle ? "answer toggle" : "answer"}>
                     <p itemScope itemProp="acceptedAnswer" itemType="https://schema.org/Answer">{answer}</p>
                 </div>
@@ -121,19 +121,20 @@ const Content = ({question, answer,i}) => {
     )
 } 
 
-const FAQ = () => {
-
-    const Questions = [
-        {question: "What services does Central Aero Electrical offer?", answer: "Central Aero Electrical offer new components, part exchange, and overhaul services on a large range of components and aircrafts/manufactures, as well as parts advisory and custom orders. We also offer electrical systems repair and installation services. Whether you have a small fixed wing/touring plane to commercial passenger plane, helicopter and other aircraft we can help with all your electrical aviation needs."},
-        {question: "What services does Central Aero Engineering offer?", answer: "Central Aero Engineering offer a large range of services laid out on our services page. Please head here for more info or call Paul on 022 123 456"},
-        {question: "What's the turn around time for a component overhaul?", answer: ""},
-        {question: "How long will an Engineering project take?", answer: ""},
-        {question: "Is there a warranty on parts and repairs?", answer: "Majority of new parts sold are covered by the OEM warranty. See terms and conditions on an individual product baisis. Concerning repairs and overhauls - although Central Aero Electrical is not Factory Authorized by brands such as Champion, Hartzel, Safran etc. We do hold a Safran technical data and subscription agreement, have all mandatory brush holder alignment tooling requirements for Skurka Starter Generators, and offer our own 1 year warrenty on all products repaired or overhauled. See terms and conditions here."},
-        {question: "Why should I work with Central Aero?",answer: ""},
-        {question: "How does a component exchange work?",answer: ""},
-        {question: "Is Central Aero Certified?",answer: "Yes. Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility. Central Aero Engineering holds an number of certifications including Part 43 organisation with capability on Group 1 and Group 2 Fixed Wing Aircraft, Group 1 and Group 2 Helicopters, Certificate of Airworthiness issue, Maintenance Control Services and more."},
-        {question: "How can I get in touch?",answer: ""},
-    ] 
+const FAQ = (data) => {
+    console.log(data.data.allSanityFaq)
+    let Questions = data.data.allSanityFaq.nodes;
+    // const Questions = [
+    //     {question: "What services does Central Aero Electrical offer?", answer: "Central Aero Electrical offer new components, part exchange, and overhaul services on a large range of components and aircrafts/manufactures, as well as parts advisory and custom orders. We also offer electrical systems repair and installation services. Whether you have a small fixed wing/touring plane to commercial passenger plane, helicopter and other aircraft we can help with all your electrical aviation needs."},
+    //     {question: "What services does Central Aero Engineering offer?", answer: "Central Aero Engineering offer a large range of services laid out on our services page. Please head here for more info or call Paul on 022 123 456"},
+    //     {question: "What's the turn around time for a component overhaul?", answer: ""},
+    //     {question: "How long will an Engineering project take?", answer: ""},
+    //     {question: "Is there a warranty on parts and repairs?", answer: "Majority of new parts sold are covered by the OEM warranty. See terms and conditions on an individual product baisis. Concerning repairs and overhauls - although Central Aero Electrical is not Factory Authorized by brands such as Champion, Hartzel, Safran etc. We do hold a Safran technical data and subscription agreement, have all mandatory brush holder alignment tooling requirements for Skurka Starter Generators, and offer our own 1 year warrenty on all products repaired or overhauled. See terms and conditions here."},
+    //     {question: "Why should I work with Central Aero?",answer: ""},
+    //     {question: "How does a component exchange work?",answer: ""},
+    //     {question: "Is Central Aero Certified?",answer: "Yes. Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility. Central Aero Engineering holds an number of certifications including Part 43 organisation with capability on Group 1 and Group 2 Fixed Wing Aircraft, Group 1 and Group 2 Helicopters, Certificate of Airworthiness issue, Maintenance Control Services and more."},
+    //     {question: "How can I get in touch?",answer: ""},
+    // ] 
 
     return(
         <Layout invert={true}>
@@ -166,3 +167,14 @@ const FAQ = () => {
 export default FAQ;
 
 // export const Head = () => <Seo title="Frequently Asked Questions | Central Aero" />
+
+export const pageQuery = graphql`
+    query FAQ{
+        allSanityFaq {
+            nodes {
+                question
+                answer
+            }
+        }
+    }
+`

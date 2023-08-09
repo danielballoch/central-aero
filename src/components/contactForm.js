@@ -260,7 +260,7 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
                     <div className="contacts-div">
                         {infoContacts.map(contact => (
                             <div>
-                            <p><b>{contact.name}</b><br/>{contact.position}<br/>{contact.email}<br/>{contact.phone}</p>
+                            <p><b>{contact.name}</b><br/>{contact.title}<br/>{contact.email}<br/>{contact.phone}</p>
                             </div>
                         ))}
                     </div>

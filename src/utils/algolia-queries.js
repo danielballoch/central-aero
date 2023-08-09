@@ -22,11 +22,11 @@ const pageQuery = `{
   }
 }`
 
-function pageToAlgoliaRecord({ node: { id, component_title, component_subtext, ...rest } }) {
+function pageToAlgoliaRecord({ node: { id, component_title, component_subtext,...rest } }) {
   return {
     objectID: id,
-    ...component_title,
-    ...component_subtext,
+    title: component_title,
+    excerpt: component_subtext,
     ...rest,
   }
 }

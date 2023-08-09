@@ -6,6 +6,7 @@ import WhiteLogo from "../images/CentralAeroTextOnlyLogo.png"
 import FB from '../images/facebook-logo.png'
 import Part145Logo from '../images/circletext-capital.png'
 
+
 const Wrapper = styled.div`
 display: flex;
 flex-direction: column;
@@ -251,7 +252,7 @@ animation:spin 30s linear infinite;
 }
 `
 
-export default function Hero(){
+export default function Footer({phones}){
     return(
         <Wrapper>
             <div className='footer-main'>
@@ -282,8 +283,8 @@ export default function Hero(){
                         New Zealand</a>
                     </div>
                     <div>
-                        <Link href="tel:07-843-1200"><b>Engineering:</b><br className='br'/>  07 843 1200 </Link>
-                        <Link href="tel:07-843-2936"><b>Electrical:</b><br className='br'/> 07 843 2936 </Link>
+                        <Link href="tel:07-843-1200"><b>Engineering:</b><br className='br'/>  {phones.engineering_phone} </Link>
+                        <Link href="tel:07-843-2936"><b>Electrical:</b><br className='br'/> {phones.electrical_phone} </Link>
                     </div>
                     <div>
                         <img className="rotate-logo" src={Part145Logo}/>
@@ -294,3 +295,5 @@ export default function Hero(){
         </Wrapper>
     )
 }
+
+

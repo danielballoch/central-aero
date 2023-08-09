@@ -11,7 +11,7 @@ import {
 
 const HitCount = connectStateResults(({ searchResults }) => {
   const hitCount = searchResults && searchResults.nbHits
-
+    console.log("consolelog: ", hitCount, searchResults)
   return hitCount > 0 ? (
     <div className="HitCount">
       {hitCount} result{hitCount !== 1 ? `s` : ``}
@@ -20,10 +20,10 @@ const HitCount = connectStateResults(({ searchResults }) => {
 })
 
 const PageHit = ({ hit }) => (
-    <Link to={hit.slug}>
+    <Link to={"/shop-parts/"+hit.component_path}>
         <div>
             <h4><Highlight attribute="title" hit={hit} tagName="mark" /></h4>
-            <Snippet attribute="excerpt" hit={hit} tagName="mark" />
+            <Snippet attribute="blurb" hit={hit} tagName="mark" />
         </div>
     </Link>
 )

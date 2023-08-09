@@ -42,12 +42,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     )
     return
   }
-  console.log(result)
 //   const services = result.data.services.nodes
 //   const products = result.data.products.nodes
   const engineeringsanity = result.data.engineeringsanity.nodes
   const electricalsanity = result.data.electricalsanity.nodes
-  console.log(engineeringsanity, electricalsanity)
 
 //   Create blog posts pages
 //   But only if there's at least one markdown file found at "content/blog" (defined in gatsby-config.js)
