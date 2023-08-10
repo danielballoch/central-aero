@@ -151,10 +151,11 @@ const BlogPostTemplate = (data) => {
     
 //   const siteTitle = site.siteMetadata?.title || `Title`
     let component = data.data.component
-    let previous = data.data.previous
-    let next = data.data.next
-    let third = data.data.third
-    console.log(data.data)
+    let componentRecommend1 = data.data.one
+    let componentRecommend2 = data.data.two
+    let componentRecommend3 = data.data.three
+    console.log("product data: ", data)
+    console.log(data.pageContext.componentRecommend1, data.pageContext.componentRecommend2, data.pageContext.componentRecommend3)
     const image = getImage(component.component_image.asset.gatsbyImage)
     
   return (
@@ -183,27 +184,27 @@ const BlogPostTemplate = (data) => {
         <nav className="blog-post-nav">
             <h3>Related Products</h3>
             <div>
-                {previous && (
-                    <Link to={"/shop-parts/"+previous.component_path}>
+                {componentRecommend1 && (
+                    <Link to={"/shop-parts/"+componentRecommend1.component_path}>
                         {/* <img src="../images/CA-Logo-Square-Black.png"/> */}
-                        <GatsbyImage image={previous.component_image.asset.gatsbyImage} alt="alt"/>
-                        <p><b>{previous.component_title}</b></p>
+                        <GatsbyImage image={componentRecommend1.component_image.asset.gatsbyImage} alt="alt"/>
+                        <p><b>{componentRecommend1.component_title}</b></p>
                     </Link>
                 )}
                 <br/>
-                {next && (
-                    <Link to={"/shop-parts/"+next.component_path}>
+                {componentRecommend2 && (
+                    <Link to={"/shop-parts/"+componentRecommend2.component_path}>
                         {/* <img src="../images/CA-Logo-Square-Black.png"/> */}
-                        <GatsbyImage image={next.component_image.asset.gatsbyImage} alt="alt"/>
-                        <p><b>{next.component_title}</b></p>
+                        <GatsbyImage image={componentRecommend2.component_image.asset.gatsbyImage} alt="alt"/>
+                        <p><b>{componentRecommend2.component_title}</b></p>
                     </Link>
                 )}
                 <br/>
-                {third && (
-                    <Link to={"/shop-parts/"+third.component_path}>
+                {componentRecommend3 && (
+                    <Link to={"/shop-parts/"+componentRecommend3.component_path}>
                         {/* <img src="../images/CA-Logo-Square-Black.png"/> */}
-                        <GatsbyImage image={third.component_image.asset.gatsbyImage} alt="alt"/>
-                        <p><b>{third.component_title}</b></p>
+                        <GatsbyImage image={componentRecommend3.component_image.asset.gatsbyImage} alt="alt"/>
+                        <p><b>{componentRecommend3.component_title}</b></p>
                 </Link>
                 )}
             </div>
@@ -227,9 +228,9 @@ export default BlogPostTemplate
 export const pageQuery = graphql`
   query BlogPostBySlug(
     $id: String!
-    $previousProductId: String
-    $nextProductId: String
-    $thirdProductId: String
+    $componentRecommend1: String
+    $componentRecommend2: String
+    $componentRecommend3: String
   ) {
         component: sanityElectricalComponents(id: {eq: $id}) {
             id
@@ -252,7 +253,7 @@ export const pageQuery = graphql`
             }
             _type
         }
-        previous: sanityElectricalComponents(id: {eq: $previousProductId}) {
+        one: sanityElectricalComponents(id: {eq: $componentRecommend1}) {
             component_path
             component_title
             component_image {
@@ -261,7 +262,7 @@ export const pageQuery = graphql`
                 }
             }
         }
-        next: sanityElectricalComponents(id: {eq: $nextProductId}) {
+        two: sanityElectricalComponents(id: {eq: $componentRecommend2}) {
             component_path
             component_title
             component_image {
@@ -270,7 +271,7 @@ export const pageQuery = graphql`
                 }
             }
         }
-        third: sanityElectricalComponents(id: {eq: $thirdProductId}) {
+        three: sanityElectricalComponents(id: {eq: $componentRecommend3}) {
             component_path
             component_title
             component_image {

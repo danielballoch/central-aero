@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import Image1 from "../images/electrical-images/AC-Generator.png"
 import { useForm } from "react-hook-form"
 import ReCAPTCHA from "react-google-recaptcha";
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const ElectricalProducts = styled.div`
 padding-top: 140px;
@@ -239,7 +240,8 @@ h3 {
 `
 
 const BlogIndex = ({ data, location }) => {
-
+    console.log(data)
+    let phone = data.contact.nodes[0].electrical_phone
     const reRef = useRef();
     const [serverState, setServerState] = useState({
         formSent: false,
@@ -324,7 +326,7 @@ const BlogIndex = ({ data, location }) => {
                     </div>
                     <h2>Searching for a part?</h2>
                     <h2>Need a repair?</h2>
-                    <p>Let our electrical team help you find what you need, fill out the form below or call us at 07 843 2936.</p>
+                    <p>Let our electrical team help you find what you need, fill out the form below or call us at {phone}.</p>
                     <label htmlFor="name">Name:</label>
                     <input type="text" 
                         name="name" 
@@ -368,7 +370,8 @@ const BlogIndex = ({ data, location }) => {
                     const subtitle = post.component_subtext
                     return (
                         <Link to={post.component_path} itemProp="url" className="part-item">
-                                <img src={Image1}/>
+                                {/* <img src={Image1}/> */}
+                                <GatsbyImage image={post.component_image.asset.gatsbyImage} alt="alt" placeholder="blur"/>
                                 <p><b>{title}</b></p>
                                 <p>{subtitle}</p>
                         </Link>
@@ -379,7 +382,8 @@ const BlogIndex = ({ data, location }) => {
                     const title = post.component_title || post.component_path
                     return (
                         <Link to={post.component_path} itemProp="url" className="part-item">
-                                <img src={Image1}/>
+                                {/* <img src={Image1}/> */}
+                                <GatsbyImage image={post.component_image.asset.gatsbyImage} alt="alt" placeholder="blur"/>
                                 <p><b>{title}</b></p>
                                 <p>In Stock</p>
                         </Link>
@@ -415,6 +419,11 @@ export const pageQuery = graphql`
             component_subtext
             component_path
             blurb
+            component_image {
+                asset {
+                    gatsbyImage(width:860)
+                }
+            }
             component_content {
                 _type
                 style
@@ -431,6 +440,11 @@ export const pageQuery = graphql`
             component_subtext
             component_path
             blurb
+            component_image {
+                asset {
+                    gatsbyImage(width:860)
+                }
+            }
             component_content {
                 _type
                 style
@@ -440,8 +454,14 @@ export const pageQuery = graphql`
                 }
             }
         }
-      }
-  }
+    }
+    contact: allSanityContactPhoneNumbers{
+        nodes {
+            electrical_phone
+        }
+    }
+  
+}
 `
 
 // export const pageQuery = graphql`

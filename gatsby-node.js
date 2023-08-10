@@ -52,17 +52,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 //   `context` is available in the template as a prop and as a variable in GraphQL
   if (electricalsanity.length > 0) {
     electricalsanity.forEach((post, index) => {
-      const previousPostId = index === 0 ? null : electricalsanity[index - 1].id
-      const nextPostId = index === electricalsanity.length - 1 ? null : electricalsanity[index + 1].id
-      const thirdProductId = index !== electricalsanity.length - 2 && index !== electricalsanity.length - 1 ? electricalsanity[index + 2].id : null
+
+        //setup to either use the next three items or rotate to the first three
+        let componentRecommend1 = null; 
+        if (index + 1 < electricalsanity.length){componentRecommend1 = electricalsanity[index+1].id} else if (1 < electricalsanity.length){componentRecommend1 = electricalsanity[2].id}
+        let componentRecommend2 = null;
+        if (index + 2 < electricalsanity.length){componentRecommend2 = electricalsanity[index+2].id} else if (1 < electricalsanity.length){componentRecommend2 = electricalsanity[1].id}
+        let componentRecommend3 = null;
+        if (index + 3 < electricalsanity.length){componentRecommend3 = electricalsanity[index+3].id} else if (1 < electricalsanity.length){componentRecommend3 = electricalsanity[0].id}
+
             createPage({
                 path: "shop-parts/"+post.component_path,
                 component: productTemplate,
                 context: {
                   id: post.id,
-                  previousPostId,
-                  nextPostId,
-                  thirdProductId
+                  componentRecommend1,
+                  componentRecommend2,
+                  componentRecommend3
                 },
               })
     })
