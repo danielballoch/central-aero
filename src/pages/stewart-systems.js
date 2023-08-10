@@ -128,12 +128,12 @@ const StewardSystems = () => {
             <h2>Stewart Systems: Revolutionizing Aircraft Fabric Covering and Painting for the 21st Century</h2>
             <p>Stewart Systems is at the forefront of aircraft fabric covering and painting technology, setting a new standard for the industry. Gone are the days of using toxic and hazardous solvents for aircraft painting. With Stewart Systems' modern waterborne coatings technology, the process is now safe, non-hazardous, and environmentally friendly.</p>
             <h3>Advantages of Stewart Systems:</h3>
-            <ol>
+            <ul>
                 <li><b>Safe to Use:</b> Unlike traditional methods, their fabric covering and painting products are non-toxic, non-flammable, and EPA compliant, ensuring the safety of both workers and the environment.</li>
                 <li><b>Durable:</b> Thanks to their advanced waterborne coatings, the system boasts exceptional durability and longevity. Aircrafts treated with Stewart Systems have demonstrated over 20 years of service with no cracks and no loss of gloss.</li>
                 <li><b>Lighter & More Flexible:</b> The waterborne technology allows for significant weight savings, making aircrafts up to 30% lighter than competitors using solvent-based systems. The thin coatings enhance flexibility without compromising overall durability.</li>
                 <li><b>Cost Effective:</b> Though individual product costs may be slightly higher, the overall cost of the system is significantly reduced due to the need for fewer materials. This cost-effectiveness is further supported by standard quotes for various popular aircraft models, simplifying material estimation for projects.</li>
-            </ol>
+            </ul>
             <p>Despite the numerous benefits, some are still unaware of Stewart Systems' existence or are hesitant to break away from traditional solvent systems. However, embracing this 21st-century aircraft finishing technology offers superior results and a safer, eco-friendly approach.</p>
             <a href="https://stewartsystems.aero/" target="_blank">Check out more info on the official Stewart Systems Website</a>
             
