@@ -46,7 +46,6 @@ export default styled(SearchBox)`
     font-size: 1.6em;
     transition: 100ms;
     border-radius: 2px;
-    font-family: 'segoe ui';
     color: $333;
     ::placeholder {
       color: ${({ theme }) => theme.faded};
