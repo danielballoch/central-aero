@@ -10,7 +10,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const ElectricalProducts = styled.div`
 padding-top: 140px;
-font-family: 'segoe ui';
 p {
     font-size: 16px;
 }
@@ -180,8 +179,6 @@ h3 {
     margin-right: 10px;
     margin-top: 120px;
     font-weight: 400;
-    
-    font-family: "segoe ui";
     border-radius: 5px;
 }
 .title-div {

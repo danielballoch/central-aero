@@ -11,7 +11,6 @@ height: auto;
 color: black;
 display: flex;
 flex-direction: column;
-font-family: 'Segoe UI';
 h1 {
         font-size: 40px;
         font-weight: 500;
