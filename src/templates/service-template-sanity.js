@@ -99,7 +99,7 @@ const BlogPostTemplate = (data) => {
             itemType="http://schema.org/Article"
         >
             <header>
-                <h1 itemProp="headline">{service.service_title} Service Page</h1>
+                <h1 itemProp="headline">{service.service_title}</h1>
                 <p>{service.blurb}</p>
                 <hr></hr>
                 <div className="button-div">
