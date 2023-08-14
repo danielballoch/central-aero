@@ -8,8 +8,8 @@ export default connectSearchBox(
       <input
         className="SearchInput"
         type="text"
-        placeholder="Search Component(s)"
-        aria-label="Search Component(s)"
+        placeholder="Search Part(s)"
+        aria-label="Search Part(s)"
         onChange={e => refine(e.target.value)}
         value={currentRefinement}
         onFocus={onFocus}
