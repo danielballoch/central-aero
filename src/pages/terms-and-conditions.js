@@ -111,4 +111,7 @@ export default function TermsAndConditions(){
   )
 }
 
-export const Head = () => <Seo title="Terms And Conditions | Central Aero" />
+export const Head = () => <Seo 
+title="Terms And Conditions | Central Aero" 
+description="Read through our terms and conditions for information on our aircraft engineering and electrical component Warranties, product information, Privacy Policy, etc"    
+/>
