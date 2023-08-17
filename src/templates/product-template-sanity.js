@@ -10,7 +10,6 @@ import Seo from "../components/seo"
 const Wrapper = styled.div`
 /* padding-top: 200px; */
 padding: 200px 20px 100px 20px;
-font-family: 'segoe ui';
 margin: auto;
 max-width: 900px;
 hr {

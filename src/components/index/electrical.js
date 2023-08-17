@@ -8,6 +8,7 @@ import { gsap } from 'gsap';
 const Wrapper = styled.div`
 display: flex;
 min-height: 100vh;
+overflow: hidden; 
 div {
     display: flex;
     flex-direction: column;

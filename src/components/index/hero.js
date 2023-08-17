@@ -24,6 +24,7 @@ background-color: black;
             a {
                 font-size: 23px!important;
                 .arrow {
+                    transition: .3s;
                     margin-right: 40px;
                     margin-left: 10px;
                 }
@@ -31,10 +32,27 @@ background-color: black;
                     .arrow {
                         margin-right: 36px!important;
                         margin-left: 14px!important;
+                        -webkit-animation: bouncem 1s ease;
+                        -moz-animation: bouncem 1s ease;
+                        -ms-animation: bouncem 1s ease;
+                        -o-animation: bouncem 1s ease;
+                        animation: bouncem 1s ease;
+                        animation-iteration-count: infinite;
                     }
                 }
             }
         }
+    }
+}
+@keyframes bouncem {
+    0%   { margin-left: 10px; 
+           margin-right: 40px
+    }
+    50%  { margin-left: 14px; 
+           margin-right: 36px; 
+    }
+    100% { margin-left: 10px; 
+           margin-right: 40px; 
     }
 }
 @media(max-width: 960px){
@@ -121,6 +139,10 @@ background-color: black;
                 cursor: pointer; 
                 .arrow {
                     border-color: #fde027;
+                    -webkit-animation: bounce 1s ease;
+                    -moz-animation: bounce 1s ease;
+                    -ms-animation: bounce 1s ease;
+                    -o-animation: bounce 1s ease;
                     animation: bounce 1s ease;
                     animation-iteration-count: infinite;
                     /* margin-left: 24px;
