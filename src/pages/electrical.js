@@ -11,6 +11,7 @@ import Placeholder from "../images/index-images/central-aero-electrical.jpg"
 import { StaticImage } from 'gatsby-plugin-image'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Seo from "../components/seo"
 
 
 const searchIndices = [{ name: `Pages`, title: `Pages` }]
@@ -456,3 +457,9 @@ export default function Electrical(){
         </Layout>
     )
 }
+
+export const Head = () => <Seo 
+title="Electrical Parts New, Exchange or Overhaul | Central Aero" 
+description="New Aircraft Parts from brands such as Skurka, Safran, Champion & Hartzell. We also offer repair/overhaul and exchange services on a large range of electrical components. "
+
+/>

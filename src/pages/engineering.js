@@ -7,6 +7,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import Seo from "../components/seo"
 
 
 
@@ -397,6 +398,10 @@ export default function Electrical({data}){
     )
 }
 
+export const Head = () => <Seo 
+title="Aircraft Maintenance & Engineering Services | Central Aero"
+description="Supporting Maintenance Facilities, Pilots, and aviation enthusiasts with engineering services from fixed wing planes, helicopters, hot air balloons etc."
+/>
 
 export const pageQuery = graphql`
 {
@@ -414,23 +419,3 @@ export const pageQuery = graphql`
     }
 }
 `
-
-
-// export const pageQuery = graphql`
-//   {
-//     services: allMarkdownRemark(filter: { frontmatter: {type: {eq: "service"}}}, sort: { frontmatter: {title: ASC }}) {
-//       nodes {
-//         excerpt
-//         fields {
-//           slug
-//         }
-//         frontmatter {
-//           type
-//           title
-//           body
-//           path
-//         }
-//       }
-//     }
-//   }
-// `

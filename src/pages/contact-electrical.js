@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from 'gatsby'
 import ContactPage from "../components/contactPage"
 import ContactForm from "../components/contactForm"
+import Seo from "../components/seo"
 
 export default function ContactElectrical({data}){
     let phone = data.contact.nodes[0].electrical_phone;
@@ -31,3 +32,9 @@ export const pageQuery = graphql`
         }
     }
 `
+
+export const Head = () => <Seo 
+title="Contact Electrical | Central Aero"
+description="We stock a large range of new electrical components and also offer exchange/overhaul services. Get in touch today and we'll help find what you need.”"
+
+ />

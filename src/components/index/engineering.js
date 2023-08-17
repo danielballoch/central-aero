@@ -150,7 +150,7 @@ export default function Hero(){
                     <h2>Engineering</h2>
                     <h3>Maintenance, Refurbishment, Consultancy</h3>
                     <p>Central Aero Engineering takes pride in it's vast collective experience and knowledge in the aviation industry. The best solution in Hamilton for anything from minor maintenance to major refurbishment of your aircraft.</p>
-                    <p>We support everything from Hot Air Balloons, Gliders, Microlights & Gyrocopters right through to Air transport aircraft & helicopters and also offer consultancy services: Maintenance controllers, Air accident investigation, Auditing, and Airworthiness reviews.</p>
+                    <p>We support everything from Hot Air Balloons, Gliders, Microlights & Gyrocopters right through to Air transport aircrafts & helicopters and also offer consultancy services: Maintenance controllers, Air accident investigation, Auditing, and Airworthiness reviews.</p>
                     {/* <p>We also offer consultancy services to the industry as Maintenance controllers, Air accident investigation, Auditing, and Airworthiness reviews.</p>
                     <p>Whether you are a homebuilder, micro light owner or an air transport operator, fixed wing or helicopter, Central Aero Engineering can assist you with your aviation engineering requirements to get you flying and to keep you flying.</p> */}
                     <div className='button-div'>

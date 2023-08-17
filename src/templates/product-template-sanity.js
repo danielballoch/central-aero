@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Layout from "../components/layout"
 import {PortableText} from '@portabletext/react'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
-// import Seo from "../components/seo"
+import Seo from "../components/seo"
 
 
 const Wrapper = styled.div`
@@ -214,14 +214,15 @@ const BlogPostTemplate = (data) => {
   )
 }
 
-// export const Head = ({ data: { markdownRemark: post } }) => {
-//   return (
-//     <Seo
-//       title={post.frontmatter.title}
-//       description={post.frontmatter.description || post.excerpt}
-//     />
-//   )
-// }
+export const Head = (data) => {
+    let component = data.data.component
+    return (
+      <Seo
+        title={component.component_title + " | Central Aero"}
+        description={component.blurb}
+      />
+    )
+}
 
 export default BlogPostTemplate
 

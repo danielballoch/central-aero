@@ -2,7 +2,7 @@ import * as React from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout"
-// import Seo from "../components/seo"
+import Seo from "../components/seo"
 
 
 const Wrapper = styled.div`
@@ -152,14 +152,7 @@ const StewardSystems = () => {
   )
 }
 
-// export const Head = ({ data: { markdownRemark: post } }) => {
-//   return (
-//     <Seo
-//       title={post.frontmatter.title}
-//       description={post.frontmatter.description || post.excerpt}
-//     />
-//   )
-// }
+export const Head = () => <Seo title="Terms And Conditions | Central Aero"/>
 
 export default StewardSystems
 

@@ -2,6 +2,7 @@ import React from "react"
 import { graphql } from 'gatsby'
 import ContactPage from "../components/contactPage.js"
 import ContactForm from "../components/contactForm.js"
+import Seo from "../components/seo"
 
 
 export default function ContactElectrical({data}){
@@ -16,7 +17,10 @@ export default function ContactElectrical({data}){
 }
 
 
-// export const Head = () => <Seo title="Contact Engineering" />
+export const Head = () => <Seo 
+title="Contact Engineering | Central Aero" 
+description="Contact us for all engineering inquiries. Fixed wing planes, helicopters, repairs, etc. We have a large range of aircraft knowledge/expertise and would love to help whatever your need."   
+/>
 
 export const pageQuery = graphql`
   query Contact{

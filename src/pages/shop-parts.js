@@ -7,6 +7,7 @@ import Image1 from "../images/electrical-images/AC-Generator.png"
 import { useForm } from "react-hook-form"
 import ReCAPTCHA from "react-google-recaptcha";
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import Seo from "../components/seo"
 
 const ElectricalProducts = styled.div`
 padding-top: 140px;
@@ -401,7 +402,10 @@ export default BlogIndex
  *
  * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
  */
-// export const Head = () => <Seo title="SHOP PARTS | CENTRAL AERO ELECTRICAL" />
+export const Head = () => <Seo 
+title="Shop Quality Aircraft Parts & Components | Central Aero"
+description="Starter Generators, Magnetos, Fuel Pumps etc from trusted brands such as Skurka, Safran, Champion and Hartzel. Buy electrical parts new, exchange or overhaul." 
+/>
 
 export const pageQuery = graphql`
   {
