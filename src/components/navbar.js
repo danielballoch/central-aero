@@ -397,7 +397,7 @@ export default function Nav({invert, phones}){
         <Navbar>
         {/* src={invert? InvertLogo : menuOpen? Logo : Logo} */}
         <NavWrapper className={menuOpen? "NavBar Scroll Initial" : scrollUp && initial? "NavBar Scroll Initial" : scrollUp? "NavBar Scroll" : "NavBar"}>
-            <Link to="/"><div className={menuOpen? "image" : invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : scrollUp? "invert-logo" : "image"}/></Link>
+            <Link to="/" aria-label="Navigate to homepage"><div className={menuOpen? "image" : invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : scrollUp? "invert-logo" : "image"}/></Link>
             <div>
                 <button className={invert? "hamburger invert": menuOpen? "hamburger" : scrollUp && !initial ? "hamburger invert" : "hamburger"} onClick={() => {setMenuOpen(!menuOpen)}} aria-label="Navigation menu toggle">
                     <span className="hamburger-box">
