@@ -89,6 +89,9 @@ select {
     h2 {
         margin: 10px 0;
     }
+    p {
+        margin-bottom: 10px;
+    }
     button {
         margin: 10px 0;
     }
@@ -323,8 +326,8 @@ const BlogIndex = ({ data, location }) => {
                         </div>
                     </div>
                     <h2>Searching for a part?</h2>
-                    <h2>Need a repair?</h2>
-                    <p>Let our electrical team help you find what you need, fill out the form below or call us at {phone}.</p>
+                    {/* <h2>Need a repair?</h2> */}
+                    <p>Fill out the form below or call us at {phone} and we can help source what you need.</p>
                     <label htmlFor="name">Name:</label>
                     <input type="text" 
                         name="name" 
