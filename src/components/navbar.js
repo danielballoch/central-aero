@@ -417,7 +417,7 @@ export default function Nav({invert, phones}){
                         <Link to="/contact">Contact</Link>
                     </div>
                     <div className='menu-right'>
-                        <img src={CALogo}/>
+                        <img src={CALogo} alt="CA Logo"/>
                         <Link className='contact'><b>Engineering:</b><br className='mobile-br'/>  {phones.engineering_phone} </Link>
                         <Link className='contact'><b>Electrical:</b><br className='mobile-br'/> {phones.electrical_phone} </Link>
                         <Link className='address'>Super Air Hanger,<br className='mobile-br'/> 1 Ingram rd,<br className='desktop-br'/>
@@ -429,7 +429,7 @@ export default function Nav({invert, phones}){
                 <div className='lower-menu'>
                     <Link to="/#home">© Central Aero 2023</Link>
                     <Link to="/terms-and-conditions#top">Terms & Conditions</Link>
-                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img src={FB} className='fb-logo'/></a>
+                    <a target="_blank" href="https://www.facebook.com/profile.php?id=100054522066996">Connect with us <img alt="facebook logo" src={FB} className='fb-logo'/></a>
                 </div>
             </div>
         </Navbar>

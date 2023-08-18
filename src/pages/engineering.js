@@ -383,7 +383,7 @@ export default function Electrical({data}){
                     {services.map((service, i) => (
                         <Link className="no-style" to={"/"+service.service_path + "#top"}>
                             <ServiceWrapper className={"service-ani"+i}>
-                                <GatsbyImage image={service.service_image.asset.gatsbyImage} placeholder="blur"/>
+                                <GatsbyImage alt={service.service_title} image={service.service_image.asset.gatsbyImage} placeholder="blur"/>
                                 <div>
                                     <h2>{service.service_title}</h2>
                                     <p>{service.blurb}</p>

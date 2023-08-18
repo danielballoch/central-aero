@@ -287,7 +287,7 @@ export default function Footer({phones}){
                         <Link href="tel:07-843-2936"><b>Electrical:</b><br className='br'/> {phones.electrical_phone} </Link>
                     </div>
                     <div>
-                        <img className="rotate-logo" src={Part145Logo}/>
+                        <img alt="CAANZ Part 145 Approved badge with rotating animation" className="rotate-logo" src={Part145Logo}/>
                     </div>
                 </div>
             </div>

@@ -160,7 +160,7 @@ export default function Hero(){
                     </div>
                 </div>
             </div>
-            <StaticImage className="static-img img-ani2" src="../../images/index-images/central-aero-engineering.jpg"/>
+            <StaticImage className="static-img img-ani2" alt="Central Aero Engineering helicopter in hanger" src="../../images/index-images/central-aero-engineering.jpg"/>
         </Wrapper>
     )
 }

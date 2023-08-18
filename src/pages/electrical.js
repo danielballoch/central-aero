@@ -442,7 +442,7 @@ export default function Electrical(){
                 <Services>
                 {services.map((service, i) => (
                     <ServiceWrapper >
-                        <img src={Placeholder} className={'img'+i}/>
+                        <img alt={service[0]+" featured image"} src={Placeholder} className={'img'+i}/>
                         <div className={'text'+i}>
                             <h2>{service[0]}</h2>
                             <p>{service[1]}</p>

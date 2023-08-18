@@ -1,6 +1,5 @@
 import React, {useRef, useLayoutEffect} from 'react'
 import styled from 'styled-components'
-import MainImage from '../../images/index-images/central-aero-electrical.jpg'
 import { StaticImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { gsap } from 'gsap';
@@ -156,7 +155,7 @@ export default function Hero(){
                     </div>
                 </div>
             </div>
-            <StaticImage className="static-img img-ani3" src="../../images/index-images/central-aero-electrical.jpg" placeholder="blurred"/>
+            <StaticImage className="static-img img-ani3" alt="Central Aero Electrical components in hanger" src="../../images/index-images/central-aero-electrical.jpg" placeholder="blurred"/>
         </Wrapper>
     )
 }

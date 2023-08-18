@@ -384,7 +384,7 @@ const BlogIndex = ({ data, location }) => {
                     return (
                         <Link to={post.component_path} itemProp="url" className="part-item">
                                 {/* <img src={Image1}/> */}
-                                <GatsbyImage image={post.component_image.asset.gatsbyImage} alt="alt" placeholder="blur"/>
+                                <GatsbyImage image={post.component_image.asset.gatsbyImage} alt={title} placeholder="blur"/>
                                 <p><b>{title}</b></p>
                                 <p>In Stock</p>
                         </Link>
