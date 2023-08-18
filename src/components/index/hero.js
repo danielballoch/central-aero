@@ -149,6 +149,9 @@ background-color: black;
                     margin-right: 76px; */
                 }
             }
+            :last-of-type {
+                margin-right: 0;
+            }
         }
         
     }
