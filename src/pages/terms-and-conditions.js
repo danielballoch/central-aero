@@ -67,7 +67,7 @@ export default function TermsAndConditions(){
             <h1>Terms And Conditions</h1>
             <p>"insert terms and conditions"</p>
             <h2>Warrenty</h2>
-            <p>"insert warrenty"</p>
+            <p>"Insert warrenty"</p>
             <h2>Privacy</h2>
             <p>Central Aero ("us", "we", or "our") operates http://www.centralaero.nz (the "Site"). This page informs you of our policies regarding the collection, use and disclosure of Personal Information we receive from users of the Site. We use your Personal Information only for providing and improving the Site. By using the Site, you agree to the collection and use of information in accordance with this policy.
             Information Collection And Use While using our Site, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to your name ("Personal Information").</p>

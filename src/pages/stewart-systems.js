@@ -153,7 +153,7 @@ const StewardSystems = () => {
 }
 
 export const Head = () => <Seo 
-title="New Zealand's only Stewart Systems Distributor - Central Aero"
+title="Aircraft Paint & Fabric Covering Supply | Central Aero"
 description="We're proud distributors of Stewart Systems aircraft fabric covering and painting technology. Call today for all your aircraft covering and painting needs."
 />
 
