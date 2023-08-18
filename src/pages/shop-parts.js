@@ -327,7 +327,7 @@ const BlogIndex = ({ data, location }) => {
                     </div>
                     <h2>Searching for a part?</h2>
                     {/* <h2>Need a repair?</h2> */}
-                    <p>Fill out the form below or call us at {phone} and we can help source what you need.</p>
+                    <p>Fill out the form below or call us at {phone} and we can help source/repair what you need.</p>
                     <label htmlFor="name">Name:</label>
                     <input type="text" 
                         name="name" 
