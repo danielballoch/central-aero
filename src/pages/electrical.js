@@ -215,6 +215,23 @@ const Marquee = styled.div`
   height: 71px;
   overflow-x: hidden;
   /* border: 3px solid black; */
+.marquee {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+    background-color: black;
+    width: 100%;
+    br {
+        display: none;
+    }
+    h4 {
+        /* font-family: 'segoe ui'; */
+        margin: 20px 40px;
+        font-weight: 400;
+        color: white;
+    }
+}
 .track {
     display: flex;
     align-items: center;
@@ -315,8 +332,7 @@ let components = ["Starter Generators","Magnetos","Fuel Pumps","Alternators","Ge
 let services = [
     ["Buy Components New","We have brand new products stocked on shelves for small-large Planes, Helicopters and other Aircrafts. Give us a call/email or send a form including the components you need and we'll give you a fair quote or offer any relevant advice or recommendations  to get you up and flying again."],
     ["Repair/Overhaul","If you want to save some cash you can send in your part and we'll examine and repair to get it back up to a safe and reliable standard. This will mean a slightly longer wait time, generally blank - blank. Let us know your needed parts and we'll get back to you with a price and time estimate promptly."],
-    ["Exchange Components","If you have a inspection due or need your parts quickly we offer component exchanges. Simply send in your component and we'll send a new or overhauled product back right away. This will be sligntly cheaper than buying a product new and just as fast!"],
-    ["Custom Orders","If you need unique part or a component we don't have in stock we're happy to research what's needed and order on your behalf or advice on your options. If you don't see the product your looking for on our website simply give us a call/email or fill out a contact form with a description of the component you need."]]
+    ["Exchange Components","If you have a inspection due or need your parts quickly we offer component exchanges. Simply send in your component and we'll send a new or overhauled product back right away. This will be sligntly cheaper than buying a product new and just as fast!"]]
 
 
 export default function Electrical(){
@@ -402,7 +418,10 @@ export default function Electrical(){
                             <Search indices={searchIndices}/>
                         </div>
                         <Marquee>
-                            <div className='track'>
+                                <div className='marquee'>
+                                    <h4>PROMT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
+                                </div>
+                            {/* <div className='track'>
                                 <h4>CAANZ PART 145 APPROVED<br/> REPAIR AND OVERHAUL FACILITY</h4>
                                 <div className='dash'/>
                                 <h4>1 YEAR WARRENTY ON<br/> ALL PRODUCTS/SERVICES</h4>
@@ -415,7 +434,7 @@ export default function Electrical(){
                                 <div className='dash'/>
                                 <h4>PROMPT TURNAROUND TIME<br/> FOR ALL REPAIRS AND OVERHAULS</h4>
                                 <div className='dash'/>
-                            </div>
+                            </div> */}
                         </Marquee>
                     </ElectricalHero>
                     <StaticImage className="hero-bg-img" src="../images/electrical-images/electrical-background-darker.png"/>
@@ -423,7 +442,7 @@ export default function Electrical(){
 
                 <div className='products-section'>
                     <h2 className='header-ani'>Electrical Products</h2>
-                    <p className='products-text-ani'>We stock the best electrical components from trusted brands such as SKURKA, Safran, Champion, Hartzell etc and also have a selection of specialty parts. If your fixed wing/touring planes, commercial planes, helicopters, or other aircrafts need new electrical components or existing components repaired/overhauled get in touch today.</p>
+                    <p className='products-text-ani'>We stock the best electrical components from trusted brands such as Skurka, Safran, Champion, Hartzell etc and also have a selection of specialty parts. If your fixed wing aircraft, commercial aircraft, helicopter, or other aircraft needs new electrical components or existing components repaired or overhauled get in touch today</p>
                     <ComponentsWrapper>
                         {components.map((component, i) => (
                             <div className={"component component-ani"+i}>

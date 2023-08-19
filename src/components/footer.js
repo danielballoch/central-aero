@@ -156,7 +156,8 @@ p {
 }
 .rotate-logo {
 height: 100px;
-animation:spin 30s linear infinite;
+transform: rotate(90deg);
+/* animation:spin 30s linear infinite; */
 }
 
 @keyframes spin { 
