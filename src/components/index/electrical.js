@@ -147,10 +147,10 @@ export default function Hero(){
                 <div className='text-content'>
                     <h2>Electrical</h2>
                     <h3>CAANZ Part 145 Approved Repair/Overhaul Facility</h3>
-                    <p>Central Aero Electrical offer quick turnarounds for a large range of exchange and overhaul components - from small fixed wing/touring planes to commercial passenger planes, helicopters and other aircrafts.</p>
-                    <p>We offer custom orders and can advice on other suppliers for any parts we don't stock. If you need an electrical part new, repaired, overhauled, or can't find a particular component get in touch today.</p>
+                    <p>Central Aero Electrical offer quick turnarounds for a large range of exchange and overhaul components - from fixed wing aircraft, commercial aircraft, helicopter’s, or other aircraft.</p>
+                    <p>We offer custom orders and can advise on other suppliers for any parts we don't stock. If you need an electrical part new, repaired, overhauled, or can't find a particular component get in touch today.</p>
                     <div className='button-div'>
-                        <Link href="/contact-electrical">Contact Electical</Link>
+                        <Link href="/contact-electrical">Contact Electrical</Link>
                         <Link href="/electrical">View Electrical Parts/Services</Link>
                     </div>
                 </div>
