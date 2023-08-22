@@ -66,6 +66,7 @@ p {
     .logo {
             height: 80px;
             margin: 0 -8px;
+            background-size: contain;
             background-image: url(${Logo});
             background-repeat: no-repeat;
             background-position: 0% 50%; 

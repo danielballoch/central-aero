@@ -446,7 +446,7 @@ export default function Electrical(){
                     <ComponentsWrapper>
                         {components.map((component, i) => (
                             <div className={"component component-ani"+i}>
-                                <img src={i === 0? Image1 : i === 1? Image2 : i === 2? Image3 : Image4}/>
+                                <img src={i === 0? Image3 : i === 1? Image1 : i === 3? Image4 : Image2}/>
                                 <p><b>{component}</b></p>
                             </div>
                         ))}
