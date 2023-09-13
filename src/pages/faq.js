@@ -38,7 +38,7 @@ div {
 .answer {
     transition: max-height 200ms ease-in-out 0s;
     overflow: hidden;
-    padding: 0 10px;
+    padding: 0;
     margin: 10px 0;
     max-height: 300px;
     /* background-color: #f8f8f8; */
