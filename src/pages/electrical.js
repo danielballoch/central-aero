@@ -269,7 +269,13 @@ const Marquee = styled.div`
         }
         h4 {
             text-align: center;
-            font-size: 16px;
+            font-size: 16px!important;
+        }
+    }
+    .marquee {
+        h4 {
+            font-size: 16px!important;
+            text-align: center;
         }
     }
     .dash {
