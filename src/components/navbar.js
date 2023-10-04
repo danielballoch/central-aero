@@ -86,6 +86,7 @@ justify-content: center;
     flex-direction: column;
     a {
         color: white;
+        text-decoration: none;
     }
     .contact {
         font-size: 30px;
@@ -399,7 +400,7 @@ export default function Nav({invert, phones}){
         <NavWrapper className={menuOpen? "NavBar Scroll Initial" : scrollUp && initial? "NavBar Scroll Initial" : scrollUp? "NavBar Scroll" : "NavBar"}>
             <Link to="/" aria-label="Navigate to homepage"><div className={menuOpen? "image" : invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : scrollUp? "invert-logo" : "image"}/></Link>
             <div>
-                <button className={invert? "hamburger invert": menuOpen? "hamburger" : scrollUp && !initial ? "hamburger invert" : "hamburger"} onClick={() => {setMenuOpen(!menuOpen)}} aria-label="Navigation menu toggle">
+                <button className={invert && menuOpen ? "hamburger" : invert? "hamburger invert": menuOpen? "hamburger" : scrollUp && !initial ? "hamburger invert" : "hamburger"} onClick={() => {setMenuOpen(!menuOpen)}} aria-label="Navigation menu toggle">
                     <span className="hamburger-box">
                         <span className={menuOpen? "hamburger-inner hamburger-inner-active" : "hamburger-inner"}></span>
                     </span>
@@ -418,11 +419,11 @@ export default function Nav({invert, phones}){
                     </div>
                     <div className='menu-right'>
                         <img src={CALogo} alt="CA Logo"/>
-                        <Link className='contact'><b>Engineering:</b><br className='mobile-br'/>  {phones.engineering_phone} </Link>
-                        <Link className='contact'><b>Electrical:</b><br className='mobile-br'/> {phones.electrical_phone} </Link>
-                        <Link className='address'>Super Air Hanger,<br className='mobile-br'/> 1 Ingram rd,<br className='desktop-br'/>
+                        <a href={"tel:"+phones.engineering_phone} className='contact'><b>Engineering:</b><br className='mobile-br'/>  {phones.engineering_phone} </a>
+                        <a href={"tel:"+phones.electrical_phone} className='contact'><b>Electrical:</b><br className='mobile-br'/> {phones.electrical_phone} </a>
+                        <a href="https://www.google.com/maps/place/Central+Aero/@-37.8652244,175.324915,18z/data=!3m1!4b1!4m6!3m5!1s0x6d6d1e388983f283:0x48747941afb9f05e!8m2!3d-37.8652265!4d175.3262025!16s%2Fg%2F11h52zksmv?entry=ttu" className='address'>Super Air Hanger,<br className='mobile-br'/> 1 Ingram rd,<br className='desktop-br'/>
                         Rukuhia, Hamilton,<br className='mobile-br'/> 3282,<br/>
-                        New Zealand</Link>
+                        New Zealand</a>
                     </div>
                     
                 </div>
