@@ -2,12 +2,19 @@ import React, {useRef, useLayoutEffect} from 'react'
 import Layout from "../components/layout.js"
 import styled from 'styled-components'
 import Search from "../components/search"
-import Image1 from "../images/electrical-images/Magneto.png"
-import Image2 from "../images/electrical-images/AC-Generator.png"
-import Image3 from "../images/electrical-images/DC-Starter.png"
-import Image4 from "../images/electrical-images/Alternator.png"
+import Magneto from "../images/electrical-images/Magneto.png"
+import AC from "../images/electrical-images/AC-Generator.png"
+import DC from "../images/electrical-images/DC-Starter.png"
+import Alternator from "../images/electrical-images/Alternator.png"
+import FuelPumpB from "../images/electrical-images/FuelPumpB.png"
+import Generator from "../images/electrical-images/GeneratorControl.png"
+import VoltageRegulator from "../images/electrical-images/VoltageRegulator.png"
+
+import BuyNew from "../images/electrical-images/BuyComponentsNew.png"
+import RepairOverhaul from "../images/electrical-images/RepairOverhaul.png"
+import Exchange from "../images/electrical-images/ExchangeComponents.png"
+
 import HeroImage from "../images/electrical-images/electrical-background-darker.png"
-import Placeholder from "../images/index-images/central-aero-electrical.jpg"
 import { StaticImage } from 'gatsby-plugin-image'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -452,7 +459,7 @@ export default function Electrical(){
                     <ComponentsWrapper>
                         {components.map((component, i) => (
                             <div className={"component component-ani"+i}>
-                                <img src={i === 0? Image3 : i === 1? Image1 : i === 3? Image4 : Image2}/>
+                                <img src={i === 0? DC : i === 1? Magneto : i === 2 ? FuelPumpB : i === 3? Alternator : i === 4? Generator : VoltageRegulator}/>
                                 <p><b>{component}</b></p>
                             </div>
                         ))}
@@ -467,7 +474,7 @@ export default function Electrical(){
                 <Services>
                 {services.map((service, i) => (
                     <ServiceWrapper >
-                        <img alt={service[0]+" featured image"} src={Placeholder} className={'img'+i}/>
+                        <img alt={service[0]+" featured image"} src={i===0? BuyNew : i===1? RepairOverhaul : Exchange } className={'img'+i}/>
                         <div className={'text'+i}>
                             <h2>{service[0]}</h2>
                             <p>{service[1]}</p>
