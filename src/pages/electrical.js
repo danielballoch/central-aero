@@ -19,9 +19,10 @@ import { StaticImage } from 'gatsby-plugin-image'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Seo from "../components/seo"
+import ScrollAnimation from '../components/scrollAnimation.js'
 
 
-const searchIndices = [{ name: `Pages`, title: `Pages` }]
+// const searchIndices = [{ name: `Pages`, title: `Pages` }]
 
 
 
@@ -343,9 +344,9 @@ button {
 let components = ["Starter Generators","Magnetos","Fuel Pumps","Alternators","Generator Control Units", "Voltage Regulators"]
 
 let services = [
-    ["Buy Components New","We have brand new products stocked on shelves for small-large Planes, Helicopters and other Aircrafts. Give us a call/email or send a form including the components you need and we'll give you a fair quote or offer any relevant advice or recommendations  to get you up and flying again."],
-    ["Repair/Overhaul","If you want to save some cash you can send in your part and we'll examine and repair to get it back up to a safe and reliable standard. This will mean a slightly longer wait time, generally blank - blank. Let us know your needed parts and we'll get back to you with a price and time estimate promptly."],
-    ["Exchange Components","If you have a inspection due or need your parts quickly we offer component exchanges. Simply send in your component and we'll send a new or overhauled product back right away. This will be sligntly cheaper than buying a product new and just as fast!"]]
+    ["Buy Components New","We have brand new parts on the shelf for piston and turbine engine aircraft. Give us a call/email or send us a form including the components you require and we’ll help out and offer any advice or recommendations to get you up and flying again."],
+    ["Repair/Overhaul","Send in your component and we will assess and repair in accordance with manufacturer data. Let us know your required components and we’ll get back to you with a price and expected turnaround time."],
+    ["Exchange Components","If you have an inspection due or need parts urgently, we offer component exchange services and have a wide range of stock available."]]
 
 
 export default function Electrical(){
@@ -428,7 +429,8 @@ export default function Electrical(){
                             <h1>CENTRAL AERO ELECTRICAL</h1>
                             <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility.<br className='herobr'/> We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p>
                             <p></p>
-                            <Search indices={searchIndices}/>
+                            <ScrollAnimation/>
+                            {/* <Search indices={searchIndices}/> */}
                         </div>
                         <Marquee>
                                 <div className='marquee'>

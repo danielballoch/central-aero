@@ -198,8 +198,11 @@ h3 {
     /* background-color: lightblue; */
     margin: 10px 7px;
     text-decoration: none;
+    .gatsby-image-wrapper {
+        // width: 260px;
+    }
     img {
-        
+        object-fit: contain!important;
         height: 200px;
         width: 100%;
         background-color: lightgrey;
@@ -209,6 +212,9 @@ h3 {
         padding: 0 10px;
         color: #333;
         text-decoration: none;
+        :first-of-type {
+            margin-top: 10px;
+        }
         :last-of-type{
             margin-bottom: 10px;
         }
@@ -378,18 +384,19 @@ const BlogIndex = ({ data, location }) => {
                         </Link>
                     )
                 })}
+                {/*  
                 <div className="title-div"><h3>COMPONENTS AVAILIBLE FOR ORDER</h3></div>
                 {orderProducts.map(post => {
                     const title = post.component_title || post.component_path
                     return (
                         <Link to={post.component_path} itemProp="url" className="part-item">
-                                {/* <img src={Image1}/> */}
                                 <GatsbyImage image={post.component_image.asset.gatsbyImage} alt={title} placeholder="blur"/>
                                 <p><b>{title}</b></p>
                                 <p>In Stock</p>
                         </Link>
                     )
                 })}
+                */}
                 </div>
             </div>
         </div>
