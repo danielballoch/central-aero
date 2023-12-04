@@ -280,7 +280,7 @@ export default function Footer({phones}){
                     <div>
                         <p><b>Our Hangar</b></p>
                         <a target="_blank" href="https://www.google.com/maps/place/Central+Aero/@-37.8652244,175.324915,18z/data=!3m1!4b1!4m6!3m5!1s0x6d6d1e388983f283:0x48747941afb9f05e!8m2!3d-37.8652265!4d175.3262025!16s%2Fg%2F11h52zksmv?entry=ttu">
-                        Super Air Hanger,<br className='br'/> 1 Ingram rd,<br/>
+                        Super Air Hangar,<br className='br'/> 1 Ingram rd,<br/>
                         Rukuhia, Hamilton,<br className='br'/> 3282,<br/>
                         New Zealand</a>
                     </div>
