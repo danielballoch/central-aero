@@ -9,7 +9,7 @@ export default function ContactElectrical({data}){
     let electrical_contacts = data.electrical.nodes
     return (
         <ContactPage title={"Contact Electrical"} body={"If you'd like to enquire about a specific part please use our shop parts form, we also have a frequently asked questions page which may answer any other questions. If not fill out our contact form or get in touch through the information listed below and we'll get back to you as soon as possible."} links={"two"}>
-            <ContactForm formEmail={"electrical@centralaero.nz"} infoTitle={"Electrical"} infoNumber={phone} infoContacts={electrical_contacts} />
+            <ContactForm formEmail={"electrical@centralaero.nz"} infoTitle={"Electrical"} infoNumber={phone} infoContacts={electrical_contacts} team={"Electrical"}/>
         </ContactPage>
         
     )

@@ -149,7 +149,7 @@ form {
 }
 `
 
-export default function ContactElectrical({formEmail,title, infoTitle, infoNumber, infoContacts}){
+export default function ContactElectrical({formEmail,title, infoTitle, infoNumber, infoContacts, team}){
     const reRef = useRef();
     const [serverState, setServerState] = useState({formSent: false});
 
@@ -176,6 +176,7 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
             phone: data.Phone,
             email: data.Email,
             message:data.Message,
+            team: team,
             token,
         }),
           headers: {

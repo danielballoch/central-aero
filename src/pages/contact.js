@@ -11,8 +11,8 @@ export default function Contact({data}){
     let engineering_contacts = data.engineering.nodes
     return(
         <ContactPage title={"Contact Us"} body={"To enquire about our electrical or engineering services please use the relevant contact form or information listed and we'll get back to you as soon as possible. We also have a frequently asked questions page which may answer any support related questions."} links={"two"}>
-             <ContactForm title="Contact Engineering" formEmail={""} infoTitle={"Phone :"} infoNumber={phones.engineering_phone} infoContacts={engineering_contacts}/>
-             <ContactForm title="Contact Electrical" formEmail={"electrical@centralaero.nz"} infoTitle={"Phone :"} infoNumber={phones.electrical_phone} infoContacts={electrical_contacts} />
+             <ContactForm title="Contact Engineering" formEmail={""} infoTitle={"Phone :"} infoNumber={phones.engineering_phone} infoContacts={engineering_contacts} team={"Engineering"}/>
+             <ContactForm title="Contact Electrical" formEmail={"electrical@centralaero.nz"} infoTitle={"Phone :"} infoNumber={phones.electrical_phone} infoContacts={electrical_contacts}  team={"Electrical"}/>
         </ContactPage>
     )
 }

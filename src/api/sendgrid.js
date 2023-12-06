@@ -47,20 +47,44 @@ export default async(req, res) => {
     }
 
 
-    if (req.body) {
-        console.log(req.body)
-        let spam = "";
-        if(req.body.Fax || req.body.NZ){
-            spam = " (spam)"
-        }
-      message.to = process.env.SENDGRID_AUTHORIZED_EMAIL
-      message.subject = "Form Submission from "+ req.body.name + spam
-      message.text = "Name: " + req.body.name + " Phone: " + req.body.phone + " Email: " + req.body.email + " Message: " + req.body.message  
-      message.html = "Name: " + req.body.name + "<br/>" + " Phone: " + req.body.phone + "<br/>" + " Email: " + req.body.email + "<br/>" + "<br/>" + " Message: " + req.body.message 
+    const message = {
+      to: process.env.SENDGRID_AUTHORIZED_EMAIL,
+      templateId: 'd-a9299bdea85b4aa3a6bc9eb9c255ac5f',
+      from: {
+        email: "daniel@thoughtfulhq.com",
+        name:'Central Aero Form',
+      },
+      subject: 'Central Aero Form',
+      dynamicTemplateData: {
+        subject: 'Central Aero Form',
+        team: req.body.team,
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email,
+        message: req.body.message,
+      }
     }
 
     return sendgrid.send(message).then(
       () => {
+        const msg = {
+          to: req.body.email,
+          templateId: 'd-5cc6b447889d4a2fa02c27bc598f7c19',
+          from: {
+            email:process.env.SENDGRID_AUTHORIZED_EMAIL,
+            name:'Cental Aero',
+          },
+          subject: 'Thanks for your Central Aero Enquiry!',
+          dynamicTemplateData: {
+            subject: 'Thanks for your Central Aero Enquiry!',
+            team: req.body.team,
+            name: req.body.name,
+            phone: req.body.phone,
+            email: req.body.email,
+            message: req.body.message,
+          }
+        }
+        sendgrid.send(msg);
         res.status(200).json({
           message: "I will send email",
         })
