@@ -46,9 +46,10 @@ export default async(req, res) => {
       res.json({ message: "Try a POST!" })
     }
 
-
+    let toEmail = "hamish@centralaero.nz"
+    if (req.body.team === "Engineering"){toEmail = "paul@centralaero.nz"}
     const message = {
-      to: process.env.SENDGRID_AUTHORIZED_EMAIL,
+      to: toEmail,
       templateId: 'd-a9299bdea85b4aa3a6bc9eb9c255ac5f',
       from: {
         email: "daniel@thoughtfulhq.com",
@@ -67,9 +68,12 @@ export default async(req, res) => {
 
     return sendgrid.send(message).then(
       () => {
+        let replyEmail = "hamish@centralaero.nz"
+        if (req.body.team === "Engineering"){replyEmail = "paul@centralaero.nz"}
         const msg = {
           to: req.body.email,
           templateId: 'd-5cc6b447889d4a2fa02c27bc598f7c19',
+          replyTo: replyEmail,
           from: {
             email:process.env.SENDGRID_AUTHORIZED_EMAIL,
             name:'Cental Aero',
@@ -84,6 +88,8 @@ export default async(req, res) => {
             message: req.body.message,
           }
         }
+        sendgrid.send(msg);
+        msg.to = "daniel@thoughtfulhq.com";
         sendgrid.send(msg);
         res.status(200).json({
           message: "I will send email",
