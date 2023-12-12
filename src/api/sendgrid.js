@@ -50,6 +50,7 @@ export default async(req, res) => {
     if (req.body.team === "Engineering"){toEmail = "paul@centralaero.nz"}
     const message = {
       to: toEmail,
+      replyTo: req.body.email,
       templateId: 'd-a9299bdea85b4aa3a6bc9eb9c255ac5f',
       from: {
         email: "daniel@thoughtfulhq.com",
