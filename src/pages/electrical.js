@@ -354,7 +354,7 @@ button {
 
 let components = ["Starter Generators","Magnetos","Fuel Pumps","Alternators","Generator Control Units", "Voltage Regulators"]
 
-let services = [
+let servicesOld = [
     ["Buy Components New","We have brand new parts on the shelf for piston and turbine engine aircraft. Give us a call/email or send us a form including the components you require and we’ll help out and offer any advice or recommendations to get you up and flying again."],
     ["Repair/Overhaul","Send in your component and we will assess and repair in accordance with manufacturer data. Let us know your required components and we’ll get back to you with a price and expected turnaround time."],
     ["Exchange Components","If you have an inspection due or need parts urgently, we offer component exchange services and have a wide range of stock available."]]
@@ -363,7 +363,7 @@ let services = [
 export default function Electrical({data}){
     let sanity = data.allSanityElectricalPage.nodes[0]
     let products = data.allSanityElectricalPageProducts.nodes
-    let image1 = getImage(products[0].component_image.asset.gatsbyImage);
+    let services = data.allSanityElectricalPageServices.nodes
     console.log(products)
     gsap.registerPlugin(ScrollTrigger);
     const electricalRef = useRef(null);
@@ -482,11 +482,10 @@ export default function Electrical({data}){
                                 <p><b>{component}</b></p>
                             </div>
                         ))} */}
-                        {products.map((product, i) => (
+                        {services.map((service, i) => (
                             <div className={"component component-ani"+i}>
-                                {/* <img src={i === 0? DC : i === 1? Magneto : i === 2 ? FuelPumpB : i === 3? Alternator : i === 4? Generator : VoltageRegulator}/> */}
-                                <GatsbyImage className="component-image" image={getImage(product.component_image.asset.gatsbyImage)} alt="Central Aero Electrical components in hanger" placeholder="blur"/>
-                                <p><b>{product.component_title}</b></p>
+                                <GatsbyImage className="component-image" image={getImage(service.component_image.asset.gatsbyImage)} alt={service.service_title + "display"} placeholder="blur"/>
+                                <p><b>{service.component_title}</b></p>
                             </div>
                         ))}
                         
@@ -497,13 +496,25 @@ export default function Electrical({data}){
                     </div>
                 </div>
 
-                <Services>
+                {/* <Services>
                 {services.map((service, i) => (
                     <ServiceWrapper >
                         <img alt={service[0]+" featured image"} src={i===0? BuyNew : i===1? RepairOverhaul : Exchange } className={'img'+i}/>
                         <div className={'text'+i}>
                             <h2>{service[0]}</h2>
                             <p>{service[1]}</p>
+                            <a href="/shop-parts">View All Products</a>
+                        </div>
+                    </ServiceWrapper>
+                ))}
+                </Services> */}
+                <Services>
+                {services.map((service, i) => (
+                    <ServiceWrapper>
+                        <GatsbyImage className={'img'+i} image={getImage(service.component_image.asset.gatsbyImage)} alt={service.service_title+" in workshop"} placeholder="blur"/>
+                        <div className={'text'+i}>
+                            <h2>service.service_title</h2>
+                            <p><PortableText  value={service.service_text}/></p>
                             <a href="/shop-parts">View All Products</a>
                         </div>
                     </ServiceWrapper>
@@ -556,6 +567,24 @@ export const pageQuery = graphql`
                 }
               }
             }
-          }
+        }
+        allSanityElectricalPageServices {
+            nodes {
+              service_title
+              service_text {
+                _type
+                    style
+                    children {
+                      text
+                      _type
+                    }
+              }
+              service_image {
+                asset {
+                  gatsbyImage(width:1000)
+                }
+              }
+            }
+        }
     }
 `
