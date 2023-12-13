@@ -354,6 +354,7 @@ export default function Electrical({data}){
     let sanity = data.allSanityElectricalPage.nodes[0]
     let products = data.allSanityElectricalPageProducts.nodes
     let services = data.allSanityElectricalPageServices.nodes
+    console.log(data)
     gsap.registerPlugin(ScrollTrigger);
     const electricalRef = useRef(null);
         useLayoutEffect(() => {
@@ -471,10 +472,10 @@ export default function Electrical({data}){
                                 <p><b>{component}</b></p>
                             </div>
                         ))} */}
-                        {services.map((service, i) => (
+                        {products.map((product, i) => (
                             <div className={"component component-ani"+i}>
-                                <GatsbyImage className="component-image" image={getImage(service.component_image.asset.gatsbyImage)} alt={service.service_title + "display"} placeholder="blur"/>
-                                <p><b>{service.component_title}</b></p>
+                                <GatsbyImage className="component-image" image={getImage(product.component_image.asset.gatsbyImage)} alt={product.component_title + "display"} placeholder="blur"/>
+                                <p><b>{product.component_title}</b></p>
                             </div>
                         ))}
                         
@@ -500,9 +501,9 @@ export default function Electrical({data}){
                 <Services>
                 {services.map((service, i) => (
                     <ServiceWrapper>
-                        <GatsbyImage className={'img'+i} image={getImage(service.component_image.asset.gatsbyImage)} alt={service.service_title+" in workshop"} placeholder="blur"/>
+                        <GatsbyImage className={'img'+i} image={getImage(service.service_image.asset.gatsbyImage)} alt={service.service_title+" in workshop"} placeholder="blur"/>
                         <div className={'text'+i}>
-                            <h2>service.service_title</h2>
+                            <h2>{service.service_title}</h2>
                             <p><PortableText  value={service.service_text}/></p>
                             <a href="/shop-parts">View All Products</a>
                         </div>
