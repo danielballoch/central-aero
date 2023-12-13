@@ -1,4 +1,7 @@
 import React, {useRef, useLayoutEffect} from 'react'
+import {PortableText} from '@portabletext/react'
+import { GatsbyImage, getImage} from "gatsby-plugin-image"
+import { graphql } from 'gatsby'
 import Layout from "../components/layout.js"
 import styled from 'styled-components'
 import Search from "../components/search"
@@ -204,10 +207,18 @@ justify-content: center;
     p {
         padding: 0;
     }
-    img {
-        /* width: 200px; */
-        height: 100px;
+    .component-image {
         margin: 20px;
+        // display: flex;
+        // justify-content: center;
+        // align-items: center;
+        // align-content: center;
+    }
+    img {
+        // object-fit: contain!important;
+        /* width: 200px; */
+        height: 110px;
+        // margin: 20px;
         /* background-color: lightgrey; */
     }
     
@@ -349,7 +360,11 @@ let services = [
     ["Exchange Components","If you have an inspection due or need parts urgently, we offer component exchange services and have a wide range of stock available."]]
 
 
-export default function Electrical(){
+export default function Electrical({data}){
+    let sanity = data.allSanityElectricalPage.nodes[0]
+    let products = data.allSanityElectricalPageProducts.nodes
+    let image1 = getImage(products[0].component_image.asset.gatsbyImage);
+    console.log(products)
     gsap.registerPlugin(ScrollTrigger);
     const electricalRef = useRef(null);
         useLayoutEffect(() => {
@@ -426,15 +441,16 @@ export default function Electrical(){
                 <div className='hero-wrap'>
                     <ElectricalHero>
                         <div className='hero-center-content'>
-                            <h1>CENTRAL AERO ELECTRICAL</h1>
-                            <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility.<br className='herobr'/> We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p>
+                            <h1>{sanity.hero_title}</h1>
+                            <PortableText value={sanity.hero_text}/>
+                            {/* <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility.<br className='herobr'/> We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p> */}
                             <p></p>
                             <ScrollAnimation/>
                             {/* <Search indices={searchIndices}/> */}
                         </div>
                         <Marquee>
                                 <div className='marquee'>
-                                    <h4>PROMT TURNAROUND TIME FOR ALL REPAIRS AND OVERHAULS</h4>
+                                    <h4>{sanity.banner_text}</h4>
                                 </div>
                             {/* <div className='track'>
                                 <h4>CAANZ PART 145 APPROVED<br/> REPAIR AND OVERHAUL FACILITY</h4>
@@ -456,13 +472,21 @@ export default function Electrical(){
                 </div>
 
                 <div className='products-section'>
-                    <h2 className='header-ani'>Electrical Products</h2>
-                    <p className='products-text-ani'>We stock the best electrical components from trusted brands such as Skurka, Safran, Champion, Hartzell etc and also have a selection of specialty parts. If your fixed wing aircraft, commercial aircraft, helicopter, or other aircraft needs new electrical components or existing components repaired or overhauled get in touch today</p>
+                    <h2 className='header-ani'>{sanity.components_section_title}</h2>
+                    <p className='products-text-ani'><PortableText  value={sanity.components_section_text}/></p>
+                    {/* <p className='products-text-ani'>We stock the best electrical components from trusted brands such as Skurka, Safran, Champion, Hartzell etc and also have a selection of specialty parts. If your fixed wing aircraft, commercial aircraft, helicopter, or other aircraft needs new electrical components or existing components repaired or overhauled get in touch today</p> */}
                     <ComponentsWrapper>
-                        {components.map((component, i) => (
+                        {/* {components.map((component, i) => (
                             <div className={"component component-ani"+i}>
                                 <img src={i === 0? DC : i === 1? Magneto : i === 2 ? FuelPumpB : i === 3? Alternator : i === 4? Generator : VoltageRegulator}/>
                                 <p><b>{component}</b></p>
+                            </div>
+                        ))} */}
+                        {products.map((product, i) => (
+                            <div className={"component component-ani"+i}>
+                                {/* <img src={i === 0? DC : i === 1? Magneto : i === 2 ? FuelPumpB : i === 3? Alternator : i === 4? Generator : VoltageRegulator}/> */}
+                                <GatsbyImage className="component-image" image={getImage(product.component_image.asset.gatsbyImage)} alt="Central Aero Electrical components in hanger" placeholder="blur"/>
+                                <p><b>{product.component_title}</b></p>
                             </div>
                         ))}
                         
@@ -497,3 +521,41 @@ title="Electrical Parts New, Exchange or Overhaul | Central Aero"
 description="New Aircraft Parts from brands such as Skurka, Safran, Champion & Hartzell. We also offer repair/overhaul and exchange services on a large range of electrical components. "
 
 />
+
+export const pageQuery = graphql`
+    query ElectricalQuery{
+        allSanityElectricalPage {
+            nodes {
+                hero_title
+                hero_text {
+                  _type
+                  style
+                  children {
+                    text
+                    _type
+                  }
+                }
+                banner_text
+                components_section_title
+                components_section_text {
+                    _type
+                    style
+                    children {
+                      text
+                      _type
+                    }
+                }
+            }
+        }
+        allSanityElectricalPageProducts {
+            nodes {
+              component_title
+              component_image {
+                asset {
+                  gatsbyImage(width:300)
+                }
+              }
+            }
+          }
+    }
+`

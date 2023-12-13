@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { gsap } from 'gsap';
 import {PortableText} from '@portabletext/react'
+import { GatsbyImage, getImage} from "gatsby-plugin-image"
 
 const Wrapper = styled.div`
 display: flex;
@@ -117,7 +118,8 @@ h2 {
 }
 `
 
-export default function Hero({engineeringTitle, engineeringText}){
+export default function Hero({engineeringTitle, engineeringText, engineeringImage}){
+    const image = getImage(engineeringImage.asset.gatsbyImage)
     const engineeringRef = useRef(null);
         useLayoutEffect(() => {
             let ctx = gsap.context(() => {
@@ -162,7 +164,8 @@ export default function Hero({engineeringTitle, engineeringText}){
                     </div>
                 </div>
             </div>
-            <StaticImage className="static-img img-ani2" alt="Central Aero Engineering helicopter in hanger" src="../../images/index-images/central-aero-engineering.jpg"/>
+            <GatsbyImage image={image}  className="static-img img-ani2" alt="Central Aero Engineering helicopter in hanger" placeholder="blur"/>
+            {/* <StaticImage className="static-img img-ani2" alt="Central Aero Engineering helicopter in hanger" src="../../images/index-images/central-aero-engineering.jpg"/> */}
         </Wrapper>
     )
 }

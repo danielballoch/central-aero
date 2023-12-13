@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { gsap } from 'gsap';
 import {PortableText} from '@portabletext/react'
+import { GatsbyImage, getImage} from "gatsby-plugin-image"
 import { E } from '@styled-icons/fa-solid';
 
 const Wrapper = styled.div`
@@ -115,7 +116,8 @@ div, .static-image {
 }
 `
 
-export default function Hero({electricalTitle, electricalText}){
+export default function Hero({electricalTitle, electricalText, electricalImage}){
+    const image = getImage(electricalImage.asset.gatsbyImage)
     const electricalRef = useRef(null);
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
@@ -158,7 +160,8 @@ export default function Hero({electricalTitle, electricalText}){
                     </div>
                 </div>
             </div>
-            <StaticImage className="static-img img-ani3" alt="Central Aero Electrical components in hanger" src="../../images/index-images/central-aero-electrical.jpg" placeholder="blurred"/>
+            <GatsbyImage image={image}  className="static-img img-ani3" alt="Central Aero Electrical components in hanger" placeholder="blur"/>
+            {/* <StaticImage className="static-img img-ani3" alt="Central Aero Electrical components in hanger" src="../../images/index-images/central-aero-electrical.jpg" placeholder="blurred"/> */}
         </Wrapper>
     )
 }

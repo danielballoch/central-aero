@@ -4,6 +4,7 @@ import { StaticImage } from 'gatsby-plugin-image'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {PortableText} from '@portabletext/react'
+import { GatsbyImage, getImage} from "gatsby-plugin-image"
 
 const Wrapper = styled.div`
 min-height: 800px;
@@ -114,7 +115,10 @@ align-items: center;
 }
 `
 
-export default function Hero({introTitle, introText}){
+export default function Hero({introTitle, introText, introImage1, introImage2}){
+    console.log(introImage1)
+    const image1 = getImage(introImage1.asset.gatsbyImage)
+    const image2 = getImage(introImage2.asset.gatsbyImage)
     gsap.registerPlugin(ScrollTrigger);
     const membershipRef = useRef(null);
         useLayoutEffect(() => {
@@ -146,14 +150,16 @@ export default function Hero({introTitle, introText}){
     return(
         <Wrapper ref={membershipRef}>
             <div className='about-images img-ani' onLoad={() => ScrollTrigger.refresh()}>
-                <StaticImage placeholder="blurred" className='static-image' alt="Engineering Showcase" src="../../images/index-images/central-aero-hanger.jpg"/>
-                <StaticImage placeholder="blurred" className='static-image center-image' alt="Electrical Showcase" src="../../images/index-images/central-aero-heli.jpeg"/>
+                <GatsbyImage image={image1}  className='static-image' alt="alt" placeholder="blur"/>
+                <GatsbyImage image={image2}  className='static-image' alt="alt" placeholder="blur"/>
+                {/* <StaticImage placeholder="blurred" className='static-image' alt="Engineering Showcase" src="../../images/index-images/central-aero-hanger.jpg"/> */}
+                {/* <StaticImage placeholder="blurred" className='static-image center-image' alt="Electrical Showcase" src="../../images/index-images/central-aero-heli.jpeg"/> */}
             </div>
             <div className='about-text'>
                 <div className='text-box'>
                     <h2 className='title'>{introTitle}</h2>
-                    {/* <h2 className='title'>Engineering & Electrical <br/> Under One Roof</h2> */}
                     <PortableText value={introText}/>
+                    {/* <h2 className='title'>Engineering & Electrical <br/> Under One Roof</h2> */}
                     {/* <p className='m1'>Central Aero is made up of two sister companies, Electrical run by Hamish Ross, and Engineering run by Paul Waterhouse. Working out of the Super Air Hangar near Hamilton Airport, their teams have provided quality parts and services to New Zealand and Overseas Pilots for over 17+ years.</p>
                     <p className='m2'>With knowledge and expertise in Commercial Air transport Aircrafts, Fixed Wing Planes, Helicopters right through to Hot Air Balloons, Gliders, Microlights & Gyrocopters - Central Aero is capable and ready to help with your engineering and electrical aviation needs.</p> */}
                     {/* <button>Get in Touch</button> */}

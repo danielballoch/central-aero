@@ -6,7 +6,7 @@ import Layout from "../components/layout"
 import Image1 from "../images/electrical-images/AC-Generator.png"
 import { useForm } from "react-hook-form"
 import ReCAPTCHA from "react-google-recaptcha";
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { GatsbyImage} from "gatsby-plugin-image"
 import Seo from "../components/seo"
 
 const ElectricalProducts = styled.div`

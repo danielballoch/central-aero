@@ -12,10 +12,10 @@ export default function Index({data}){
   let sanity = data.allSanityHomepage.nodes[0]
   return (
     <Layout id="top">
-        <Hero id="top" heroTitle={sanity.hero_title}/>
-        <About introTitle={sanity.intro_title} introText={sanity.intro_text}/>
-        <Engineering engineeringTitle={sanity.engineering_title} engineeringText={sanity.engineering_text}/>
-        <Electrical electricalTitle={sanity.electrical_title} electricalText={sanity.electrical_text}/>
+        <Hero id="top" heroTitle={sanity.hero_title} />
+        <About introTitle={sanity.intro_title} introText={sanity.intro_text} introImage1={sanity.intro_image_1} introImage2={sanity.intro_image_2}/>
+        <Engineering engineeringTitle={sanity.engineering_title} engineeringText={sanity.engineering_text} engineeringImage={sanity.engineering_image}/>
+        <Electrical electricalTitle={sanity.electrical_title} electricalText={sanity.electrical_text} electricalImage={sanity.electrical_image}/>
     </Layout>
   )
 }
@@ -39,6 +39,16 @@ export const pageQuery = graphql`
                     _type
                   }
                 }
+                intro_image_1 {
+                  asset {
+                    gatsbyImage(width:740)
+                  }
+                }
+                intro_image_2 {
+                  asset {
+                    gatsbyImage(width:740)
+                  }
+                }
                 engineering_title
                 engineering_text {
                   _type
@@ -48,6 +58,11 @@ export const pageQuery = graphql`
                     _type
                   }
                 }
+                engineering_image {
+                  asset {
+                    gatsbyImage(width:1920)
+                  }
+                }
                 electrical_title
                 electrical_text {
                   _type
@@ -55,6 +70,11 @@ export const pageQuery = graphql`
                   children {
                     text
                     _type
+                  }
+                }
+                electrical_image {
+                  asset {
+                    gatsbyImage(width:1920)
                   }
                 }
             }
