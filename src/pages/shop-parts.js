@@ -1,6 +1,7 @@
 import React, {useRef, useEffect, useState} from "react"
 import { Link, graphql } from "gatsby"
 import styled from "styled-components"
+import {PortableText} from '@portabletext/react'
 import Layout from "../components/layout"
 // import Seo from "../components/seo"
 import Image1 from "../images/electrical-images/AC-Generator.png"
@@ -244,11 +245,42 @@ h3 {
         }
     }
 }
+.section2 {
+width: 100%;
+max-width: 840px;
+}
+.section2-items {
+display: flex;
+flex-wrap: wrap;
+}
 `
+
+function Section2({title, products}){
+    if (title){
+    return (       
+        <div className="section2">    
+            <div className="title-div"><h3>{title}</h3></div>
+            <div className="section2-items">
+            {products.map(post => {
+                const title = post.component_title || post.component_path
+                return (
+                    <Link to={post.component_path} itemProp="url" className="part-item">
+                            <GatsbyImage image={post.component_image.asset.gatsbyImage} alt={title} placeholder="blur"/>
+                            <p><b>{title}</b></p>
+                            <p>In Stock</p>
+                    </Link>
+                )
+            })}
+            </div>
+        </div>  
+    )
+    }
+}
 
 const BlogIndex = ({ data, location }) => {
     console.log(data)
     let phone = data.contact.nodes[0].electrical_phone
+    let general = data.general.nodes[0]
     const reRef = useRef();
     const [serverState, setServerState] = useState({
         formSent: false,
@@ -304,6 +336,7 @@ const BlogIndex = ({ data, location }) => {
   const repairProducts = data.repair.nodes
   const orderProducts = data.order.nodes 
     // console.log(data)
+    console.log("show seciton 2",general.show_section2)
 
   if (repairProducts.length === 0) {
     return (
@@ -331,9 +364,9 @@ const BlogIndex = ({ data, location }) => {
                             <p>Thanks for contacting Central Aero. We'll be in touch as soon as possible.</p>
                         </div>
                     </div>
-                    <h2>Searching for a part?</h2>
+                    <h2>{general.form_title}</h2>
                     {/* <h2>Need a repair?</h2> */}
-                    <p>Fill out the form below or call us at {phone} and we can help source/repair what you need.</p>
+                    <p><PortableText value={general.form_text}/></p>
                     <label htmlFor="name">Name:</label>
                     <input type="text" 
                         name="name" 
@@ -370,34 +403,25 @@ const BlogIndex = ({ data, location }) => {
                         data-action='submit'
                     >SEND ENQUIRY</button>
                 </form>
+                
+                {general.show_section1 && general.show_section2?
                 <div className="content-right">
-                <div className="title-div"><h3>COMPONENTS WE REPAIR AND OVERHAUL</h3></div>
-                {repairProducts.map(post => {
-                    const title = post.component_title || post.component_path
-                    const subtitle = post.component_subtext
-                    return (
-                        <Link to={post.component_path} itemProp="url" className="part-item">
-                                {/* <img src={Image1}/> */}
-                                <GatsbyImage image={post.component_image.asset.gatsbyImage} alt="alt" placeholder="blur"/>
-                                <p><b>{title}</b></p>
-                                <p>{subtitle}</p>
-                        </Link>
-                    )
-                })}
-                {/*  
-                <div className="title-div"><h3>COMPONENTS AVAILIBLE FOR ORDER</h3></div>
-                {orderProducts.map(post => {
-                    const title = post.component_title || post.component_path
-                    return (
-                        <Link to={post.component_path} itemProp="url" className="part-item">
-                                <GatsbyImage image={post.component_image.asset.gatsbyImage} alt={title} placeholder="blur"/>
-                                <p><b>{title}</b></p>
-                                <p>In Stock</p>
-                        </Link>
-                    )
-                })}
-                */}
+                    <Section2 title={general.section1_title} products={repairProducts}/>
+                    <Section2 title={general.section2_title} products={orderProducts}/> 
+                </div>  
+                :general.show_section1 ?
+                <div className="content-right">
+                    <Section2 title={general.section1_title} products={repairProducts}/>
+                </div> 
+                :general.show_section2 ?
+                <div className="content-right">
+                    <Section2 title={general.section2_title} products={orderProducts}/> 
+                </div> 
+                :
+                <div className="content-right">
+                    <p>No products found. Please reload or contact 07 843 2936 or hamish@centralaero.nz for help.</p>
                 </div>
+                }
             </div>
         </div>
         </ElectricalProducts>
@@ -471,46 +495,23 @@ export const pageQuery = graphql`
             electrical_phone
         }
     }
+    general: allSanityShopParts {
+        nodes {
+          form_title
+          form_text {
+            _type
+            style
+            children {
+                text
+                _type
+            }
+          }
+          section1_title
+          show_section1
+          section2_title
+          show_section2
+        }
+    }
   
 }
 `
-
-// export const pageQuery = graphql`
-//   {
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-//     repair: allMarkdownRemark(filter: { frontmatter: {type: {eq: "repair"}}}, sort: { frontmatter: {title: ASC }}) {
-//       nodes {
-//         excerpt
-//         fields {
-//           slug
-//         }
-//         frontmatter {
-//           type
-//           date(formatString: "MMMM DD, YYYY")
-//           title
-//           partnumber
-//           description
-//         }
-//       }
-//     }
-//     order: allMarkdownRemark(filter: { frontmatter: {type: {eq: "order"}}}, sort: { frontmatter: {title: ASC }}) {
-//         nodes {
-//           excerpt
-//           fields {
-//             slug
-//           }
-//           frontmatter {
-//             type
-//             date(formatString: "MMMM DD, YYYY")
-//             title
-//             partnumber
-//             description
-//           }
-//         }
-//       }
-//   }
-// `

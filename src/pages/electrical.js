@@ -5,17 +5,7 @@ import { graphql } from 'gatsby'
 import Layout from "../components/layout.js"
 import styled from 'styled-components'
 import Search from "../components/search"
-import Magneto from "../images/electrical-images/Magneto.png"
-import AC from "../images/electrical-images/AC-Generator.png"
-import DC from "../images/electrical-images/DC-Starter.png"
-import Alternator from "../images/electrical-images/Alternator.png"
-import FuelPumpB from "../images/electrical-images/FuelPumpB.png"
-import Generator from "../images/electrical-images/GeneratorControl.png"
-import VoltageRegulator from "../images/electrical-images/VoltageRegulator.png"
 
-import BuyNew from "../images/electrical-images/BuyComponentsNew.png"
-import RepairOverhaul from "../images/electrical-images/RepairOverhaul.png"
-import Exchange from "../images/electrical-images/ExchangeComponents.png"
 
 import HeroImage from "../images/electrical-images/electrical-background-darker.png"
 import { StaticImage } from 'gatsby-plugin-image'
@@ -364,7 +354,6 @@ export default function Electrical({data}){
     let sanity = data.allSanityElectricalPage.nodes[0]
     let products = data.allSanityElectricalPageProducts.nodes
     let services = data.allSanityElectricalPageServices.nodes
-    console.log(products)
     gsap.registerPlugin(ScrollTrigger);
     const electricalRef = useRef(null);
         useLayoutEffect(() => {

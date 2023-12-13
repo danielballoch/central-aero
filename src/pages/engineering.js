@@ -1,6 +1,7 @@
 import React, {useRef, useLayoutEffect} from 'react'
 import Layout from "../components/layout.js"
 import { Link, graphql} from "gatsby"
+import {PortableText} from '@portabletext/react'
 import styled from 'styled-components'
 import Plane from "../images/aircrafts/central-aero-planes.jpg"
 import { StaticImage } from 'gatsby-plugin-image'
@@ -302,6 +303,8 @@ button {
 
 
 export default function Electrical({data}){
+    let general = data.general.nodes[0]
+    console.log(general)
     const services = data.services.nodes
     gsap.registerPlugin(ScrollTrigger);
     const engineeringRef = useRef(null);
@@ -353,8 +356,8 @@ export default function Electrical({data}){
                 <EngineeringHero>
                     <div className='main-content '>
                         <div className='center-content'>
-                            <h1>CENTRAL AERO ENGINEERING</h1>
-                            <p>Supporting New Zealand Airports, Pilots, and Hobbyist flyers with everything from maintenance and airworthiness reviews to air accident investigation and consultancy. Whatever your aviation need Central Aero Engineering has the knowledge and expertise to keep you flying safely.</p>
+                            <h1>{general.hero_title}</h1>
+                            <p><PortableText value={general.hero_text}/></p>
                             <div className='button-div'>
                                 <Link className="button1" to="#services">View Our Services</Link><Link className="button2" to="/contact-engineering">Contact Engineering</Link>
                             </div>
@@ -366,19 +369,19 @@ export default function Electrical({data}){
                 <div className='stewart-systems'>
                     <div className='content-wrapper text-box3'>
                         <div className='content'>
-                            <h2>New Zealand Stewart Systems Distributer: Call us for all your fabric covering materials</h2>
+                            <h2>{general.intro_title}</h2>
                             {/* <hr/> */}
-                            <p><b>We're proud to be the only Stewart Systems Distributor in New Zealand.</b></p>
-                            <p>What is Stewart Systems? They're an innovative aircraft fabric covering and painting technology company setting the standard for the 21st century. Based in Ohio USA they manufacture non-hazardous, waterborne products for covering & painting aircrafts.</p>
+                            <p><PortableText value={general.intro_text}/></p>
                             <div className='button-div'>
                                 <Link className="button1" to="/stewart-systems">Learn More</Link>
                                 <Link className="button2" to="/contact-engineering">Contact Engineering</Link>
                             </div>
                         </div>
                     </div>
-                    <StaticImage className="img img-ani3" placeholder='blurred' src="../images/aircrafts/central-aero-helicopter2.jpg"/>
+                    <GatsbyImage className="img img-ani3" image={getImage(general.intro_image.asset.gatsbyImage)} alt={general.intro_title + "display"} placeholder="blur"/>
+                    {/* <StaticImage className="img img-ani3" placeholder='blurred' src="../images/aircrafts/central-aero-helicopter2.jpg"/> */}
                 </div>
-                <h2 id="services" className='header-ani'>Our Engineering Services</h2>
+                <h2 id="services" className='header-ani'>{general.services_title}</h2>
                 <Services>
                     {services.map((service, i) => (
                         <Link className="no-style" to={"/"+service.service_path + "#top"}>
@@ -415,6 +418,34 @@ export const pageQuery = graphql`
             service_title
             service_path
             blurb
+        }
+    }
+    general: allSanityEngineeringPage {
+        nodes {
+          hero_title
+          hero_text {
+            _type
+            style
+            children {
+              text
+              _type
+            }
+          }
+          intro_title
+          intro_text {
+            _type
+            style
+            children {
+              text
+              _type
+            }
+          }
+          intro_image {
+            asset {
+                gatsbyImage(width:1000)
+            }
+          }
+          services_title
         }
     }
 }

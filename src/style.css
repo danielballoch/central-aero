@@ -134,7 +134,8 @@ h5 {
 }
 
 h6 {
-  font-size: var(--fontSize-1);
+  font-size: 18px;
+  margin: 0 0 5px 0;
 }
 
 h1 > a {

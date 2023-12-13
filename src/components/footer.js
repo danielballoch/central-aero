@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { useStaticQuery, graphql } from "gatsby"
+import {PortableText} from '@portabletext/react'
 import Logo from "../images/CentralAeroTextOnlyLogoBlack.png"
 import WhiteLogo from "../images/CentralAeroTextOnlyLogo.png"
 import FB from '../images/facebook-logo.png'
@@ -255,13 +257,29 @@ transform: rotate(90deg);
 `
 
 export default function Footer({phones}){
+    const data = useStaticQuery(graphql`
+    query FooterQuery {
+        allSanityFooter {
+            nodes {
+              footer_text {
+                _type
+                style
+                children {
+                  text
+                  _type
+                }
+              }
+            }
+          }
+    }
+  `)
     return(
         <Wrapper>
             <div className='footer-main'>
                 <div className='footer1'>
                     <div className='div1'>
                         <span  className="logo"/>
-                        <p>Providing professional Aircraft Engineering & Electrical services for over 17+ years. We're a New Zealand owned & operated company, and take pride in our collective knowledge and experience helping to keep the Aviation community flying safely.</p>
+                        <p><PortableText value={data.allSanityFooter.nodes[0].footer_text}/></p>
                         {/* <p>© Copyright 2023 Central Aero</p> */}
 
                         {/* <Link href="#"><p>Connect with us <img src={FB}/></p></Link> */}
