@@ -190,7 +190,7 @@ div {
 }
 `
 
-export default function Hero(){
+export default function Hero({heroTitle}){
     return(
         <HeroWrapper id="home">
         <Video videoSrcURL={HeroVideo} videoTitle="Central Aero Compilation"/>
@@ -202,6 +202,7 @@ export default function Hero(){
                     maxHeight: "100%"
                     }}>
             <div className="center-text">
+                {/* <h1>{heroTitle}</h1> */}
                 <h1>We make sure your<br className="br-desktop"/> Aircraft is Flying <br className="br-desktop"/> Fast, Efficiently,<br className="br-desktop"/> and Safely. </h1>
                 <div className="links">
                     <Link to="/engineering">ENGINEERING<br className="br-hide"/> SERVICES <i class="arrow right"/></Link>

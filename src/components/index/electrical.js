@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import { StaticImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { gsap } from 'gsap';
+import {PortableText} from '@portabletext/react'
+import { E } from '@styled-icons/fa-solid';
 
 const Wrapper = styled.div`
 display: flex;
@@ -113,7 +115,7 @@ div, .static-image {
 }
 `
 
-export default function Hero(){
+export default function Hero({electricalTitle, electricalText}){
     const electricalRef = useRef(null);
     useLayoutEffect(() => {
         let ctx = gsap.context(() => {
@@ -145,10 +147,11 @@ export default function Hero(){
         <Wrapper ref={electricalRef}>
             <div className='text-box3'>
                 <div className='text-content'>
-                    <h2>Electrical</h2>
-                    <h3>CAANZ Part 145 Approved Repair/Overhaul Facility</h3>
+                    <h2>{electricalTitle}</h2>
+                    <PortableText value={electricalText}/>
+                    {/* <h3>CAANZ Part 145 Approved Repair/Overhaul Facility</h3>
                     <p>Central Aero Electrical offer quick turnarounds for a large range of exchange and overhaul components - from fixed wing aircraft, commercial aircraft, helicopter’s, or other aircraft.</p>
-                    <p>We offer custom orders and can advise on other suppliers for any parts we don't stock. If you need an electrical part new, repaired, overhauled, or can't find a particular component get in touch today.</p>
+                    <p>We offer custom orders and can advise on other suppliers for any parts we don't stock. If you need an electrical part new, repaired, overhauled, or can't find a particular component get in touch today.</p> */}
                     <div className='button-div'>
                         <Link href="/contact-electrical">Contact Electrical</Link>
                         <Link href="/electrical">View Electrical Parts/Services</Link>

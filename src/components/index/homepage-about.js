@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { StaticImage } from 'gatsby-plugin-image'
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import {PortableText} from '@portabletext/react'
 
 const Wrapper = styled.div`
 min-height: 800px;
@@ -87,6 +88,7 @@ align-items: center;
         margin-right: 20px;
         margin-left: 20px;
         h2 {
+            max-width: 70%;
             margin-top: 10px;
             font-size: 34px;
             font-weight: 700;
@@ -112,7 +114,7 @@ align-items: center;
 }
 `
 
-export default function Hero(){
+export default function Hero({introTitle, introText}){
     gsap.registerPlugin(ScrollTrigger);
     const membershipRef = useRef(null);
         useLayoutEffect(() => {
@@ -149,9 +151,11 @@ export default function Hero(){
             </div>
             <div className='about-text'>
                 <div className='text-box'>
-                    <h2 className='title'>Engineering & Electrical <br/> Under One Roof</h2>
-                    <p className='m1'>Central Aero is made up of two sister companies, Electrical run by Hamish Ross, and Engineering run by Paul Waterhouse. Working out of the Super Air Hangar near Hamilton Airport, their teams have provided quality parts and services to New Zealand and Overseas Pilots for over 17+ years.</p>
-                    <p className='m2'>With knowledge and expertise in Commercial Air transport Aircrafts, Fixed Wing Planes, Helicopters right through to Hot Air Balloons, Gliders, Microlights & Gyrocopters - Central Aero is capable and ready to help with your engineering and electrical aviation needs.</p>
+                    <h2 className='title'>{introTitle}</h2>
+                    {/* <h2 className='title'>Engineering & Electrical <br/> Under One Roof</h2> */}
+                    <PortableText value={introText}/>
+                    {/* <p className='m1'>Central Aero is made up of two sister companies, Electrical run by Hamish Ross, and Engineering run by Paul Waterhouse. Working out of the Super Air Hangar near Hamilton Airport, their teams have provided quality parts and services to New Zealand and Overseas Pilots for over 17+ years.</p>
+                    <p className='m2'>With knowledge and expertise in Commercial Air transport Aircrafts, Fixed Wing Planes, Helicopters right through to Hot Air Balloons, Gliders, Microlights & Gyrocopters - Central Aero is capable and ready to help with your engineering and electrical aviation needs.</p> */}
                     {/* <button>Get in Touch</button> */}
                 </div>
             </div>
