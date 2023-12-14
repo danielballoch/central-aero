@@ -205,7 +205,7 @@ justify-content: center;
         // align-content: center;
     }
     img {
-        // object-fit: contain!important;
+        object-fit: contain!important;
         /* width: 200px; */
         height: 110px;
         // margin: 20px;
