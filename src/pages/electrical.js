@@ -219,7 +219,7 @@ const Marquee = styled.div`
     display: flex;
     align-items: center;
   position: relative;
-  width: 100vw;
+  width: 100%;
   max-width: 100%;
   height: 71px;
   overflow-x: hidden;
