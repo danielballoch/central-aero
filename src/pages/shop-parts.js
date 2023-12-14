@@ -45,7 +45,7 @@ select {
     border-radius: 5px;
 }
 .wrapper{
-    width: 1280px;
+    max-width: 1280px;
     margin: auto;
     
 }
@@ -228,6 +228,7 @@ h3 {
         }
         .content-right {
             width: 100%!important;
+            margin-left: 0;
             .part-item {
                 /* transform: scale(.5); */
                 width: 150px;
