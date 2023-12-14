@@ -330,13 +330,18 @@ button {
 }
 @media(max-width:1080px){
     flex-direction: column;
-    div {
+    .img-section {
+        max-width: 100vw;
+        margin: 0!important;
+        padding: 0;
+    }
+    .text-section {
         max-width: 100vw;
         padding: 20px;
-        margin: 40px auto 80px auto;
+        margin: 40px auto 140px auto;
     }
     img {
-        margin: auto;
+        margin: auto 0;
         max-width: 100vw;
 }
 }
@@ -501,8 +506,8 @@ export default function Electrical({data}){
                 <Services>
                 {services.map((service, i) => (
                     <ServiceWrapper>
-                        <GatsbyImage className={'img'+i} image={getImage(service.service_image.asset.gatsbyImage)} alt={service.service_title+" in workshop"} placeholder="blur"/>
-                        <div className={'text'+i}>
+                        <GatsbyImage className={'img'+i + " img-section"} image={getImage(service.service_image.asset.gatsbyImage)} alt={service.service_title+" in workshop"} placeholder="blur"/>
+                        <div className={'text'+i + " text-section"}>
                             <h2>{service.service_title}</h2>
                             <p><PortableText  value={service.service_text}/></p>
                             <a href="/shop-parts">View All Products</a>
