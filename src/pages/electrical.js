@@ -4,7 +4,7 @@ import { GatsbyImage, getImage} from "gatsby-plugin-image"
 import { graphql } from 'gatsby'
 import Layout from "../components/layout.js"
 import styled from 'styled-components'
-import Search from "../components/search"
+// import Search from "../components/search"
 
 
 import HeroImage from "../images/electrical-images/electrical-background-darker.png"

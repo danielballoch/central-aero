@@ -26,6 +26,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-image`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sitemap`,
     {
         resolve: `gatsby-plugin-google-gtag`,
         options: {
@@ -140,12 +141,20 @@ module.exports = {
         }
     },
     {
-        resolve: `gatsby-plugin-algolia`,
-        options: {
-          appId: process.env.GATSBY_ALGOLIA_APP_ID,
-          apiKey: process.env.ALGOLIA_ADMIN_KEY,
-          queries: require("./src/utils/algolia-queries")
-        },
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.centralaero.co.nz',
+        sitemap: 'https://www.centralaero.com/sitemap-0.xml',
+        policy: [{userAgent: '*', allow: '/'}]
+      }
     },
+    // {
+    //     resolve: `gatsby-plugin-algolia`,
+    //     options: {
+    //       appId: process.env.GATSBY_ALGOLIA_APP_ID,
+    //       apiKey: process.env.ALGOLIA_ADMIN_KEY,
+    //       queries: require("./src/utils/algolia-queries")
+    //     },
+    // },
   ],
 }
