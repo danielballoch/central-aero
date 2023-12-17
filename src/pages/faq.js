@@ -111,10 +111,10 @@ const Content = ({question, answer,i}) => {
     const [toggle, setToggle] = useState(true);
     return (
         <ContentBox  onClick={() => {setToggle(!toggle)}}>
-            <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" key={"question " + i}>
-                <h3 itemProp={"Question "+i}><p>Q{i+1}: {question}<span className={toggle ? "arrow" : "arrow down"}/></p></h3>
-                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" className={toggle ? "answer toggle" : "answer"}>
-                    <p itemprop="text">{answer}</p>
+            <div key={"question " + i}>
+                <h3><p>Q{i+1}: {question}<span className={toggle ? "arrow" : "arrow down"}/></p></h3>
+                <div className={toggle ? "answer toggle" : "answer"}>
+                    <p >{answer}</p>
                 </div>
             </div>
         </ContentBox>
@@ -124,7 +124,7 @@ const Content = ({question, answer,i}) => {
 const FAQ = (data) => {
     let Questions = data.data.allSanityFaq.nodes;
     return(
-        <Layout invert={true} itemscope itemtype="https://schema.org/FAQPage">
+        <Layout invert={true}>
             <div style={{ display: "grid"}} id="top" >
             <div
                 style={{
