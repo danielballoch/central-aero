@@ -1,6 +1,5 @@
 import React, {useRef, useLayoutEffect} from 'react'
 import styled from 'styled-components'
-import { StaticImage } from 'gatsby-plugin-image'
 import { Link } from 'gatsby'
 import { gsap } from 'gsap';
 import {PortableText} from '@portabletext/react'
@@ -137,11 +136,8 @@ export default function Hero({engineeringTitle, engineeringText, engineeringImag
                     // markers: true
                 };
                 setTimeout(()=>{
-                    console.log("working?")
                     gsap.fromTo(element.querySelector(".img-ani2"),{opacity: 0, x: 100},{opacity: 1, x: 0, scrollTrigger: scrollSettings2});
                     gsap.fromTo(element.querySelector(".text-box2"),{opacity: 0, x: 100},{opacity: 1, x: 0, scrollTrigger: scrollSettings1});
-                    // gsap.fromTo(element.querySelector(".m1"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings3});
-                    // gsap.fromTo(element.querySelector(".m2"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings4});
                     
                 },100)
             });
@@ -153,11 +149,6 @@ export default function Hero({engineeringTitle, engineeringText, engineeringImag
                 <div className='text-content'>
                     <h2>{engineeringTitle}</h2>
                     <PortableText value={engineeringText}/>
-                    {/* <h3>Maintenance, Refurbishment, Consultancy</h3>
-                    <p>Central Aero Engineering takes pride in it's vast collective experience and knowledge in the aviation industry. The best solution in Hamilton for anything from minor maintenance to major refurbishment of your aircraft.</p>
-                    <p>We support everything from Hot Air Balloons, Gliders, Microlights & Gyrocopters right through to Air transport aircrafts & helicopters and also offer consultancy services: Maintenance controllers, Air accident investigation, Auditing, and Airworthiness reviews.</p> */}
-                    {/* <p>We also offer consultancy services to the industry as Maintenance controllers, Air accident investigation, Auditing, and Airworthiness reviews.</p>
-                    <p>Whether you are a homebuilder, micro light owner or an air transport operator, fixed wing or helicopter, Central Aero Engineering can assist you with your aviation engineering requirements to get you flying and to keep you flying.</p> */}
                     <div className='button-div'>
                         <Link href="/contact-engineering">Contact Engineering</Link>
                         <Link href="/engineering">View Engineering Services</Link>
@@ -165,7 +156,6 @@ export default function Hero({engineeringTitle, engineeringText, engineeringImag
                 </div>
             </div>
             <GatsbyImage image={image}  className="static-img img-ani2" alt="Central Aero Engineering helicopter in hanger" placeholder="blur"/>
-            {/* <StaticImage className="static-img img-ani2" alt="Central Aero Engineering helicopter in hanger" src="../../images/index-images/central-aero-engineering.jpg"/> */}
         </Wrapper>
     )
 }

@@ -161,12 +161,8 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
 
 
       async function onSubmit(data){
-        // const reRef = useRef<>();
         const token = await reRef.current.executeAsync();
         reRef.current.reset();
-        // console.log("this is where form data should log")
-        // console.log(data)
-        // console.log(token)
         
         
         fetch(`/api/sendgrid`, {

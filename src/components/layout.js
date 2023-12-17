@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import { useStaticQuery, graphql } from 'gatsby'
 
 import Navbar from "../components/navbar"
@@ -17,7 +16,6 @@ const Layout = ({ location, children, invert }) => {
         }
     }`
   )
-  console.log("layout data: ",data)
   let phones = data.contact.nodes[0]
   return (
     <div>

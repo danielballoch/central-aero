@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from 'gatsby'
 import styled from 'styled-components'
 import Video from "../../components/video"
-// import LogoCover from "../images/cover.png"
 import HeroVideo from "../../videos/CentralAeroHeroRerender.mp4"
 
 const HeroWrapper = styled.div`
@@ -202,7 +201,6 @@ export default function Hero({heroTitle}){
                     maxHeight: "100%"
                     }}>
             <div className="center-text">
-                {/* <h1>{heroTitle}</h1> */}
                 <h1>We make sure your<br className="br-desktop"/> Aircraft is Flying <br className="br-desktop"/> Fast, Efficiently,<br className="br-desktop"/> and Safely. </h1>
                 <div className="links">
                     <Link to="/engineering">ENGINEERING<br className="br-hide"/> SERVICES <i class="arrow right"/></Link>

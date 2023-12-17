@@ -2,15 +2,10 @@ import React, {useState, useEffect} from 'react'
 import styled from "styled-components"
 import Logo from "../images/CentralAeroTextOnlyLogo.png"
 import InvertLogo from "../images/CentralAeroTextOnlyLogoBlack.png"
-import MenuImage from "../images/aircrafts/central-aero-helicopter.jpg"
 import FB from '../images/facebook-logo.png'
 import { Link } from "gatsby"
-import Search from "./search"
 import CALogo from "../images/CALogoWhite.png"
-import CALogo1 from "../images/CA-Logo-Square-Black.png"
 
-
-const searchIndices = [{ name: `Pages`, title: `Pages` }]
 
 
 const Navbar = styled.div`
@@ -370,33 +365,24 @@ export default function Nav({invert, phones}){
 
         useEffect(() => {
         if (typeof window !== `undefined` && window.onscroll !== offset) {
-            // console.log("running")
             window.onscroll = () => {
                 setOffset(window.scrollY);
-                // console.log(offset)
                 if (offset > window.scrollY && scrollUp !== true && !menuOpen){
-                    // console.log("hello1");
                     setScrollUp(true);
                 } else if (offset < window.scrollY && scrollUp !== false && window.scrollY > 100 && !menuOpen) {
                     setScrollUp(false);     
-                    // console.log("hello2");
                 }
                 if (offset <= 100){
                     setInitial(true)
                 } else if (offset !== 0 && initial !== false && !menuOpen){
                     setInitial(false)
                 } 
-                // if (menuOpen){
-                //     setInitial(false);
-                //     setScrollUp(false);
-                // }
             }
         }
         })
 
     return (
         <Navbar>
-        {/* src={invert? InvertLogo : menuOpen? Logo : Logo} */}
         <NavWrapper className={menuOpen? "NavBar Scroll Initial" : scrollUp && initial? "NavBar Scroll Initial" : scrollUp? "NavBar Scroll" : "NavBar"}>
             <Link to="/" aria-label="Navigate to homepage"><div className={menuOpen? "image" : invert && !menuOpen? "invert-logo" : scrollUp & initial? "image" : scrollUp? "invert-logo" : "image"}/></Link>
             <div>

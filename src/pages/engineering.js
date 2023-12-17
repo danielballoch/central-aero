@@ -3,7 +3,6 @@ import Layout from "../components/layout.js"
 import { Link, graphql} from "gatsby"
 import {PortableText} from '@portabletext/react'
 import styled from 'styled-components'
-import Plane from "../images/aircrafts/central-aero-planes.jpg"
 import { StaticImage } from 'gatsby-plugin-image'
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { gsap } from 'gsap';
@@ -304,7 +303,6 @@ button {
 
 export default function Electrical({data}){
     let general = data.general.nodes[0]
-    console.log(general)
     const services = data.services.nodes
     gsap.registerPlugin(ScrollTrigger);
     const engineeringRef = useRef(null);
@@ -343,8 +341,6 @@ export default function Electrical({data}){
                         };
                         gsap.fromTo(element.querySelector(className),{opacity: 0, y: 100,},{opacity: 1, y: 0, scrollTrigger: scrollSettings});
                     }
-                    // gsap.fromTo(element.querySelector(".m2"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings4});
-                    
                 },100)
                 
             });
@@ -379,7 +375,6 @@ export default function Electrical({data}){
                         </div>
                     </div>
                     <GatsbyImage className="img img-ani3" image={getImage(general.intro_image.asset.gatsbyImage)} alt={general.intro_title + "display"} placeholder="blur"/>
-                    {/* <StaticImage className="img img-ani3" placeholder='blurred' src="../images/aircrafts/central-aero-helicopter2.jpg"/> */}
                 </div>
                 <h2 id="services" className='header-ani'>{general.services_title}</h2>
                 <Services>

@@ -5,7 +5,6 @@ import { Link } from 'gatsby'
 import { gsap } from 'gsap';
 import {PortableText} from '@portabletext/react'
 import { GatsbyImage, getImage} from "gatsby-plugin-image"
-import { E } from '@styled-icons/fa-solid';
 
 const Wrapper = styled.div`
 display: flex;
@@ -135,12 +134,8 @@ export default function Hero({electricalTitle, electricalText, electricalImage})
                 // markers: true
             };
             setTimeout(()=>{
-                console.log("working?")
                 gsap.fromTo(element.querySelector(".img-ani3"),{opacity: 0, x: 100},{opacity: 1, x: 0, scrollTrigger: scrollSettings2});
                 gsap.fromTo(element.querySelector(".text-box3"),{opacity: 0, x: 100},{opacity: 1, x: 0, scrollTrigger: scrollSettings1});
-                // gsap.fromTo(element.querySelector(".m1"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings3});
-                // gsap.fromTo(element.querySelector(".m2"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings4});
-                
             },100)
         });
         return () => ctx.revert(); // <- cleanup!
@@ -151,9 +146,6 @@ export default function Hero({electricalTitle, electricalText, electricalImage})
                 <div className='text-content'>
                     <h2>{electricalTitle}</h2>
                     <PortableText value={electricalText}/>
-                    {/* <h3>CAANZ Part 145 Approved Repair/Overhaul Facility</h3>
-                    <p>Central Aero Electrical offer quick turnarounds for a large range of exchange and overhaul components - from fixed wing aircraft, commercial aircraft, helicopter’s, or other aircraft.</p>
-                    <p>We offer custom orders and can advise on other suppliers for any parts we don't stock. If you need an electrical part new, repaired, overhauled, or can't find a particular component get in touch today.</p> */}
                     <div className='button-div'>
                         <Link href="/contact-electrical">Contact Electrical</Link>
                         <Link href="/electrical">View Electrical Parts/Services</Link>
@@ -161,7 +153,6 @@ export default function Hero({electricalTitle, electricalText, electricalImage})
                 </div>
             </div>
             <GatsbyImage image={image}  className="static-img img-ani3" alt="Central Aero Electrical components in hanger" placeholder="blur"/>
-            {/* <StaticImage className="static-img img-ani3" alt="Central Aero Electrical components in hanger" src="../../images/index-images/central-aero-electrical.jpg" placeholder="blurred"/> */}
         </Wrapper>
     )
 }

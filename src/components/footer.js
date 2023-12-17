@@ -280,9 +280,6 @@ export default function Footer({phones}){
                     <div className='div1'>
                         <span  className="logo"/>
                         <p><PortableText value={data.allSanityFooter.nodes[0].footer_text}/></p>
-                        {/* <p>© Copyright 2023 Central Aero</p> */}
-
-                        {/* <Link href="#"><p>Connect with us <img src={FB}/></p></Link> */}
                     </div>
                     <div className='div2'>
                         <Link to="/#home">HOME</Link>

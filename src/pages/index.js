@@ -8,7 +8,6 @@ import Seo from "../components/seo"
 import { graphql } from "gatsby"
 
 export default function Index({data}){
-  console.log(data.allSanityHomepage.nodes[0])
   let sanity = data.allSanityHomepage.nodes[0]
   return (
     <Layout id="top">

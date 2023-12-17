@@ -63,7 +63,6 @@ max-width: 900px;
 `
 
 export default function TermsAndConditions({data}){
-    console.log(data)
     let content = data.allSanityTermsAndConditions.nodes[0].terms_and_conditions_text
   return (
     <Layout invert="true">

@@ -1,6 +1,5 @@
 import React from "react"
 import Layout from "./layout"
-// import Seo from "../components/seo"
 import styled from "styled-components"
 import { Link } from "gatsby"
 

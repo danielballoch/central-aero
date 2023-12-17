@@ -3,8 +3,6 @@ import { Link, graphql } from "gatsby"
 import styled from "styled-components"
 import {PortableText} from '@portabletext/react'
 import Layout from "../components/layout"
-// import Seo from "../components/seo"
-import Image1 from "../images/electrical-images/AC-Generator.png"
 import { useForm } from "react-hook-form"
 import ReCAPTCHA from "react-google-recaptcha";
 import { GatsbyImage} from "gatsby-plugin-image"
@@ -275,7 +273,6 @@ function Section2({title, products}){
 }
 
 const BlogIndex = ({ data, location }) => {
-    console.log(data)
     let phone = data.contact.nodes[0].electrical_phone
     let general = data.general.nodes[0]
     const reRef = useRef();
@@ -291,13 +288,8 @@ const BlogIndex = ({ data, location }) => {
 
 
       async function onSubmit(data){
-        // const reRef = useRef<>();
         const token = await reRef.current.executeAsync();
-        reRef.current.reset();
-        // console.log("this is where form data should log")
-        // console.log(data)
-        // console.log(token)
-        
+        reRef.current.reset();  
         
         fetch(`/api/sendgrid`, {
           method: `POST`,
@@ -328,12 +320,9 @@ const BlogIndex = ({ data, location }) => {
             }, 3000)
           }
       })
-//   const siteTitle = data.site.siteMetadata?.title || `Title`
   const siteTitle = `Title`
   const repairProducts = data.repair.nodes
   const orderProducts = data.order.nodes 
-    // console.log(data)
-    console.log("show seciton 2",general.show_section2)
 
   if (repairProducts.length === 0) {
     return (
@@ -362,7 +351,6 @@ const BlogIndex = ({ data, location }) => {
                         </div>
                     </div>
                     <h2>{general.form_title}</h2>
-                    {/* <h2>Need a repair?</h2> */}
                     <p><PortableText value={general.form_text}/></p>
                     <label htmlFor="name">Name:</label>
                     <input type="text" 
@@ -428,11 +416,6 @@ const BlogIndex = ({ data, location }) => {
 
 export default BlogIndex
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
 export const Head = () => <Seo 
 title="Shop Quality Aircraft Parts & Components | Central Aero"
 description="Starter Generators, Magnetos, Fuel Pumps etc from trusted brands such as Skurka, Safran, Champion and Hartzel. Buy electrical parts new, exchange or overhaul." 

@@ -14,7 +14,6 @@ margin: auto;
 
 const NotFoundPage = ({ data, location}) => {
   const siteTitle = data.site.siteMetadata.title
-    console.log(data)
   return (
     <Layout location={location} title={siteTitle} invert={true}>
         <Wrapper>

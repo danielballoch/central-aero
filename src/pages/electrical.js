@@ -347,19 +347,10 @@ button {
 }
 `
 
-let components = ["Starter Generators","Magnetos","Fuel Pumps","Alternators","Generator Control Units", "Voltage Regulators"]
-
-let servicesOld = [
-    ["Buy Components New","We have brand new parts on the shelf for piston and turbine engine aircraft. Give us a call/email or send us a form including the components you require and we’ll help out and offer any advice or recommendations to get you up and flying again."],
-    ["Repair/Overhaul","Send in your component and we will assess and repair in accordance with manufacturer data. Let us know your required components and we’ll get back to you with a price and expected turnaround time."],
-    ["Exchange Components","If you have an inspection due or need parts urgently, we offer component exchange services and have a wide range of stock available."]]
-
-
 export default function Electrical({data}){
     let sanity = data.allSanityElectricalPage.nodes[0]
     let products = data.allSanityElectricalPageProducts.nodes
     let services = data.allSanityElectricalPageServices.nodes
-    console.log(data)
     gsap.registerPlugin(ScrollTrigger);
     const electricalRef = useRef(null);
         useLayoutEffect(() => {
@@ -383,25 +374,16 @@ export default function Electrical({data}){
                     toggleActions: "play none none reverse",
                     // markers: true
                 };
-                // let scrollSettingsPin = {
-                //     pin: ".pin",
-                //     start: "top top",
-                //     end: "+=1500"
-                // };
                 setTimeout(()=>{
-                    // gsap.fromTo(element.querySelector(".img-ani3"),{opacity: 0, x: -100},{opacity: 1, x: 0, scrollTrigger: scrollSettings2});
-                    // gsap.fromTo(element.querySelector(".text-box3"),{opacity: 0, x: -100},{opacity: 1, x: 0, scrollTrigger: scrollSettings1});
                     gsap.fromTo(element.querySelector(".header-ani"),{opacity: 0, y: 100},{opacity: 1, y: 0, scrollTrigger: scrollSettings1});
                     gsap.fromTo(element.querySelector(".products-text-ani"),{opacity: 0, y: 100},{opacity: 1, y: 0, scrollTrigger: scrollSettings2});
                     gsap.fromTo(element.querySelector(".products-buttons-ani"),{opacity: 0, y: 100},{opacity: 1, y: 0, scrollTrigger: scrollSettings3});
-                    // gsap.fromTo(element.querySelector(".pin"),{opacity: 1, x: 0},{opacity: 1, x: 0, scrollTrigger: scrollSettingsPin});
-                    for (let i = 0; i < components.length; i++){
+                    for (let i = 0; i < products.length; i++){
                         let className = ".component-ani"+i;
                         let scrollSettings = {
                             trigger: className,
                             start: "top bottom",
                             toggleActions: "play none none reverse",
-                            // markers: true
                         };
                         gsap.fromTo(element.querySelector(className),{opacity: 0, y: 100,},{opacity: 1, y: 0, scrollTrigger: scrollSettings});
                     }
@@ -411,7 +393,6 @@ export default function Electrical({data}){
                             trigger: className,
                             start: "center bottom",
                             toggleActions: "play none none reverse",
-                            // markers: true
                         };
                         gsap.fromTo(element.querySelector(className),{opacity: 0, x:0},{opacity: 1, x:0, scrollTrigger: scrollSettingsPin});
                         let className2 = ".text"+i;
@@ -419,11 +400,9 @@ export default function Electrical({data}){
                             trigger: className2,
                             start: "center bottom",
                             toggleActions: "play none none reverse",
-                            // markers: true
                         };
                         gsap.fromTo(element.querySelector(className2),{opacity: 0, x:0},{opacity: 1, x:0, scrollTrigger: scrollSettingsPin2});
                     }
-                    // gsap.fromTo(element.querySelector(".m2"),{opacity: 0, x: -10,},{opacity: 1, x: 0, scrollTrigger: scrollSettings4});
                     
                 },100)
                 
@@ -438,7 +417,6 @@ export default function Electrical({data}){
                         <div className='hero-center-content'>
                             <h1>{sanity.hero_title}</h1>
                             <PortableText value={sanity.hero_text}/>
-                            {/* <p>Central Aero Electrical is a CAANZ Part 145 Approved Repair and Overhaul Facility.<br className='herobr'/> We have a large range of high quality components and offer quick turnarounds.<br/>Search Electrical Components for Exchange, Repair, or Overhaul.</p> */}
                             <p></p>
                             <ScrollAnimation/>
                             {/* <Search indices={searchIndices}/> */}
@@ -469,14 +447,7 @@ export default function Electrical({data}){
                 <div className='products-section'>
                     <h2 className='header-ani'>{sanity.components_section_title}</h2>
                     <p className='products-text-ani'><PortableText  value={sanity.components_section_text}/></p>
-                    {/* <p className='products-text-ani'>We stock the best electrical components from trusted brands such as Skurka, Safran, Champion, Hartzell etc and also have a selection of specialty parts. If your fixed wing aircraft, commercial aircraft, helicopter, or other aircraft needs new electrical components or existing components repaired or overhauled get in touch today</p> */}
                     <ComponentsWrapper>
-                        {/* {components.map((component, i) => (
-                            <div className={"component component-ani"+i}>
-                                <img src={i === 0? DC : i === 1? Magneto : i === 2 ? FuelPumpB : i === 3? Alternator : i === 4? Generator : VoltageRegulator}/>
-                                <p><b>{component}</b></p>
-                            </div>
-                        ))} */}
                         {products.map((product, i) => (
                             <div className={"component component-ani"+i}>
                                 <GatsbyImage className="component-image" image={getImage(product.component_image.asset.gatsbyImage)} alt={product.component_title + "display"} placeholder="blur"/>
@@ -490,19 +461,6 @@ export default function Electrical({data}){
                         <a href="/contact-electrical">Contact Electrical</a>
                     </div>
                 </div>
-
-                {/* <Services>
-                {services.map((service, i) => (
-                    <ServiceWrapper >
-                        <img alt={service[0]+" featured image"} src={i===0? BuyNew : i===1? RepairOverhaul : Exchange } className={'img'+i}/>
-                        <div className={'text'+i}>
-                            <h2>{service[0]}</h2>
-                            <p>{service[1]}</p>
-                            <a href="/shop-parts">View All Products</a>
-                        </div>
-                    </ServiceWrapper>
-                ))}
-                </Services> */}
                 <Services>
                 {services.map((service, i) => (
                     <ServiceWrapper>
@@ -517,7 +475,6 @@ export default function Electrical({data}){
                 </Services>
                 
             </ElectricalWrapper>
-            {/* <FeaturedProducts/> */}
         </Layout>
     )
 }

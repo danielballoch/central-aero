@@ -5,7 +5,6 @@ import ContactForm from "../components/contactForm.js"
 import Seo from "../components/seo"
 
 export default function Contact({data}){
-    console.log(data)
     let phones = data.contact.nodes[0]
     let electrical_contacts = data.electrical.nodes
     let engineering_contacts = data.engineering.nodes
