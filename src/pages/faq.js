@@ -112,7 +112,7 @@ const Content = ({question, answer,i}) => {
     return (
         <ContentBox  onClick={() => {setToggle(!toggle)}}>
             <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" key={"question " + i}>
-                <h3 itemProp="name"><p>Q{i+1}: {question}<span className={toggle ? "arrow" : "arrow down"}/></p></h3>
+                <h3 itemProp={"Question "+i}><p>Q{i+1}: {question}<span className={toggle ? "arrow" : "arrow down"}/></p></h3>
                 <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" className={toggle ? "answer toggle" : "answer"}>
                     <p itemprop="text">{answer}</p>
                 </div>
