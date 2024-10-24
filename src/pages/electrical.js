@@ -454,7 +454,6 @@ export default function Electrical({data}){
                                 <p><b>{product.component_title}</b></p>
                             </div>
                         ))}
-                        
                     </ComponentsWrapper>
                     <div className="button-div products-buttons-ani">
                         <a href="/shop-parts">View All Products</a>

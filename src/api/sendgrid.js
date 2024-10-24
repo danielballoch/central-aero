@@ -67,44 +67,33 @@ export default async(req, res) => {
       }
     }
 
-    return sendgrid.send(message).then(
-      () => {
-        let replyEmail = "hamish@centralaero.nz"
-        if (req.body.team === "Engineering"){replyEmail = "paul@centralaero.nz"}
-        const msg = {
-          to: req.body.email,
-          templateId: 'd-5cc6b447889d4a2fa02c27bc598f7c19',
-          replyTo: replyEmail,
-          from: {
-            email:process.env.SENDGRID_AUTHORIZED_EMAIL,
-            name:'Cental Aero',
-          },
-          subject: 'Thanks for your Central Aero Enquiry!',
-          dynamicTemplateData: {
-            subject: 'Thanks for your Central Aero Enquiry!',
-            team: req.body.team,
-            name: req.body.name,
-            phone: req.body.phone,
-            email: req.body.email,
-            message: req.body.message,
-          }
+    await sendgrid.send(message)
+    let replyEmail = "hamish@centralaero.nz"
+    if (req.body.team === "Engineering"){replyEmail = "paul@centralaero.nz"}
+    const msg = {
+      to: req.body.email,
+      templateId: 'd-5cc6b447889d4a2fa02c27bc598f7c19',
+      replyTo: replyEmail,
+      from: {
+        email:process.env.SENDGRID_AUTHORIZED_EMAIL,
+        name:'Cental Aero',
+      },
+      subject: 'Thanks for your Central Aero Enquiry!',
+      dynamicTemplateData: {
+        subject: 'Thanks for your Central Aero Enquiry!',
+        team: req.body.team,
+        name: req.body.name,
+        phone: req.body.phone,
+        email: req.body.email,
+        message: req.body.message,
+      }
         }
-        sendgrid.send(msg);
+        await sendgrid.send(msg);
         msg.to = "daniel@thoughtfulhq.com";
-        sendgrid.send(msg);
-        res.status(200).json({
+        await sendgrid.send(msg);
+        return res.status(200).json({
           message: "I will send email",
         })
-      },
-      error => {
-        console.error(error)
-        if (error.response) {
-          return res.status(500).json({
-            error: error.response,
-          })
-        }
-      }
-    )
   } catch (err) {
     console.log(err)
     return res.status(500).json({ message: "There was an error", error: err })
