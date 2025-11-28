@@ -6,7 +6,8 @@ import {PortableText} from '@portabletext/react'
 import Logo from "../images/CentralAeroTextOnlyLogoBlack.png"
 import WhiteLogo from "../images/CentralAeroTextOnlyLogo.png"
 import FB from '../images/facebook-logo.png'
-import Part145Logo from '../images/circletext-capital.png'
+import Part145Logo from '../images/CAA-Part-145.webp'
+// import Part145Logo from '../images/circletext-capital.png'
 
 
 const Wrapper = styled.div`
@@ -159,7 +160,7 @@ p {
 }
 .rotate-logo {
 height: 100px;
-transform: rotate(90deg);
+// transform: rotate(90deg);
 /* animation:spin 30s linear infinite; */
 }
 
