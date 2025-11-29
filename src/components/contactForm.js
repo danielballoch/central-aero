@@ -165,7 +165,7 @@ export default function ContactElectrical({formEmail,title, infoTitle, infoNumbe
         reRef.current.reset();
         
         
-        fetch(`/api/sendgrid`, {
+        fetch(`/api/postmark`, {
           method: `POST`,
           body: JSON.stringify({
             name: data.Name,
