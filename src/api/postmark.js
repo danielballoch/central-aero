@@ -31,7 +31,7 @@ export default async(req, res) => {
   // }
   try {
     let message = {
-      "From": "daniel@thoughtfulhq.com",
+      "From": "hamish@centralaero.nz",
       "To": req.body.email,
       "ReplyTo": "hamish@centralaero.nz",
       "TemplateId" : 42350858,
